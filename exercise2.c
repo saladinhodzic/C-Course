@@ -29,15 +29,11 @@ int main (){
     // scanf("%f",&F);
     // C=(F-32)*5/9;
     // printf("Stepeni u celzijusu su %.2f C",C);
-    // 1.	Sa tastature se učitava prirodan broj n i zatim n prirodnih brojeva među kojima su bar dva različita. Napisati program koji jednim prolaskom kroz niz određuje drugu po veličini vrednost. Na primer za pet brojeva 6, 6, 7, 6, 2 ispisuje:
+    // Creating simple array
 
-    int n,br,i;
-    printf("Unesi n prirodnih brojeva medju kojima su bar dva razlicita");
-    scanf("%d",&n);
-    int list[5];
-    for(i=0;i<list[n];i++){
-        scanf("%d",&list[i]);
-    }
-    printf("%d",list[5]);
+    int a[5]={1,2};
+    printf("%d",a);
+
+    
     return 0;
 }
