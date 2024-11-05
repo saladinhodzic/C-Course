@@ -53,23 +53,33 @@ int main (){
 // Саставити програм који ће учитати оцене за n ученика и исписати просечну оцену свих
 // ученика и број ученика који имају оцену 1.
 
-    int brojUcenika,brojKengura=0,i,sumaOcena=0;
-    float prosekOcena;
+    // int brojUcenika,brojKengura=0,i,sumaOcena=0;
+    // float prosekOcena;
 
-    printf("Unesi broj ucenika: ");
-    scanf("%d",&brojUcenika);
-    int  ocene[brojUcenika];
-    for (i=0;i<brojUcenika;i++){
-        printf("Unesi ocenu %d. ucenika: ",i+1);
-        scanf("%d",&ocene[i]);
-        sumaOcena+=ocene[i];
-        if (ocene[i]==1){
-            brojKengura++;
+    // printf("Unesi broj ucenika: ");
+    // scanf("%d",&brojUcenika);
+    // int  ocene[brojUcenika];
+    // for (i=0;i<brojUcenika;i++){
+    //     printf("Unesi ocenu %d. ucenika: ",i+1);
+    //     scanf("%d",&ocene[i]);
+    //     sumaOcena+=ocene[i];
+    //     if (ocene[i]==1){
+    //         brojKengura++;
+    //     }
+    // }
+    // prosekOcena=sumaOcena/brojUcenika;
+    // printf("Prosek ocena je %.2f\n",prosekOcena);
+    // printf("Broj kengura je %d",brojKengura);
+
+// Саставити програм који ће исписати све делиоце унетог броја n. 
+
+    int n,i;
+    printf("Unesi broj: ");
+    scanf("%d",&n);
+    for (i=1;i<n;i++){
+        if(n%i==0){
+            printf("%d\n",i);
         }
     }
-    prosekOcena=sumaOcena/brojUcenika;
-    printf("Prosek ocena je %.2f\n",prosekOcena);
-    printf("Broj kengura je %d",brojKengura);
-    
     return 0;
 }
