@@ -31,10 +31,18 @@ int main (){
     // printf("Stepeni u celzijusu su %.2f C",C);
     // Creating simple array
 
-    int a[5],i;
-    for (i=0;i<5;i++){
-        a[i]=i+2;
-    printf("%d",a[i]);
+    int i,n;
+    printf("Unesi brojeve\n");
+    scanf("%d",&n);
+    if (n>=1){
+        int a[n];
+        for (i=0;i<n;i++){
+            scanf("%d",&a[i]);
+        }
+
+        for (i=0;i<n;i++){
+            printf("%d",a[i]);
+        }
     }
 
     
