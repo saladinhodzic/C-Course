@@ -96,5 +96,14 @@ int main (){
     //         }
     //     }
     // }
+    // Napraviti program koji nalazi proste brojeve od 3 do 100 koristeci liste
+
+    // int list[100]={[0]=2,[1]=3},i;
+    // for (i=2;i<100;i++){
+    //     for (int j =0;j*j<=i;j++){
+    //         if (i%j)
+    //     }
+    // }
+
     return 0;
 }
