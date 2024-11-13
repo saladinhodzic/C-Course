@@ -23,17 +23,39 @@ void ispis(int niz[],int n){
     }
 }
 
+void ars(int niz[],int n){
+    int i,S=0,brojDeljivoSa3=0;
+    for (i=0;i<n;i++){
+        if (niz[i]%3==0){
+            S+=niz[i];
+            brojDeljivoSa3++;
+        }
+    }
+    float ars=(float)S/brojDeljivoSa3;
+    printf("Broj deljivih sa 3 je %.2f",ars);
+}
+
+void formirajC(int a[],int b[],int c[],int n,int m){
+    // C = A,B
+    int i;
+    for(i=0;i<n;i++){
+        c[i]=a[i];
+    }
+    for(i=n;i<n+m;i++){
+        c[i]=b[i-n];
+    }
+}
+
 
 int main(){
-    int niz[MAX],i,n,S=0;
+    int nizA[MAX],nizB[MAX],nizC[MAX],i,n,m;
+    float arit;
     printf("Unesite duzinu niza ");
     scanf("%d",&n);
-    
+    unos(nizA,n);
+    unos(nizB,m);
+    formirajC(nizA,nizB,nizC,n,m);
     // suma elemenata
-
-    for(i=0;i<n;i++){
-        S+=niz[i];
-    }
-    printf("Suma elemenata niza iznosi %d",S);
+    ispis(nizC,n+m);
     return 0;
 }
