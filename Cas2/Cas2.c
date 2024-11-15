@@ -63,20 +63,70 @@
 // Саставити рекурзивну функцију која исписује првих n бројева у обрнутом редолседу, а затим
 // тестирати функцију за дато n.
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void obrnut( int n){
-    if (n==0){
-        return;
+// void obrnut( int n){
+//     if (n==0){
+//         return;
+//     }
+//     printf("%d ",n) ;
+//     obrnut(n-1);
+// }
+
+// int main(){
+//     int n;
+//     printf("Unesi broj n a mi cemo ti ispisati brojeve do tog broja u obrnutom redosledu ");
+//     scanf("%d",&n);
+//     obrnut(n);
+//     return 0;
+// }
+
+// NIZOVI
+
+// Саставити програм који учита елементе низа A A A A = ( 1 2 , ,..., n ) дужине n и низа
+// B B B B = ( 1 2 , ,..., m ) дужине m и спаја у један низ C A A A B B B = ( 1 2 1 2 , ,..., , , ,..., n m ) дужине n+m.
+// Исписати новокреирани низ. 
+
+#include <stdio.h>
+#define MAX 100
+
+void kreirajNiz(int niz[],int d){
+    int i;
+    for (i=0;i<d;i++){
+        scanf("%d",&niz[i]);
+        //printf("%d",niz[i]);
     }
-    printf("%d ",n) ;
-    obrnut(n-1);
+}
+
+void ispis(int niz[],int d){
+    int i;
+    for (i=0;i<d;i++){
+        printf("%d",niz[i]);
+    }
+}
+
+void formiraj(int nizA[],int nizB[],int nizC[],int n, int m){
+    int i,j=0;
+    for (i=0;i<n;i++){
+        nizC[i]=nizA[i];
+    }
+    for(i=n;i<n+m;i++)
+    {
+        nizC[i]=nizB[j];
+        j++;
+    }
 }
 
 int main(){
-    int n;
-    printf("Unesi broj n a mi cemo ti ispisati brojeve do tog broja u obrnutom redosledu ");
-    scanf("%d",&n);
-    obrnut(n);
+    int nizA[MAX], nizB[MAX],nizC[MAX],n,m,i;
+    printf("Unesi duzinu prvog i drugog niza ");
+    scanf("%d %d",&n,&m);
+    printf("Unesi prvi niz ");
+    kreirajNiz(nizA,n);
+    printf("Unesi drugi niz ");
+    kreirajNiz(nizB,m);
+    printf("Spojeni niz C glasi: ");
+    formiraj(nizA,nizB,nizC,n,m);
+    ispis(nizC,n+m);
     return 0;
 }
