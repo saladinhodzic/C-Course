@@ -43,19 +43,40 @@
 // Саставити рекурзивну функцију која врши сабирање првих n бројева, а затим тестирати
 // функцију за дато n и исписати добијени резултат.
 
+// #include <stdio.h>
+
+// int zbirDoN(int n){
+//     if (n == 1){
+//         return n;
+//     }
+//     return n + zbirDoN(n-1);
+// }
+
+// int main(){
+//     int n;
+//     printf("Unesi broj n i mi cemo ti ispisati zbir brojeva do tog broja ");
+//     scanf("%d",&n);
+//     printf("Za dati broj zbir iznosi %d",zbirDoN(n));
+//     return 0;
+// }
+
+// Саставити рекурзивну функцију која исписује првих n бројева у обрнутом редолседу, а затим
+// тестирати функцију за дато n.
+
 #include <stdio.h>
 
-int zbirDoN(int n){
-    if (n == 1){
-        return n;
+void obrnut( int n){
+    if (n==0){
+        return;
     }
-    return n + zbirDoN(n-1);
+    printf("%d ",n) ;
+    obrnut(n-1);
 }
 
 int main(){
     int n;
-    printf("Unesi broj n i mi cemo ti ispisati zbir brojeva do tog broja ");
+    printf("Unesi broj n a mi cemo ti ispisati brojeve do tog broja u obrnutom redosledu ");
     scanf("%d",&n);
-    printf("Za dati broj zbir iznosi %d",zbirDoN(n));
+    obrnut(n);
     return 0;
 }
