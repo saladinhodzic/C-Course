@@ -38,32 +38,52 @@
 // 2.	Napisati program kojim se ispituju sve mogućnosti da pri jednom bacanju kockice zbir brojeva bude dati broj S.
 // Na primer: Za S=5 rešenja su 1,1,3   1,2,2...
 
+// #include <stdio.h>
+
+// int main(){
+//     int S,i,k,m;
+//     printf("Unesite broj od 1 do 6\n");
+//     scanf("%d",&S);
+
+//     // for (i=1;i<=S;i++){
+//     //     if (a+b+c<S){
+//     //         a+=1;
+//     //     }else if (a+b+c==S){
+//     //         printf("Jedno od resenja je %d %d %d ",a,b,c);
+//     //         a=1;
+//     //         break;
+//     //     }
+//     // }
+
+//     for (i=1;i<=S;i++){
+//         for (k=1;k<=S;k++){
+//             for (m=1;m<=S;m++){
+//                 if (i+k+m==S){
+//                     printf("%d %d %d\n",i,k,m);
+//                 }
+//             }
+//         }
+//     }
+    
+//     return 0;
+// }
+
+
+// 3.	Napisati program kojim se nalaze delitelji prirodnog broja X<1000.
+
 #include <stdio.h>
 
 int main(){
-    int S,i,k,m;
-    printf("Unesite broj od 1 do 6\n");
-    scanf("%d",&S);
+    int n,i;
+    printf("Unesite broj do 1000\n");
+    scanf("%d",&n);
 
-    // for (i=1;i<=S;i++){
-    //     if (a+b+c<S){
-    //         a+=1;
-    //     }else if (a+b+c==S){
-    //         printf("Jedno od resenja je %d %d %d ",a,b,c);
-    //         a=1;
-    //         break;
-    //     }
-    // }
+    printf("Delioci datog broja su:\n");
 
-    for (i=1;i<=S;i++){
-        for (k=1;k<=S;k++){
-            for (m=1;m<=S;m++){
-                if (i+k+m==S){
-                    printf("%d %d %d\n",i,k,m);
-                }
-            }
+    for(i=1;i<n;i++){
+        if(n%i==0){
+            printf("%d ",i);
         }
     }
-    
     return 0;
 }
