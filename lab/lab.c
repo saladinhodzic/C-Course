@@ -41,18 +41,27 @@
 #include <stdio.h>
 
 int main(){
-    int S,a=1,b=1,c=1,i;
+    int S,i,k,m;
     printf("Unesite broj od 1 do 6\n");
     scanf("%d",&S);
 
+    // for (i=1;i<=S;i++){
+    //     if (a+b+c<S){
+    //         a+=1;
+    //     }else if (a+b+c==S){
+    //         printf("Jedno od resenja je %d %d %d ",a,b,c);
+    //         a=1;
+    //         break;
+    //     }
+    // }
+
     for (i=1;i<=S;i++){
-        if (a+b+c<S){
-            a+=1;
-        }else if (a+b+c==S){
-            printf("Jedno od resenja je %d %d %d ",a,b,c);
-            a=1;
-            break;
-            
+        for (k=1;k<=S;k++){
+            for (m=1;m<=S;m++){
+                if (i+k+m==S){
+                    printf("%d %d %d\n",i,k,m);
+                }
+            }
         }
     }
     
