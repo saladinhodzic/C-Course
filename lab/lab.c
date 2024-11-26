@@ -90,19 +90,45 @@
 
 // 4.	Ispisati sve savršene brojeve do 1000. Savršen broj je onaj koji je jednak sumi svojih delitelja isključujući njega (npr. 6=3+2+1).
 
+// #include <stdio.h>
+
+// int main(){
+//     int i,j;
+//     for (i=2;i<=1000;i++){
+//         int suma=0;
+//         for(j=1;j<i;j++){
+//             if (i%j==0){
+//                 suma+=j;
+//             }
+//         }
+//         if (suma == i){
+//             printf("Broj %d je savrsen broj\n",i);
+//         }
+//     }
+//     return 0;
+// }
+
+// 5.	Napisati program za nalaženje najvećeg zajedničkog delioca za brojeve A i B.
+
 #include <stdio.h>
 
 int main(){
-    int i,j;
-    for (i=2;i<=1000;i++){
-        int suma=0;
-        for(j=1;j<i;j++){
-            if (i%j==0){
-                suma+=j;
+    int a,b,i;
+    printf("Unesite dva broja i mi cemo ti naci najveci zajednicki delilac\n");
+    scanf("%d %d",&a,&b);
+    if (a>b){
+        for (i=b;i>0;i--){
+            if (b%i==0 && a %i==0){
+                printf("Najveci zajednicki delioc za a i b je %d",i);
+                break;
             }
         }
-        if (suma == i){
-            printf("Broj %d je savrsen broj\n",i);
+    }else{
+         for (i=a;i>0;i--){
+            if (b%i==0 && a %i==0){
+                printf("Najveci zajednicki delioc za a i b je %d",i);
+                break;
+            }
         }
     }
     return 0;
