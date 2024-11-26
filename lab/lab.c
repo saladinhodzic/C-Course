@@ -71,18 +71,38 @@
 
 // 3.	Napisati program kojim se nalaze delitelji prirodnog broja X<1000.
 
+// #include <stdio.h>
+
+// int main(){
+//     int n,i;
+//     printf("Unesite broj do 1000\n");
+//     scanf("%d",&n);
+
+//     printf("Delioci datog broja su:\n");
+
+//     for(i=1;i<n;i++){
+//         if(n%i==0){
+//             printf("%d ",i);
+//         }
+//     }
+//     return 0;
+// }
+
+// 4.	Ispisati sve savršene brojeve do 1000. Savršen broj je onaj koji je jednak sumi svojih delitelja isključujući njega (npr. 6=3+2+1).
+
 #include <stdio.h>
 
 int main(){
-    int n,i;
-    printf("Unesite broj do 1000\n");
-    scanf("%d",&n);
-
-    printf("Delioci datog broja su:\n");
-
-    for(i=1;i<n;i++){
-        if(n%i==0){
-            printf("%d ",i);
+    int i,j;
+    for (i=2;i<=1000;i++){
+        int suma=0;
+        for(j=1;j<i;j++){
+            if (i%j==0){
+                suma+=j;
+            }
+        }
+        if (suma == i){
+            printf("Broj %d je savrsen broj\n",i);
         }
     }
     return 0;
