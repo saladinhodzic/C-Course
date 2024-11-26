@@ -110,26 +110,56 @@
 
 // 5.	Napisati program za nalaženje najvećeg zajedničkog delioca za brojeve A i B.
 
+// #include <stdio.h>
+
+// int main(){
+//     int a,b,i;
+//     printf("Unesite dva broja i mi cemo ti naci najveci zajednicki delilac\n");
+//     scanf("%d %d",&a,&b);
+//     if (a>b){
+//         for (i=b;i>0;i--){
+//             if (b%i==0 && a %i==0){
+//                 printf("Najveci zajednicki delioc za a i b je %d",i);
+//                 break;
+//             }
+//         }
+//     }else{
+//          f/+or (i=a;i>0;i--){
+//             if (b%i==0 && a %i==0){
+//                 printf("Najveci zajednicki delioc za a i b je %d",i);
+//                 break;
+//             }
+//         }
+//     }
+//     return 0;
+// }
+
+// 6. Fibonaccijeva sekvenca 
+
 #include <stdio.h>
 
 int main(){
-    int a,b,i;
-    printf("Unesite dva broja i mi cemo ti naci najveci zajednicki delilac\n");
-    scanf("%d %d",&a,&b);
-    if (a>b){
-        for (i=b;i>0;i--){
-            if (b%i==0 && a %i==0){
-                printf("Najveci zajednicki delioc za a i b je %d",i);
-                break;
-            }
+    // Korisnik unosi neki broj 
+    int n,i,a=0,b=1,c=0;
+    printf("Unesite neki broj\n");
+    scanf("%d",&n);
+    for (i=0;i<=n;i++){
+        if(c>=n){
+            break;
         }
-    }else{
-         for (i=a;i>0;i--){
-            if (b%i==0 && a %i==0){
-                printf("Najveci zajednicki delioc za a i b je %d",i);
-                break;
-            }
-        }
+      else if (i==0){
+        printf("%d ",a);
+      }else if (i==1){
+        printf("%d ",b);
+      }else{
+        c=a+b;
+        printf("%d ",c);
+        a=b;
+        b=c;
+      }
     }
+
+
+    // Ispisujemo do tog broja u obliku Fibonacijeve sekvence (0,1,1,2,3,++++5..)
     return 0;
 }
