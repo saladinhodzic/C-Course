@@ -136,30 +136,75 @@
 
 // 6. Fibonaccijeva sekvenca 
 
+// #include <stdio.h>
+
+// int main(){
+//     // Korisnik unosi neki broj 
+//     int n,i,a=0,b=1,c=0;
+//     printf("Unesite neki broj\n");
+//     scanf("%d",&n);
+//     for (i=0;i<=n;i++){
+//         if(c>=n){
+//             break;
+//         }
+//       else if (i==0){
+//         printf("%d ",a);
+//       }else if (i==1){
+//         printf("%d ",b);
+//       }else{
+//         c=a+b;
+//         printf("%d ",c);
+//         a=b;
+//         b=c;
+//       }
+//     }
+
+
+//     Ispisujemo do tog broja u obliku Fibonacijeve sekvence (0,1,1,2,3,++++5..)
+//     return 0;
+// }
+
+// koristeci rekurziju ispisati sumu prirodnih brojeva do n
+
+// #include <stdio.h>
+
+// int main(){
+//     int n=0,suma=0,i;
+//     printf("Unesite vrednost broja n: ");
+//     scanf("%d",&n);
+//     for(i=1;i<=n;i++){
+//         suma+=i;
+//     }
+//     printf("%d ",suma);
+//     return 0;
+// }
+
+// Write a Program to find the maximum and minimum of an Array
+
 #include <stdio.h>
 
 int main(){
-    // Korisnik unosi neki broj 
-    int n,i,a=0,b=1,c=0;
-    printf("Unesite neki broj\n");
-    scanf("%d",&n);
-    for (i=0;i<=n;i++){
-        if(c>=n){
-            break;
+    int i, niz[]={1,5,3,9},max=niz[0],min=niz[0];
+    int length=sizeof(niz)/sizeof(niz[0]);
+
+    for (i=0;i<length;i++){
+        if (niz[i]>max){
+            max=niz[i];
         }
-      else if (i==0){
-        printf("%d ",a);
-      }else if (i==1){
-        printf("%d ",b);
-      }else{
-        c=a+b;
-        printf("%d ",c);
-        a=b;
-        b=c;
-      }
+         if (niz[i]<min){
+            min=niz[i];
+        }
     }
-
-
-    // Ispisujemo do tog broja u obliku Fibonacijeve sekvence (0,1,1,2,3,++++5..)
+    printf("Najmanji broj u nizu je %d a najveci %d ",min,max);
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
