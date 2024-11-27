@@ -201,27 +201,46 @@
 
 // Write a Program to Reverse an Array
 
+// #include <stdio.h>
+
+// int main(){
+//     int i,niz[]={1,2,3,4,5};
+
+//     int length=sizeof(niz)/sizeof(niz[0]);
+
+//     int noviNiz[length];
+
+//     printf("Reversed array is ");
+//     for (i=length-1;i>=0;i--){
+//         noviNiz[i]=niz[i];
+//         printf("%d ",noviNiz[i]);
+//     }
+
+    
+//     return 0;
+// }
+
+
+// Write a Program to rotate the array to the left
+
 #include <stdio.h>
 
 int main(){
-    int i,niz[]={1,2,3,4,5};
-
+    int niz[]={1,2,3,4,5},i,n,m=0;
     int length=sizeof(niz)/sizeof(niz[0]);
+    printf("Unesite pozitivan broj za rotiranje niza ");
+    scanf("%d",&n);
 
-    int noviNiz[length];
-
-    printf("Reversed array is ");
-    for (i=length-1;i>=0;i--){
-        noviNiz[i]=niz[i];
-        printf("%d ",noviNiz[i]);
+    for(i=0;i<length;i++){
+        if (i<n){
+            printf("%d ",niz[i+n]);
+        }else{
+            printf("%d ",niz[m]);
+            m++;
+        }
     }
-
-    
     return 0;
 }
-
-
-
 
 
 
