@@ -181,24 +181,44 @@
 
 // Write a Program to find the maximum and minimum of an Array
 
+// #include <stdio.h>
+
+// int main(){
+//     int i, niz[]={1,5,3,9},max=niz[0],min=niz[0];
+//     int length=sizeof(niz)/sizeof(niz[0]);
+
+//     for (i=0;i<length;i++){
+//         if (niz[i]>max){
+//             max=niz[i];
+//         }
+//          if (niz[i]<min){
+//             min=niz[i];
+//         }
+//     }
+//     printf("Najmanji broj u nizu je %d a najveci %d ",min,max);
+//     return 0;
+// }
+
+// Write a Program to Reverse an Array
+
 #include <stdio.h>
 
 int main(){
-    int i, niz[]={1,5,3,9},max=niz[0],min=niz[0];
+    int i,niz[]={1,2,3,4,5};
+
     int length=sizeof(niz)/sizeof(niz[0]);
 
-    for (i=0;i<length;i++){
-        if (niz[i]>max){
-            max=niz[i];
-        }
-         if (niz[i]<min){
-            min=niz[i];
-        }
+    int noviNiz[length];
+
+    printf("Reversed array is ");
+    for (i=length-1;i>=0;i--){
+        noviNiz[i]=niz[i];
+        printf("%d ",noviNiz[i]);
     }
-    printf("Najmanji broj u nizu je %d a najveci %d ",min,max);
+
+    
     return 0;
 }
-
 
 
 
