@@ -97,22 +97,22 @@
 
 // palindrom
 
-void palindrom(char tekst[]){
-    int i,p=0;
+// void palindrom(char tekst[]){
+//     int i,p=0;
 
-    for ( i=0;i<strlen(tekst)/2;i++){
-        if (tekst[i]==tekst[strlen(tekst)-1-i]){
-            p=1;
-        }
-    }
-    if (p=1){
-        printf("Rec je palindrom");
-    }
-}
-int main(){
-    char tekst[100];
-    gets(tekst);
-    palindrom(tekst);
+//     for ( i=0;i<strlen(tekst)/2;i++){
+//         if (tekst[i]==tekst[strlen(tekst)-1-i]){
+//             p=1;
+//         }
+//     }
+//     if (p=1){
+//         printf("Rec je palindrom");
+//     }
+// }
+// int main(){
+//     char tekst[100];
+//     gets(tekst);
+//     palindrom(tekst);
 
-    return 0;
-}
+//     return 0;
+// }
