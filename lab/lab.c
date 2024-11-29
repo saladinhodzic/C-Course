@@ -223,25 +223,19 @@
 
 // Write a Program to rotate the array to the left
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(){
-    int niz[]={1,2,3,4,5},i,n,m=0;
-    int length=sizeof(niz)/sizeof(niz[0]);
-    printf("Unesite pozitivan broj za rotiranje niza ");
-    scanf("%d",&n);
+// int main(){
+//     int niz[]={1,2,3,4,5},i,n,m=0;
+//     int length=sizeof(niz)/sizeof(niz[0]);
+//     printf("Unesite pozitivan broj za rotiranje niza ");
+//     scanf("%d",&n);
 
-    for(i=0;i<length;i++){
-        if (i<n){
-            printf("%d ",niz[i+n]);
-        }else{
-            printf("%d ",niz[m]);
-            m++;
-        }
-    }
-    return 0;
-}
-
+//     for(i=0;i<length;i++){
+//         printf("%d ",niz[i+n]);
+//     }
+//     return 0;
+// }
 
 
 
