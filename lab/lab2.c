@@ -12,11 +12,12 @@
 #include <math.h>
 
 void generate(int niz[],int length){
-    int i,acc,j,m=0;
+    int i,acc,j,m=1,k;
     int noviNiz[100]={1};
     for(i=0;i<length;i++){
         acc=round(pow(10,i));
         niz[i]=acc;
+        printf("%d, ",niz[i]);
     }
     for (j=0;j<length;j++){
         while(niz[j]>0){
@@ -30,7 +31,7 @@ void generate(int niz[],int length){
 }
 
 int main(){
-    int niz[100],i;
+    int niz[10],i;
     int length=sizeof(niz)/sizeof(niz[0]);
     generate(niz,length);
 
