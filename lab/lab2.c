@@ -56,12 +56,19 @@
 #include <stdio.h>
 
 int main(){
-    int niz[5]={1,2,3,4,5},i,suma=0;
-    int length=sizeof(niz)/4;
-    for (i=0;i<length;i++){
+    int niz[100],i,suma=0;
+    int n;
+    printf("Izaberi duzinu niza\n");
+    scanf("%d",&n);
+    // int length=sizeof(niz)/4;
+    // for (i=0;i<length;i++){
+    //     suma+=niz[i];
+    // }
+    for (i=0;i<n;i++){
+        scanf("%d",&niz[i]);
         suma+=niz[i];
     }
-    float result=suma/length;
-    printf("Aritmeticka sredina brojeva niza je %.2f",result);
+    // float result=suma/length;
+    printf("Aritmeticka sredina brojeva niza je %.2f",(float) suma/n);
     return 0;
 }
