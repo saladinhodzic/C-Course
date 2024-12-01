@@ -131,6 +131,18 @@ int main(){
     }
 
     printf("Suma parnih brojeva je %d a neparnih je %d.",parni,neparni);
+
+    int parniInd=0,neparniInd=0;
     
+    for(i=0;i<n;i++){
+        if(i==0 || i%2==0){
+            parniInd+=niz[i];
+        }
+        else{
+            neparniInd+=niz[i];
+        }
+    }
+
+    printf("Na parnim pozicijama niza suma brojeva je %d a na neparnim %d.",parniInd,neparniInd);
     return 0;
 }
