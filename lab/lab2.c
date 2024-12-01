@@ -105,44 +105,84 @@
 // а) суму парних и суму непарних бројева;
 // б) суму елемената са парним индексима и суму елемената са непарним индексима. 
 
+// #include <stdio.h>
+
+// int main(){
+//     // uneti niz sa duzinom n brojeva
+//     int niz[100],n,i;
+
+//     printf("Uneti duzinu niza n: ");
+//     scanf("%d",&n);
+
+//     for (i=0;i<n;i++){
+//         printf("Uneti %d. cifru niza: ",i+1);
+//         scanf("%d",&niz[i]);
+//     }
+//     // naci sumu parnih i sumu neparnih brojeva niza
+
+//     int parni=0,neparni=0;
+
+//     for(i=0;i<n;i++){
+//         if (niz[i]%2==0){
+//             parni+=niz[i];
+//         }else{
+//             neparni+=niz[i];
+//         }
+//     }
+
+//     printf("Suma parnih brojeva je %d a neparnih je %d.",parni,neparni);
+
+//     int parniInd=0,neparniInd=0;
+    
+//     for(i=0;i<n;i++){
+//         if(i==0 || i%2==0){
+//             parniInd+=niz[i];
+//         }
+//         else{
+//             neparniInd+=niz[i];
+//         }
+//     }
+
+//     printf("Na parnim pozicijama niza suma brojeva je %d a na neparnim %d.",parniInd,neparniInd);
+//     return 0;
+// }
+
+// Саставити програм који прочита два низа, дужине n, са реалним компонентама,
+// A A A A = ( 1 2 , ,..., n ) и B B B B = ( 1 2 , ,..., n ) израчунава њихов скаларни производ
+// 1
+// 0
+// n
+// i i
+// i
+// s A B
+// −
+// =
+// = ∑ и
+// исписује добијени резултат. 
+
 #include <stdio.h>
 
-int main(){
-    // uneti niz sa duzinom n brojeva
-    int niz[100],n,i;
-
-    printf("Uneti duzinu niza n: ");
+int main()
+{
+    int niz1[100],niz2[100],n,i,suma=0;
+    printf("Uneti duzinu oba niza n: ");
     scanf("%d",&n);
-
-    for (i=0;i<n;i++){
-        printf("Uneti %d. cifru niza: ",i+1);
-        scanf("%d",&niz[i]);
+    for (i=0;i<n;i++)
+    {
+        printf("Uneti %d. element prvog niza: ",i+1);
+        scanf("%d",&niz1[i]);
     }
-    // naci sumu parnih i sumu neparnih brojeva niza
-
-    int parni=0,neparni=0;
-
-    for(i=0;i<n;i++){
-        if (niz[i]%2==0){
-            parni+=niz[i];
-        }else{
-            neparni+=niz[i];
-        }
+    for (i=0;i<n;i++)
+    {
+        printf("Uneti %d. element drugog niza: ",i+1);
+        scanf("%d",&niz2[i]);
     }
 
-    printf("Suma parnih brojeva je %d a neparnih je %d.",parni,neparni);
-
-    int parniInd=0,neparniInd=0;
-    
-    for(i=0;i<n;i++){
-        if(i==0 || i%2==0){
-            parniInd+=niz[i];
-        }
-        else{
-            neparniInd+=niz[i];
-        }
+    for(i=0;i<n;i++)
+    {
+        suma+=niz1[i]+niz2[i];
     }
 
-    printf("Na parnim pozicijama niza suma brojeva je %d a na neparnim %d.",parniInd,neparniInd);
+    printf("%d",suma);
     return 0;
 }
