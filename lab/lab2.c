@@ -53,22 +53,50 @@
 // Саставити програм за израчунавање и исписивање аритметичке средине задатог низа (дужине
 // n) целих бројева. 
 
+// #include <stdio.h>
+
+// int main(){
+//     int niz[100],i,suma=0;
+//     int n;
+//     printf("Izaberi duzinu niza\n");
+//     scanf("%d",&n);
+//     // int length=sizeof(niz)/4;
+//     // for (i=0;i<length;i++){
+//     //     suma+=niz[i];
+//     // }
+//     for (i=0;i<n;i++){
+//         scanf("%d",&niz[i]);
+//         suma+=niz[i];
+//     }
+//     // float result=suma/length;
+//     printf("Aritmeticka sredina brojeva niza je %.2f",(float) suma/n);
+//     return 0;
+// }
+
+// Саставити програм који за унети низ (дужине n) целих бројева израчунава и исписуеј
+// аритметичку средину оних елемената низа који су дељиви са 3.
+
 #include <stdio.h>
 
 int main(){
-    int niz[100],i,suma=0;
-    int n;
-    printf("Izaberi duzinu niza\n");
+    int niz[100],n,i,k,brojac=0,suma=0;
+
+    printf("Uneti duzinu niza n\n");
     scanf("%d",&n);
-    // int length=sizeof(niz)/4;
-    // for (i=0;i<length;i++){
-    //     suma+=niz[i];
-    // }
-    for (i=0;i<n;i++){
+
+    for(i=0;i<n;i++){
+        printf("Uneti %d. cifru niza: ",i+1);
         scanf("%d",&niz[i]);
-        suma+=niz[i];
     }
-    // float result=suma/length;
-    printf("Aritmeticka sredina brojeva niza je %.2f",(float) suma/n);
+
+    for (k=0;k<n;k++){
+        if (niz[k]%3==0){
+            suma+=niz[k];
+            brojac++;
+        }
+    }
+
+
+    printf("Aritmeticka sredina brojeva niza koji su deljivi sa 3 je %.2f",(float)suma/brojac);
     return 0;
 }
