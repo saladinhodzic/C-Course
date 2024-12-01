@@ -76,27 +76,61 @@
 // Саставити програм који за унети низ (дужине n) целих бројева израчунава и исписуеј
 // аритметичку средину оних елемената низа који су дељиви са 3.
 
+// #include <stdio.h>
+
+// int main(){
+//     int niz[100],n,i,k,brojac=0,suma=0;
+
+//     printf("Uneti duzinu niza n\n");
+//     scanf("%d",&n);
+
+//     for(i=0;i<n;i++){
+//         printf("Uneti %d. cifru niza: ",i+1);
+//         scanf("%d",&niz[i]);
+//     }
+
+//     for (k=0;k<n;k++){
+//         if (niz[k]%3==0){
+//             suma+=niz[k];
+//             brojac++;
+//         }
+//     }
+
+
+//     printf("Aritmeticka sredina brojeva niza koji su deljivi sa 3 je %.2f",(float)suma/brojac);
+//     return 0;
+// }
+
+// Саставити програм који ће за унети низ (дужине n) целих бројева одредити и исписати:
+// а) суму парних и суму непарних бројева;
+// б) суму елемената са парним индексима и суму елемената са непарним индексима. 
+
 #include <stdio.h>
 
 int main(){
-    int niz[100],n,i,k,brojac=0,suma=0;
+    // uneti niz sa duzinom n brojeva
+    int niz[100],n,i;
 
-    printf("Uneti duzinu niza n\n");
+    printf("Uneti duzinu niza n: ");
     scanf("%d",&n);
 
-    for(i=0;i<n;i++){
+    for (i=0;i<n;i++){
         printf("Uneti %d. cifru niza: ",i+1);
         scanf("%d",&niz[i]);
     }
+    // naci sumu parnih i sumu neparnih brojeva niza
 
-    for (k=0;k<n;k++){
-        if (niz[k]%3==0){
-            suma+=niz[k];
-            brojac++;
+    int parni=0,neparni=0;
+
+    for(i=0;i<n;i++){
+        if (niz[i]%2==0){
+            parni+=niz[i];
+        }else{
+            neparni+=niz[i];
         }
     }
 
-
-    printf("Aritmeticka sredina brojeva niza koji su deljivi sa 3 je %.2f",(float)suma/brojac);
+    printf("Suma parnih brojeva je %d a neparnih je %d.",parni,neparni);
+    
     return 0;
 }
