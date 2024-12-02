@@ -160,19 +160,54 @@
 // = ∑ и
 // исписује добијени резултат. 
 
+// #include <stdio.h>
+
+// int main()
+// {
+//     int niz1[100],niz2[100],n,i,suma=0;
+//     printf("Uneti duzinu oba niza n: ");
+//     scanf("%d",&n);
+//     for (i=0;i<n;i++)
+//     {
+//         printf("Uneti %d. element prvog niza: ",i+1);
+//         scanf("%d",&niz1[i]);
+//     }
+//     for (i=0;i<n;i++)
+//     {
+//         printf("Uneti %d. element drugog niza: ",i+1);
+//         scanf("%d",&niz2[i]);
+//     }
+
+//     for(i=0;i<n;i++)
+//     {
+//         suma+=niz1[i]+niz2[i];
+//     }
+
+//     printf("%d",suma);
+//     return 0;
+// }
+
+// Саставити програм који учита елементе низа A A A A = ( 1 2 , ,..., n ) дужине n и низа
+// B B B B = ( 1 2 , ,..., m ) дужине m и спаја у један низ C A A A B B B = ( 1 2 1 2 , ,..., , , ,..., n m ) дужине n+m.
+// Исписати новокреирани низ. 
+
 #include <stdio.h>
 
 int main()
 {
-    int niz1[100],niz2[100],n,i,suma=0;
-    printf("Uneti duzinu oba niza n: ");
+    int niz1[100],niz2[100],niz3[100],n,m,i;
+    // ucitati dva niza sa duzinom m i n
+    printf("Uneti duzinu prvog niza n: ");
     scanf("%d",&n);
-    for (i=0;i<n;i++)
+    for(i=0;i<n;i++)
     {
         printf("Uneti %d. element prvog niza: ",i+1);
         scanf("%d",&niz1[i]);
     }
-    for (i=0;i<n;i++)
+    printf("Uneti duzinu drugog niza m: ");
+    scanf("%d",&m);
+
+    for(i=0;i<m;i++)
     {
         printf("Uneti %d. element drugog niza: ",i+1);
         scanf("%d",&niz2[i]);
@@ -180,9 +215,16 @@ int main()
 
     for(i=0;i<n;i++)
     {
-        suma+=niz1[i]+niz2[i];
+        niz3[i]=niz1[i];
     }
-
-    printf("%d",suma);
+    for(i=0;i<m;i++)
+    {
+        niz3[i+n]=niz2[i];
+    }
+    printf("Spojeni niz je\n");
+    for(i=0;i<m+n;i++)
+    {
+        printf("%d, ",niz3[i]);
+    }
     return 0;
 }
