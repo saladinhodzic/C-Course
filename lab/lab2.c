@@ -191,44 +191,129 @@
 // B B B B = ( 1 2 , ,..., m ) дужине m и спаја у један низ C A A A B B B = ( 1 2 1 2 , ,..., , , ,..., n m ) дужине n+m.
 // Исписати новокреирани низ. 
 
+// #include <stdio.h>
+
+// int main()
+// {
+//     int niz1[100],niz2[100],niz3[100],n,m,i;
+//     // ucitati dva niza sa duzinom m i n
+//     printf("Uneti duzinu prvog niza n: ");
+//     scanf("%d",&n);
+//     for(i=0;i<n;i++)
+//     {
+//         printf("Uneti %d. element prvog niza: ",i+1);
+//         scanf("%d",&niz1[i]);
+//     }
+//     printf("Uneti duzinu drugog niza m: ");
+//     scanf("%d",&m);
+
+//     for(i=0;i<m;i++)
+//     {
+//         printf("Uneti %d. element drugog niza: ",i+1);
+//         scanf("%d",&niz2[i]);
+//     }
+
+//     for(i=0;i<n+m;i++)
+//     {
+//         if(i<n)
+//         {
+//         niz3[i]=niz1[i];
+//         }
+//         else 
+//         {
+
+//         niz3[i]=niz2[i-n];
+//         }
+//     }
+//     printf("Spojeni niz je\n");
+//     for(i=0;i<m+n;i++)
+//     {
+//         printf("%d, ",niz3[i]);
+//     }
+//     return 0;
+// }
+
+// Саставити програм који учита елементе два низа низа дужине n A A A A = ( 1 2 , ,..., n ) и
+// B B B B = ( 1 2 , ,..., n ) и формира и исписује нови низ чији су елементи
+// C A B A B A B = + + + ( 1 1 2 2 , ,..., n n ).
+
 #include <stdio.h>
+
+int ucitaj(int niz[],int duzina);
+int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[]);
+void ispisi(int niz[],int duzinaA,int duzinaB);
 
 int main()
 {
-    int niz1[100],niz2[100],niz3[100],n,m,i;
-    // ucitati dva niza sa duzinom m i n
-    printf("Uneti duzinu prvog niza n: ");
+    // ucitati dva niza A i B duzine n i m
+
+    int A[100],B[100],C[100],n,m,i;
+    printf("Unesite duzinu prvog niza: ");
     scanf("%d",&n);
-    for(i=0;i<n;i++)
-    {
-        printf("Uneti %d. element prvog niza: ",i+1);
-        scanf("%d",&niz1[i]);
-    }
-    printf("Uneti duzinu drugog niza m: ");
+    printf("Unesite duzinu drugog niza: ");
     scanf("%d",&m);
+    ucitaj(A,n);
+    ucitaj(B,m);
+    // ucitaj(B,m);
 
-    for(i=0;i<m;i++)
+    // formirati novi niz ciji su elementi A1 + B1 = C1...
+    formiraj(C,n,m,A,B);
+
+    // ispisi novi niz C
+
+    ispisi(C,n,m);
+}
+
+int ucitaj(int niz[],int duzina)
+{
+    int i;
+
+    for (i=0;i<duzina;i++)
     {
-        printf("Uneti %d. element drugog niza: ",i+1);
-        scanf("%d",&niz2[i]);
+        printf("Unesi %d. element niza: ",i+1);
+        scanf("%d",&niz[i]);
     }
 
-    for(i=0;i<n+m;i++)
+    return niz;
+}
+
+int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[])
+{
+    // duzina C niza
+    int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
+    int manjaDuzina=duzinaA < duzinaB? duzinaA:duzinaB;
+    int i=0,j;
+
+    while (i<manjaDuzina)
     {
-        if(i<n)
+        C[i]=A[i]+B[i];
+        i++;
+    }
+    if (duzinaA>duzinaB)
+    {
+        for(j=i;j<duzina;j++)
         {
-        niz3[i]=niz1[i];
+            C[j]=A[j];
         }
-        else 
-        {
-
-        niz3[i]=niz2[i-n];
-        }
-    }
-    printf("Spojeni niz je\n");
-    for(i=0;i<m+n;i++)
+    }else
     {
-        printf("%d, ",niz3[i]);
+        for(j=i;j<duzina;j++)
+        {
+            C[j]=B[j];
+        }
     }
-    return 0;
+    return C;
+}
+
+void ispisi(int niz[],int duzinaA,int duzinaB)
+{
+    int i;
+
+    int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
+
+
+    for(i=0;i<duzina;i++)
+    {
+        printf("%d, ",niz[i]);
+    }
 }
