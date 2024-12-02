@@ -213,13 +213,17 @@ int main()
         scanf("%d",&niz2[i]);
     }
 
-    for(i=0;i<n;i++)
+    for(i=0;i<n+m;i++)
     {
+        if(i<n)
+        {
         niz3[i]=niz1[i];
-    }
-    for(i=0;i<m;i++)
-    {
-        niz3[i+n]=niz2[i];
+        }
+        else 
+        {
+
+        niz3[i]=niz2[i-n];
+        }
     }
     printf("Spojeni niz je\n");
     for(i=0;i<m+n;i++)
