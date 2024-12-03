@@ -328,28 +328,70 @@
 // A
 // C A B = + . Исписати низ С.
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     float A[100],B[100],C[100];
+//     int n = 5,i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%f",&A[i]);
+//     }
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%f",&B[i]);
+//     }
+
+//     for(i=0;i<n;i++)
+//     {
+//         C[i]=pow(A[i],3)/3 + 2*A[i]*B[i];
+//         printf("%.2f, ",C[i]);
+//     }
+
+
+//     return 0;
+// }
+
+// Nactraj
+
 #include <stdio.h>
 
 int main(void)
 {
-    float A[100],B[100],C[100];
-    int n = 5,i;
+    int width,height,i,j;
+    // uneti visinu i sirinu
+    printf("Uneti sirinu: ");
+    scanf("%d",&width);
+    printf("Uneti visinu: ");
+    scanf("%d",&height);
 
-    for(i=0;i<n;i++)
+    for(i=0;i<width;i++)
     {
-        scanf("%f",&A[i]);
+        printf(" _");
     }
-    for(i=0;i<n;i++)
-    {
-        scanf("%f",&B[i]);
-    }
+    for(j=0;j<height;j++)
+        {
+            printf("\n|");
+            for(i=0;i<width;i++)
+            {
+                if (j==height-1)
+                {
+                for(i=0;i<width;i++)
+                    {
+                    printf(" _");
+                    }
+                 }else{
 
-    for(i=0;i<n;i++)
-    {
-        C[i]=pow(A[i],3)/3 + 2*A[i]*B[i];
-        printf("%.2f, ",C[i]);
-    }
+                printf("  ");
+                 }
 
+            }
+            printf("|");
 
+            
+        }
+   
     return 0;
 }
