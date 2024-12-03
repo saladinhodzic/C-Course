@@ -237,83 +237,119 @@
 // B B B B = ( 1 2 , ,..., n ) и формира и исписује нови низ чији су елементи
 // C A B A B A B = + + + ( 1 1 2 2 , ,..., n n ).
 
+// #include <stdio.h>
+
+// int ucitaj(int niz[],int duzina);
+// int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[]);
+// void ispisi(int niz[],int duzinaA,int duzinaB);
+
+// int main()
+// {
+//     // ucitati dva niza A i B duzine n i m
+
+//     int A[100],B[100],C[100],n,m,i;
+//     printf("Unesite duzinu prvog niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite duzinu drugog niza: ");
+//     scanf("%d",&m);
+//     ucitaj(A,n);
+//     ucitaj(B,m);
+//     // ucitaj(B,m);
+
+//     // formirati novi niz ciji su elementi A1 + B1 = C1...
+//     formiraj(C,n,m,A,B);
+
+//     // ispisi novi niz C
+
+//     ispisi(C,n,m);
+// }
+
+// int ucitaj(int niz[],int duzina)
+// {
+//     int i;
+
+//     for (i=0;i<duzina;i++)
+//     {
+//         printf("Unesi %d. element niza: ",i+1);
+//         scanf("%d",&niz[i]);
+//     }
+
+//     return niz;
+// }
+
+// int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[])
+// {
+//     // duzina C niza
+//     int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
+//     int manjaDuzina=duzinaA < duzinaB? duzinaA:duzinaB;
+//     int i=0,j;
+
+//     while (i<manjaDuzina)
+//     {
+//         C[i]=A[i]+B[i];
+//         i++;
+//     }
+//     if (duzinaA>duzinaB)
+//     {
+//         for(j=i;j<duzina;j++)
+//         {
+//             C[j]=A[j];
+//         }
+//     }else
+//     {
+//         for(j=i;j<duzina;j++)
+//         {
+//             C[j]=B[j];
+//         }
+//     }
+//     return C;
+// }
+
+// void ispisi(int niz[],int duzinaA,int duzinaB)
+// {
+//     int i;
+
+//     int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
+
+
+//     for(i=0;i<duzina;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// Саставити програм за формирање низа С од два задата низа реалних бројева А и В (сваки
+// дужине 5) на следећи начин
+// ( )3
+// 2
+// 3
+// i
+// i i i
+// A
+// C A B = + . Исписати низ С.
+
 #include <stdio.h>
 
-int ucitaj(int niz[],int duzina);
-int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[]);
-void ispisi(int niz[],int duzinaA,int duzinaB);
-
-int main()
+int main(void)
 {
-    // ucitati dva niza A i B duzine n i m
+    float A[100],B[100],C[100];
+    int n = 5,i;
 
-    int A[100],B[100],C[100],n,m,i;
-    printf("Unesite duzinu prvog niza: ");
-    scanf("%d",&n);
-    printf("Unesite duzinu drugog niza: ");
-    scanf("%d",&m);
-    ucitaj(A,n);
-    ucitaj(B,m);
-    // ucitaj(B,m);
-
-    // formirati novi niz ciji su elementi A1 + B1 = C1...
-    formiraj(C,n,m,A,B);
-
-    // ispisi novi niz C
-
-    ispisi(C,n,m);
-}
-
-int ucitaj(int niz[],int duzina)
-{
-    int i;
-
-    for (i=0;i<duzina;i++)
+    for(i=0;i<n;i++)
     {
-        printf("Unesi %d. element niza: ",i+1);
-        scanf("%d",&niz[i]);
+        scanf("%f",&A[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        scanf("%f",&B[i]);
     }
 
-    return niz;
-}
-
-int formiraj(int C[],int duzinaA,int duzinaB,int A[],int B[])
-{
-    // duzina C niza
-    int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
-    int manjaDuzina=duzinaA < duzinaB? duzinaA:duzinaB;
-    int i=0,j;
-
-    while (i<manjaDuzina)
+    for(i=0;i<n;i++)
     {
-        C[i]=A[i]+B[i];
-        i++;
+        C[i]=pow(A[i],3)/3 + 2*A[i]*B[i];
+        printf("%.2f, ",C[i]);
     }
-    if (duzinaA>duzinaB)
-    {
-        for(j=i;j<duzina;j++)
-        {
-            C[j]=A[j];
-        }
-    }else
-    {
-        for(j=i;j<duzina;j++)
-        {
-            C[j]=B[j];
-        }
-    }
-    return C;
-}
-
-void ispisi(int niz[],int duzinaA,int duzinaB)
-{
-    int i;
-
-    int duzina=duzinaA > duzinaB? duzinaA:duzinaB;
 
 
-    for(i=0;i<duzina;i++)
-    {
-        printf("%d, ",niz[i]);
-    }
+    return 0;
 }
