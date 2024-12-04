@@ -399,53 +399,101 @@
 // Саставити програм за формирање низа С од два задата низа целих бројева А и В (сваки
 // дужине 5) на следећи начин: А[0]+B[4],…,A[4]+B[0]. Исписати низ С
 
+// #include <stdio.h>
+
+// int kreiraj(int niz[],int duzina);
+// void ispisi(int niz[],int duzina);
+// int formirajC(int A[],int B[],int C[],int duzina);
+
+// int main(void)
+// {
+//     int A[5],B[5],n=5,C[5];
+//     printf("Uneti elemente prvog niza\n");
+//     kreiraj(A,n);
+
+//     printf("Uneti elemente drugog niza\n");
+//     kreiraj(B,n);
+
+//     ispisi(A,n);
+//     ispisi(B,n);
+//     formirajC(A,B,C,n);
+//     ispisi(C,n);
+//     return 0;
+// }
+
+// int kreiraj(int niz[],int duzina)
+// {
+//     int i;
+//     for(i=0;i<duzina;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void ispisi(int niz[],int duzina)
+// {
+//     int i;
+//     for(i=0;i<duzina;i++)
+//     {
+//         printf("%d",niz[i]);
+//     }
+// }
+
+// int formirajC(int A[],int B[],int C[],int duzina)
+// {
+//     int i;
+//     for(i=0;i<duzina;i++)
+//     {
+//         C[i]=A[i]+B[duzina-i-1];
+//     }
+//     return C;
+// }
+
+// Саставити функцију за израчунавање скаларног производа два низа реалних бројева
+// 1
+// 0
+// n
+// i i
+// i
+// s A B
+// −
+// =
+// = ∑ , а затим саставити главни програм који ће учитати два низа једнаких дужина n и
+// применом формирани функције исписати скаларни производ два низа. 
+
 #include <stdio.h>
 
-int kreiraj(int niz[],int duzina);
-void ispisi(int niz[],int duzina);
-int formirajC(int A[],int B[],int C[],int duzina);
+int proizvod(int A[],int B[],int duzina);
 
 int main(void)
 {
-    int A[5],B[5],n=5,C[5];
-    printf("Uneti elemente prvog niza\n");
-    kreiraj(A,n);
+    int A[100],B[100],n,i;
 
-    printf("Uneti elemente drugog niza\n");
-    kreiraj(B,n);
+    printf("Uneti duzinu nizeva: ");
+    scanf("%d",&n);
 
-    ispisi(A,n);
-    ispisi(B,n);
-    formirajC(A,B,C,n);
-    ispisi(C,n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&A[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&B[i]);
+    }
+
+    printf("%d",proizvod(A,B,n));
+
+    
     return 0;
 }
 
-int kreiraj(int niz[],int duzina)
+int proizvod(int A[],int B[],int duzina)
 {
-    int i;
+    int i,suma=0;
     for(i=0;i<duzina;i++)
     {
-        scanf("%d",&niz[i]);
+        suma+=A[i]*B[i];
     }
-    return niz;
-}
-
-void ispisi(int niz[],int duzina)
-{
-    int i;
-    for(i=0;i<duzina;i++)
-    {
-        printf("%d",niz[i]);
-    }
-}
-
-int formirajC(int A[],int B[],int C[],int duzina)
-{
-    int i;
-    for(i=0;i<duzina;i++)
-    {
-        C[i]=A[i]+B[duzina-i-1];
-    }
-    return C;
+    return suma;
 }
