@@ -356,42 +356,96 @@
 
 // Nactraj
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int width,height,i,j;
+//     // uneti visinu i sirinu
+//     printf("Uneti sirinu: ");
+//     scanf("%d",&width);
+//     printf("Uneti visinu: ");
+//     scanf("%d",&height);
+
+//     for(i=0;i<width;i++)
+//     {
+//         printf(" _");
+//     }
+//     for(j=0;j<height;j++)
+//         {
+//             printf("\n|");
+//             for(i=0;i<width;i++)
+//             {
+//                 if (j==height-1)
+//                 {
+//                 for(i=0;i<width;i++)
+//                     {
+//                     printf(" _");
+//                     }
+//                  }else{
+
+//                 printf("  ");
+//                  }
+
+//             }
+//             printf("|");
+
+            
+//         }
+   
+//     return 0;
+// }
+
+// Саставити програм за формирање низа С од два задата низа целих бројева А и В (сваки
+// дужине 5) на следећи начин: А[0]+B[4],…,A[4]+B[0]. Исписати низ С
+
 #include <stdio.h>
+
+int kreiraj(int niz[],int duzina);
+void ispisi(int niz[],int duzina);
+int formirajC(int A[],int B[],int C[],int duzina);
 
 int main(void)
 {
-    int width,height,i,j;
-    // uneti visinu i sirinu
-    printf("Uneti sirinu: ");
-    scanf("%d",&width);
-    printf("Uneti visinu: ");
-    scanf("%d",&height);
+    int A[5],B[5],n=5,C[5];
+    printf("Uneti elemente prvog niza\n");
+    kreiraj(A,n);
 
-    for(i=0;i<width;i++)
-    {
-        printf(" _");
-    }
-    for(j=0;j<height;j++)
-        {
-            printf("\n|");
-            for(i=0;i<width;i++)
-            {
-                if (j==height-1)
-                {
-                for(i=0;i<width;i++)
-                    {
-                    printf(" _");
-                    }
-                 }else{
+    printf("Uneti elemente drugog niza\n");
+    kreiraj(B,n);
 
-                printf("  ");
-                 }
-
-            }
-            printf("|");
-
-            
-        }
-   
+    ispisi(A,n);
+    ispisi(B,n);
+    formirajC(A,B,C,n);
+    ispisi(C,n);
     return 0;
+}
+
+int kreiraj(int niz[],int duzina)
+{
+    int i;
+    for(i=0;i<duzina;i++)
+    {
+        scanf("%d",&niz[i]);
+    }
+    return niz;
+}
+
+void ispisi(int niz[],int duzina)
+{
+    int i;
+    for(i=0;i<duzina;i++)
+    {
+        printf("%d",niz[i]);
+    }
+}
+
+int formirajC(int A[],int B[],int C[],int duzina)
+{
+    int i;
+    for(i=0;i<duzina;i++)
+    {
+        C[i]=A[i]+B[duzina-i-1];
+    }
+    return C;
 }
