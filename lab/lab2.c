@@ -548,32 +548,69 @@
 // = ∑ , а затим саставити главни програм који ће учитати два низа једнаких дужина n и
 // применом формирани функције исписати скаларни производ два низа. 
 
+// #include <stdio.h>
+// int proizvodRekurzija(int A[],int B[],int duzina);
+
+// int main(void)
+// {
+//     int n,A[100],B[100],i;
+//     printf("Unesite duzinu oba niza: ");
+//     scanf("%d",&n);
+
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&A[i]);
+//     }
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&B[i]);
+//     }
+
+//     printf("%d",proizvodRekurzija(A,B,n));
+
+//     return 0;
+// }
+
+// int proizvodRekurzija(int A[],int B[],int duzina)
+// {
+    
+    
+//     return duzina>0? A[0]*B[0]+proizvodRekurzija(A+1,B+1,duzina-1):0;
+// }
+
+// Саставити програм који за унети низ реалних бројева, дужине n, исписује елемент највеће
+// вредности, као и његове позиције у низу
+
 #include <stdio.h>
-int proizvodRekurzija(int A[],int B[],int duzina);
+
+void max(int niz[],int n);
 
 int main(void)
 {
-    int n,A[100],B[100],i;
-    printf("Unesite duzinu oba niza: ");
+    int niz[100],n,i;
+    printf("Uneti duzinu niza: ");
     scanf("%d",&n);
 
     for(i=0;i<n;i++)
     {
-        scanf("%d",&A[i]);
+        scanf("%d",&niz[i]);
     }
-    for(i=0;i<n;i++)
-    {
-        scanf("%d",&B[i]);
-    }
-
-    printf("%d",proizvodRekurzija(A,B,n));
-
+    max(niz,n);
     return 0;
 }
 
-int proizvodRekurzija(int A[],int B[],int duzina)
+void max(int niz[],int n)
 {
-    
-    
-    return duzina>0? A[0]*B[0]+proizvodRekurzija(A+1,B+1,duzina-1):0;
+    int i,max=niz[0],index=0;
+
+    for(i=1;i<n;i++)
+    {
+        if(max<niz[i])
+        {
+            max=niz[i];
+            index=i;
+        }
+    }
+
+    printf("Najveci element u nizu je %d sa indeksom %d",max,index);
 }
