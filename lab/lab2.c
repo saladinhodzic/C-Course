@@ -570,47 +570,99 @@
 
 //     return 0;
 // }
-
 // int proizvodRekurzija(int A[],int B[],int duzina)
 // {
-    
-    
-//     return duzina>0? A[0]*B[0]+proizvodRekurzija(A+1,B+1,duzina-1):0;
+//     return duzina>0 ? A[0]*B[0]+proizvodRekurzija(A+1,B+1,duzina-1) : 0;
 // }
+
+
 
 // Саставити програм који за унети низ реалних бројева, дужине n, исписује елемент највеће
 // вредности, као и његове позиције у низу
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void max(int niz[],int n);
+// void max(int niz[],int n);
+
+// int main(void)
+// {
+//     int niz[100],n,i;
+//     printf("Uneti duzinu niza: ");
+//     scanf("%d",&n);
+
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     max(niz,n);
+//     return 0;
+// }
+
+// void max(int niz[],int n)
+// {
+//     int i,max=niz[0],index=0;
+
+//     for(i=1;i<n;i++)
+//     {
+//         if(max<niz[i])
+//         {
+//             max=niz[i];
+//             index=i;
+//         }
+//     }
+
+//     printf("Najveci element u nizu je %d sa indeksom %d",max,index);
+// }
+
+// Саставити програм који учита низ реалних бројева, дужине n, налази најмањи и највећи члан
+// низа, xmin и xmax, и исписује све елементе низа који су мањи од xmax/2 и већи од xmin*2
+
+#include <stdio.h>
+int generate_array(float niz[],int n);
+void min_max(float niz[],int n);
 
 int main(void)
 {
-    int niz[100],n,i;
-    printf("Uneti duzinu niza: ");
-    scanf("%d",&n);
+    int n;
+    float niz[100];
 
-    for(i=0;i<n;i++)
-    {
-        scanf("%d",&niz[i]);
-    }
-    max(niz,n);
+    printf("Unesite duzinu niza ");
+    scanf("%d",&n);
+    // generisanje niza realnih brojeva
+    generate_array(niz,n);
+
+    // nalazenje najmanjeg i najveceg clana niza
+    min_max(niz,n);
+    
     return 0;
 }
 
-void max(int niz[],int n)
+int generate_array(float niz[],int n)
 {
-    int i,max=niz[0],index=0;
+    int i;
 
-    for(i=1;i<n;i++)
+    for(i=0;i<n;i++)
     {
-        if(max<niz[i])
+        scanf("%f",&niz[i]);
+    }
+    return niz;
+}
+
+void min_max(float niz[],int n)
+{
+    int i;
+    float min=niz[0],max=niz[0];
+
+    for(i=0;i<n;i++)
+    {
+        if (min>niz[i])
+        {
+            min=niz[i];
+        }
+        if (max<niz[i])
         {
             max=niz[i];
-            index=i;
         }
     }
-
-    printf("Najveci element u nizu je %d sa indeksom %d",max,index);
+    printf("Najveci element niza je %.2f a najmanji %.2f",max,min);
 }
