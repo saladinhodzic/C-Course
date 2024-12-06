@@ -664,5 +664,13 @@ void min_max(float niz[],int n)
             max=niz[i];
         }
     }
-    printf("Najveci element niza je %.2f a najmanji %.2f",max,min);
+    printf("Najveci element niza je %.2f a najmanji %.2f\n",max,min);
+
+    for (i=0;i<n;i++)
+    {
+        if (min * 2 <niz[i] && max / 2 > niz[i])
+        {
+            printf("%.2f ",niz[i]);
+        } 
+    }
 }
