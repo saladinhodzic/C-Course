@@ -617,60 +617,103 @@
 // Саставити програм који учита низ реалних бројева, дужине n, налази најмањи и највећи члан
 // низа, xmin и xmax, и исписује све елементе низа који су мањи од xmax/2 и већи од xmin*2
 
-#include <stdio.h>
-int generate_array(float niz[],int n);
-void min_max(float niz[],int n);
+// #include <stdio.h>
+// int generate_array(float niz[],int n);
+// void min_max(float niz[],int n);
 
+// int main(void)
+// {
+//     int n;
+//     float niz[100];
+
+//     printf("Unesite duzinu niza ");
+//     scanf("%d",&n);
+//     // generisanje niza realnih brojeva
+//     generate_array(niz,n);
+
+//     // nalazenje najmanjeg i najveceg clana niza
+//     min_max(niz,n);
+    
+//     return 0;
+// }
+
+// int generate_array(float niz[],int n)
+// {
+//     int i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%f",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void min_max(float niz[],int n)
+// {
+//     int i;
+//     float min=niz[0],max=niz[0];
+
+//     for(i=0;i<n;i++)
+//     {
+//         if (min>niz[i])
+//         {
+//             min=niz[i];
+//         }
+//         if (max<niz[i])
+//         {
+//             max=niz[i];
+//         }
+//     }
+//     printf("Najveci element niza je %.2f a najmanji %.2f\n",max,min);
+
+//     for (i=0;i<n;i++)
+//     {
+//         if (min * 2 <niz[i] && max / 2 > niz[i])
+//         {
+//             printf("%.2f ",niz[i]);
+//         } 
+//     }
+// }
+
+// Саставити програм који за унети низ целих бројева, дужине n, исписује елемент најмање
+// вредности међу парним бројевима
+
+#include <stdio.h>
+int generate(int niz[],int n);
+void smallest(int niz[],int n);
 int main(void)
 {
-    int n;
-    float niz[100];
-
+    int niz[100],n;
     printf("Unesite duzinu niza ");
     scanf("%d",&n);
-    // generisanje niza realnih brojeva
-    generate_array(niz,n);
+    // generating array of integers length n
+    generate(niz,n);
 
-    // nalazenje najmanjeg i najveceg clana niza
-    min_max(niz,n);
-    
+    // print smallest even integer
+    smallest(niz,n);
     return 0;
 }
 
-int generate_array(float niz[],int n)
+int generate(int niz[],int n)
 {
     int i;
-
     for(i=0;i<n;i++)
     {
-        scanf("%f",&niz[i]);
+        scanf("%d",&niz[i]);
     }
     return niz;
 }
 
-void min_max(float niz[],int n)
+void smallest(int niz[],int n)
 {
-    int i;
-    float min=niz[0],max=niz[0];
+    int i,min;
 
     for(i=0;i<n;i++)
-    {
-        if (min>niz[i])
+    {   
+        if (min>niz[i] && niz[i]%2==0)
         {
             min=niz[i];
         }
-        if (max<niz[i])
-        {
-            max=niz[i];
-        }
     }
-    printf("Najveci element niza je %.2f a najmanji %.2f\n",max,min);
-
-    for (i=0;i<n;i++)
-    {
-        if (min * 2 <niz[i] && max / 2 > niz[i])
-        {
-            printf("%.2f ",niz[i]);
-        } 
-    }
+    printf("Smallest even number is %d",min);
 }
