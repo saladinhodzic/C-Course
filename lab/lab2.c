@@ -770,44 +770,113 @@
 // а) без употреба функција;
 // б) коршћењем функције која линеарно претражује низ. 
 
+// #include <stdio.h>
+// void trazi(int element,int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n,i;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+
+//     printf("Unesite elemente niza: ");
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+
+//     int trazeni_element;
+//     printf("Unesite broj koji trazite: ");
+//     scanf("%d",&trazeni_element);
+
+//     trazi(trazeni_element,niz,n);
+//     return 0;
+// }
+
+// // (b) funkcija za trazenje datog elementa
+
+// void trazi(int element,int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         if(niz[i]==element)
+//         {
+//             printf("Trazeni element se nalazi na %d. poziciji niza.",i);
+//             break;
+//         }
+//         if (i==n-1)
+//         {
+//             printf("Trazeni element se ne nalazi u nizu!");6
+
+//         }
+//     }
+// }
+
+// Саставити програм који за унети низ целих бројева, дужине n, проналази позицију траженог
+// елемента или исписује обавештење да тражени елемент не постоји у низу. Претпоставља се да је низ
+// уређен у растућем поретку. Користити методу Бинарног претраживања:
+// а) без употреба функција;
+// б) коршћењем функције која бинарно претражује низ;
+// в) коршћењем рекурзивне функције која бинарно претражује низ.
+// Метода Бинарне претраге:
+// Нека је дат низ a[0], a[1], …, a[n-1] и вредност елемента који се тражи b. Најпре се b са
+// средњим елементом низа (или елементом око средине). Ако су једнаки, претраживање је завршено.
+// Ако је b мање од средњег елемента, тада се претраживање наставља у левој половини низа, а
+// супротно у десну. У изабраној половини се примењује исти алгоритам. 
+
 #include <stdio.h>
-void trazi(int element,int niz[],int n);
+int generate(int niz[],int n);
+void find_element(int element,int niz[],int n);
 int main(void)
 {
-    int niz[100],n,i;
+    int niz[100],n,element;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
+    // generate array of integers
+    generate(niz,n);
+    // find element using binary method
 
-    printf("Unesite elemente niza: ");
-    for(i=0;i<n;i++)
-    {
-        scanf("%d",&niz[i]);
-    }
-
-    int trazeni_element;
-    printf("Unesite broj koji trazite: ");
-    scanf("%d",&trazeni_element);
-
-    trazi(trazeni_element,niz,n);
+    printf("Unesite element za trazenje: ");
+    scanf("%d",&element);
+    find_element(element,niz,n);
     return 0;
 }
 
-// (b) funkcija za trazenje datog elementa
-
-void trazi(int element,int niz[],int n)
+int generate(int niz[],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        if(niz[i]==element)
+        scanf("%d",&niz[i]);
+    }
+    return niz;
+}
+
+void find_element(int element,int niz[],int n)
+{
+    int i;
+    int srednjiElement=niz[n/2];
+
+    if (srednjiElement==element)
+    {
+        printf("Element se nalazi na %d. poziciji niza.",n/2);
+    }else if(element<srednjiElement)
+    {
+        for(i=srednjiElement;i>=0;i--)
         {
-            printf("Trazeni element se nalazi na %d. poziciji niza.",i);
-            break;
+            if (niz[i]==element)
+            {
+                printf("Trazeni element se nalazi na %d. poziciji leve polovine niza.",i);
+            }
         }
-        if (i==n-1)
+    }else
+    {
+        for(i=srednjiElement;i<n;i++)
         {
-            printf("Trazeni element se ne nalazi u nizu!");6
-            
+            if(niz[i]==element)
+            {
+                printf("Trazeni element se nalazi na %d. poziciji desne polovine niza.",i);
+            }
         }
     }
 }
