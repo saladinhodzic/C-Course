@@ -722,44 +722,92 @@
 // исписује елементе на парним позицијама и међу њима проналази онај који има максималну
 // вредност. Минимална дужина низа је 2.
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void even_positions(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     // generate array of integers
+//     generate(niz,n);
+//     // find elements on even index and print them also find max value from them
+//     even_positions(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {   
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void even_positions(int niz[],int n)
+// {
+//     int i,max=0;
+//     for(i=0;i<n;i++)
+//     {
+//         if (i%2==0)
+//         {
+//             if (max<niz[i])
+//             {
+//                 max=niz[i];
+//             }
+//         printf("%d, ",niz[i]);
+//         }
+//     }
+//     printf("\nNajveca vrednost na parnom indeksu je %d",max);
+// }
+
+// Саставити програм који за унети низ целих бројева, дужине n, проналази позицију траженог
+// елемента или исписује обавештење да тражени елемент не постоји у низу. Користити методу
+// Линеарног претраживања:
+// а) без употреба функција;
+// б) коршћењем функције која линеарно претражује низ. 
+
 #include <stdio.h>
-int generate(int niz[],int n);
-void even_positions(int niz[],int n);
+void trazi(int element,int niz[],int n);
 int main(void)
 {
-    int niz[100],n;
+    int niz[100],n,i;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
-    // generate array of integers
-    generate(niz,n);
-    // find elements on even index and print them also find max value from them
-    even_positions(niz,n);
-    return 0;
-}
 
-int generate(int niz[],int n)
-{   
-    int i;
+    printf("Unesite elemente niza: ");
     for(i=0;i<n;i++)
     {
         scanf("%d",&niz[i]);
     }
-    return niz;
+
+    int trazeni_element;
+    printf("Unesite broj koji trazite: ");
+    scanf("%d",&trazeni_element);
+
+    trazi(trazeni_element,niz,n);
+    return 0;
 }
 
-void even_positions(int niz[],int n)
+// (b) funkcija za trazenje datog elementa
+
+void trazi(int element,int niz[],int n)
 {
-    int i,max=0;
+    int i;
     for(i=0;i<n;i++)
     {
-        if (i%2==0)
+        if(niz[i]==element)
         {
-            if (max<niz[i])
-            {
-                max=niz[i];
-            }
-        printf("%d, ",niz[i]);
+            printf("Trazeni element se nalazi na %d. poziciji niza.",i);
+            break;
+        }
+        if (i==n-1)
+        {
+            printf("Trazeni element se ne nalazi u nizu!");6
+            
         }
     }
-    printf("\nNajveca vrednost na parnom indeksu je %d",max);
 }
