@@ -678,24 +678,67 @@
 // Саставити програм који за унети низ целих бројева, дужине n, исписује елемент најмање
 // вредности међу парним бројевима
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void smallest(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza ");
+//     scanf("%d",&n);
+//     // generating array of integers length n
+//     generate(niz,n);
+
+//     // print smallest even integer
+//     smallest(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void smallest(int niz[],int n)
+// {
+//     int i,min;
+
+//     for(i=0;i<n;i++)
+//     {   
+//         if (min>niz[i] && niz[i]%2==0)
+//         {
+//             min=niz[i];
+//         }
+//     }
+//     printf("Smallest even number is %d",min);
+// }
+
+// Саставити програм који за унети низ целих бројева, дужине n, проналази и на екрану
+// исписује елементе на парним позицијама и међу њима проналази онај који има максималну
+// вредност. Минимална дужина низа је 2.
+
 #include <stdio.h>
 int generate(int niz[],int n);
-void smallest(int niz[],int n);
+void even_positions(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
-    printf("Unesite duzinu niza ");
+    printf("Unesite duzinu niza: ");
     scanf("%d",&n);
-    // generating array of integers length n
+    // generate array of integers
     generate(niz,n);
-
-    // print smallest even integer
-    smallest(niz,n);
+    // find elements on even index and print them also find max value from them
+    even_positions(niz,n);
     return 0;
 }
 
 int generate(int niz[],int n)
-{
+{   
     int i;
     for(i=0;i<n;i++)
     {
@@ -704,16 +747,19 @@ int generate(int niz[],int n)
     return niz;
 }
 
-void smallest(int niz[],int n)
+void even_positions(int niz[],int n)
 {
-    int i,min;
-
+    int i,max=0;
     for(i=0;i<n;i++)
-    {   
-        if (min>niz[i] && niz[i]%2==0)
+    {
+        if (i%2==0)
         {
-            min=niz[i];
+            if (max<niz[i])
+            {
+                max=niz[i];
+            }
+        printf("%d, ",niz[i]);
         }
     }
-    printf("Smallest even number is %d",min);
+    printf("\nNajveca vrednost na parnom indeksu je %d",max);
 }
