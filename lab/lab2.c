@@ -919,26 +919,81 @@
 // Саставити програм који за унети низ целих бројева дужине n врши ротирање чланова низа за
 // x места у лево и исписује новодбијени низ. 
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void printArr(int niz[],int n);
+// int rotate(int niz[],int n,int position);
+// int main(void)
+// {
+//     int niz[100],n;
+
+//     printf("Uneti duzinu niza ");
+//     scanf("%d",&n);
+//     // generisanje niza
+//     generate(niz,n);
+    
+//     int premestaj;
+//     printf("Unesite rotaciju mesta x: ");
+//     scanf("%d",&premestaj);
+
+//     rotate(niz,n,premestaj);
+
+//     printArr(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void printArr(int niz[],int n)
+// {
+//     int i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// int rotate(int niz[],int n,int position)
+// {
+//     int i,pom=niz[0];
+
+//     if(position==0)
+//     {
+//         return niz;
+//     }
+
+//     for(i=1;i<n;i++)
+//     {
+//         niz[i-1]=niz[i];
+//     }
+//     niz[n-1]=pom;
+//     return rotate(niz,n,position-1);
+// }
+
+// Саставити програм који за унети низ целих бројева дужине n врши замену суседних
+// елемената низа на парним и непарним позицијама и исписује новодобијени низ. 
+
 #include <stdio.h>
 int generate(int niz[],int n);
-void printArr(int niz[],int n);
-int rotate(int niz[],int n,int position);
+void rotate(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
 
-    printf("Uneti duzinu niza ");
+    printf("Unesite duzinu niza: ");
     scanf("%d",&n);
-    // generisanje niza
     generate(niz,n);
-    
-    int premestaj;
-    printf("Unesite rotaciju mesta x: ");
-    scanf("%d",&premestaj);
 
-    rotate(niz,n,premestaj);
-
-    printArr(niz,n);
+    rotate(niz,n);
     return 0;
 }
 
@@ -952,29 +1007,23 @@ int generate(int niz[],int n)
     return niz;
 }
 
-void printArr(int niz[],int n)
+void rotate(int niz[],int n)
 {
     int i;
 
     for(i=0;i<n;i++)
     {
+        int pom=niz[i];
+        if(i%2==0)
+        {
+
+            niz[i]=niz[i+1];
+            niz[i+1]=pom;
+        }
+    }
+
+    for(i=0;i<n;i++)
+    {
         printf("%d, ",niz[i]);
     }
-}
-
-int rotate(int niz[],int n,int position)
-{
-    int i,pom=niz[0];
-
-    if(position==0)
-    {
-        return niz;
-    }
-
-    for(i=1;i<n;i++)
-    {
-        niz[i-1]=niz[i];
-    }
-    niz[n-1]=pom;
-    return rotate(niz,n,position-1);
 }
