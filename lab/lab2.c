@@ -806,7 +806,7 @@
 //         }
 //         if (i==n-1)
 //         {
-//             printf("Trazeni element se ne nalazi u nizu!");6
+//             printf("Trazeni element se ne nalazi u nizu!");
 
 //         }
 //     }
@@ -824,59 +824,94 @@
 // Ако је b мање од средњег елемента, тада се претраживање наставља у левој половини низа, а
 // супротно у десну. У изабраној половини се примењује исти алгоритам. 
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void find_element(int element,int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n,element;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     // generate array of integers
+//     generate(niz,n);
+//     // find element using binary method
+
+//     printf("Unesite element za trazenje: ");
+//     scanf("%d",&element);
+//     find_element(element,niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void find_element(int element,int niz[],int n)
+// {
+//     int i;
+//     int srednjiElement=niz[n/2];
+
+//     if (srednjiElement==element)
+//     {
+//         printf("Element se nalazi na %d. poziciji niza.",n/2);
+//     }else if(element<srednjiElement)
+//     {
+//         for(i=srednjiElement;i>=0;i--)
+//         {
+//             if (niz[i]==element)
+//             {
+//                 printf("Trazeni element se nalazi na %d. poziciji leve polovine niza.",i);
+//             }
+//         }
+//     }else
+//     {
+//         for(i=srednjiElement;i<n;i++)
+//         {
+//             if(niz[i]==element)
+//             {
+//                 printf("Trazeni element se nalazi na %d. poziciji desne polovine niza.",i);
+//             }
+//         }
+//     }
+// }
+
+// Саставити програм за циклично премештање елемената задатог низа целих бројева дужине n
+// за једно место у лево и исписивање новодобијеног низа. 
+
 #include <stdio.h>
-int generate(int niz[],int n);
-void find_element(int element,int niz[],int n);
+const int length=5;
+void move_elements(int niz[],int noviNiz[]);
 int main(void)
 {
-    int niz[100],n,element;
-    printf("Unesite duzinu niza: ");
-    scanf("%d",&n);
-    // generate array of integers
-    generate(niz,n);
-    // find element using binary method
 
-    printf("Unesite element za trazenje: ");
-    scanf("%d",&element);
-    find_element(element,niz,n);
+    int niz[100]={1,2,3,4,5};
+    int noviNiz[100];
+    // move elements for one position to the left (1,2,3,4,5 => 2,3,4,5,1)
+    move_elements(niz,noviNiz);
     return 0;
 }
 
-int generate(int niz[],int n)
+void move_elements(int niz[],int noviNiz[])
 {
     int i;
-    for(i=0;i<n;i++)
+
+    for(i=length-1;i>=0;i--)
     {
-        scanf("%d",&niz[i]);
+        noviNiz[i]=niz[i+1];
+        if (i==length-1)
+        {
+            noviNiz[i]=niz[0];
+        }
     }
-    return niz;
-}
 
-void find_element(int element,int niz[],int n)
-{
-    int i;
-    int srednjiElement=niz[n/2];
-
-    if (srednjiElement==element)
+    for(i=0;i<length;i++)
     {
-        printf("Element se nalazi na %d. poziciji niza.",n/2);
-    }else if(element<srednjiElement)
-    {
-        for(i=srednjiElement;i>=0;i--)
-        {
-            if (niz[i]==element)
-            {
-                printf("Trazeni element se nalazi na %d. poziciji leve polovine niza.",i);
-            }
-        }
-    }else
-    {
-        for(i=srednjiElement;i<n;i++)
-        {
-            if(niz[i]==element)
-            {
-                printf("Trazeni element se nalazi na %d. poziciji desne polovine niza.",i);
-            }
-        }
+        printf("%d, ",noviNiz[i]);
     }
 }
