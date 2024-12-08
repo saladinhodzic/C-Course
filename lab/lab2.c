@@ -1031,23 +1031,76 @@
 // Саставити програм који за унети низ целих бројева дужине n формира и приказује нови низ
 // који је састављен од елемената без понављања унетог низа
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void cleaning(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu ");
+//     scanf("%d",&n);
+//     generate(niz,n);
+//     // clean array from duplicates
+//     cleaning(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void cleaning(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {   
+//         int brojac=0;
+//         for(int j=i+1;j<n;j++)
+//         {
+//             if (niz[i]==niz[j])
+//             {
+//                 brojac++;
+//                 break;
+//             }
+//         }
+//         if (brojac == 0)
+//             {
+//                 printf("%d, ",niz[i]);
+//             }
+//     }
+// }
+
+// Саставити програм за сортирање унетог низа целих бројева дужине n у неопадајући поредак
+// методом избора (Selection Sort). Исписати сортирани низ.
+// Selection Sort подразумева да минимални елемент низа размени са a[0], минимални елемент
+// одсечка a[1], a[2], …, a[n-1] разменити са a[1], минимални елемент одсечка a[2], a[3], …, a[n-1]
+// разменити са a[2]; исти поступак применити на преостале елементе осим последњег који се налази на
+// свом месту
+
 #include <stdio.h>
 int generate(int niz[],int n);
-void cleaning(int niz[],int n);
+void sort(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
-    printf("Unesite duzinu ");
+    printf("Uneti duzinu niza: ");
     scanf("%d",&n);
     generate(niz,n);
-    // clean array from duplicates
-    cleaning(niz,n);
+
+    sort(niz,n);
     return 0;
 }
 
 int generate(int niz[],int n)
 {
     int i;
+
     for(i=0;i<n;i++)
     {
         scanf("%d",&niz[i]);
@@ -1055,23 +1108,26 @@ int generate(int niz[],int n)
     return niz;
 }
 
-void cleaning(int niz[],int n)
+void sort(int niz[],int n)
 {
-    int i;
-    for(i=0;i<n;i++)
-    {   
-        int brojac=0;
-        for(int j=i+1;j<n;j++)
+    int i,j;
+
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
         {
-            if (niz[i]==niz[j])
+            if (niz[i]>niz[j])
             {
-                brojac++;
-                break;
+                int pom = niz[i];
+                niz[i]=niz[j];
+                niz[j]=pom;
             }
         }
-        if (brojac == 0)
-            {
-                printf("%d, ",niz[i]);
-            }
+    }
+
+    printf("Sortiran niz je \n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d, ",niz[i]);
     }
 }
