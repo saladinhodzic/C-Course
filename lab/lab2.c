@@ -982,18 +982,66 @@
 // Саставити програм који за унети низ целих бројева дужине n врши замену суседних
 // елемената низа на парним и непарним позицијама и исписује новодобијени низ. 
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void rotate(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     generate(niz,n);
+
+//     rotate(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void rotate(int niz[],int n)
+// {
+//     int i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         int pom=niz[i];
+//         if(i%2==0)
+//         {
+
+//             niz[i]=niz[i+1];
+//             niz[i+1]=pom;
+//         }
+//     }
+
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// Саставити програм који за унети низ целих бројева дужине n формира и приказује нови низ
+// који је састављен од елемената без понављања унетог низа
+
 #include <stdio.h>
 int generate(int niz[],int n);
-void rotate(int niz[],int n);
+void cleaning(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
-
-    printf("Unesite duzinu niza: ");
+    printf("Unesite duzinu ");
     scanf("%d",&n);
     generate(niz,n);
-
-    rotate(niz,n);
+    // clean array from duplicates
+    cleaning(niz,n);
     return 0;
 }
 
@@ -1007,23 +1055,23 @@ int generate(int niz[],int n)
     return niz;
 }
 
-void rotate(int niz[],int n)
+void cleaning(int niz[],int n)
 {
     int i;
-
     for(i=0;i<n;i++)
-    {
-        int pom=niz[i];
-        if(i%2==0)
+    {   
+        int brojac=0;
+        for(int j=i+1;j<n;j++)
         {
-
-            niz[i]=niz[i+1];
-            niz[i+1]=pom;
+            if (niz[i]==niz[j])
+            {
+                brojac++;
+                break;
+            }
         }
-    }
-
-    for(i=0;i<n;i++)
-    {
-        printf("%d, ",niz[i]);
+        if (brojac == 0)
+            {
+                printf("%d, ",niz[i]);
+            }
     }
 }
