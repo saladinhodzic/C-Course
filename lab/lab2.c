@@ -1083,24 +1083,77 @@
 // разменити са a[2]; исти поступак применити на преостале елементе осим последњег који се налази на
 // свом месту
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void sort(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Uneti duzinu niza: ");
+//     scanf("%d",&n);
+//     generate(niz,n);
+
+//     sort(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void sort(int niz[],int n)
+// {
+//     int i,j;
+
+//     for(i=0;i<n-1;i++)
+//     {
+//         for(j=i+1;j<n;j++)
+//         {
+//             if (niz[i]>niz[j])
+//             {
+//                 int pom = niz[i];
+//                 niz[i]=niz[j];
+//                 niz[j]=pom;
+//             }
+//         }
+//     }
+
+//     printf("Sortiran niz je \n");
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// Саставити програм за сортирање унетог низа целих бројева дужине n у неопадајући поредак
+// методом уметања (Insert Sort). Исписати сортирани низ.
+// Insert Sort: Нека је првих k елемената већ уређено у неопадајућем поретку, тада се узима
+// (k+1)-ви елемент и умеће на одговарајуће место међу првих k елемената тако да првих k+1
+// елемената буде уређено. Овај се метод примењује за k од 0 до n-2. 
+
 #include <stdio.h>
 int generate(int niz[],int n);
-void sort(int niz[],int n);
+void insertSort(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
-    printf("Uneti duzinu niza: ");
+    printf("Unesite duzinu niza: ");
     scanf("%d",&n);
     generate(niz,n);
-
-    sort(niz,n);
+    insertSort(niz,n);
     return 0;
 }
 
 int generate(int niz[],int n)
 {
     int i;
-
     for(i=0;i<n;i++)
     {
         scanf("%d",&niz[i]);
@@ -1108,25 +1161,26 @@ int generate(int niz[],int n)
     return niz;
 }
 
-void sort(int niz[],int n)
+void insertSort(int niz[],int n)
 {
     int i,j;
-
-    for(i=0;i<n-1;i++)
+    for(i=1;i<n;i++)
     {
-        for(j=i+1;j<n;j++)
-        {
-            if (niz[i]>niz[j])
+        int pom = niz[i];
+       for (j=i-1;j>=0;j--)
+       {
+            if (pom<niz[j])
             {
-                int pom = niz[i];
-                niz[i]=niz[j];
+
+                niz[j+1]=niz[j];
                 niz[j]=pom;
+            }else{
+                break;
             }
-        }
+       }
     }
 
-    printf("Sortiran niz je \n");
-    for(i=0;i<n;i++)
+    for( i=0;i<n;i++)
     {
         printf("%d, ",niz[i]);
     }
