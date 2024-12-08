@@ -884,34 +884,97 @@
 // Саставити програм за циклично премештање елемената задатог низа целих бројева дужине n
 // за једно место у лево и исписивање новодобијеног низа. 
 
+// #include <stdio.h>
+// const int length=5;
+// void move_elements(int niz[],int noviNiz[]);
+// int main(void)
+// {
+
+//     int niz[100]={1,2,3,4,5};
+//     int noviNiz[100];
+//     // move elements for one position to the left (1,2,3,4,5 => 2,3,4,5,1)
+//     move_elements(niz,noviNiz);
+//     return 0;
+// }
+
+// void move_elements(int niz[],int noviNiz[])
+// {
+//     int i;
+
+//     for(i=length-1;i>=0;i--)
+//     {
+//         noviNiz[i]=niz[i+1];
+//         if (i==length-1)
+//         {
+//             noviNiz[i]=niz[0];
+//         }
+//     }
+
+//     for(i=0;i<length;i++)
+//     {
+//         printf("%d, ",noviNiz[i]);
+//     }
+// }
+
+// Саставити програм који за унети низ целих бројева дужине n врши ротирање чланова низа за
+// x места у лево и исписује новодбијени низ. 
+
 #include <stdio.h>
-const int length=5;
-void move_elements(int niz[],int noviNiz[]);
+int generate(int niz[],int n);
+void printArr(int niz[],int n);
+int rotate(int niz[],int n,int position);
 int main(void)
 {
+    int niz[100],n;
 
-    int niz[100]={1,2,3,4,5};
-    int noviNiz[100];
-    // move elements for one position to the left (1,2,3,4,5 => 2,3,4,5,1)
-    move_elements(niz,noviNiz);
+    printf("Uneti duzinu niza ");
+    scanf("%d",&n);
+    // generisanje niza
+    generate(niz,n);
+    
+    int premestaj;
+    printf("Unesite rotaciju mesta x: ");
+    scanf("%d",&premestaj);
+
+    rotate(niz,n,premestaj);
+
+    printArr(niz,n);
     return 0;
 }
 
-void move_elements(int niz[],int noviNiz[])
+int generate(int niz[],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&niz[i]);
+    }
+    return niz;
+}
+
+void printArr(int niz[],int n)
 {
     int i;
 
-    for(i=length-1;i>=0;i--)
+    for(i=0;i<n;i++)
     {
-        noviNiz[i]=niz[i+1];
-        if (i==length-1)
-        {
-            noviNiz[i]=niz[0];
-        }
+        printf("%d, ",niz[i]);
+    }
+}
+
+int rotate(int niz[],int n,int position)
+{
+    int i,pom=niz[0];
+
+    if(position==0)
+    {
+        return niz;
     }
 
-    for(i=0;i<length;i++)
+    for(i=1;i<n;i++)
     {
-        printf("%d, ",noviNiz[i]);
+        niz[i-1]=niz[i];
     }
+    niz[n-1]=pom;
+    return rotate(niz,n,position-1);
 }
