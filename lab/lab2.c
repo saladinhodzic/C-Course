@@ -1138,49 +1138,106 @@
 // (k+1)-ви елемент и умеће на одговарајуће место међу првих k елемената тако да првих k+1
 // елемената буде уређено. Овај се метод примењује за k од 0 до n-2. 
 
+// #include <stdio.h>
+// int generate(int niz[],int n);
+// void insertSort(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     generate(niz,n);
+//     insertSort(niz,n);
+//     return 0;
+// }
+
+// int generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+//     return niz;
+// }
+
+// void insertSort(int niz[],int n)
+// {
+//     int i,j;
+//     for(i=1;i<n;i++)
+//     {
+//         int pom = niz[i];
+//        for (j=i-1;j>=0;j--)
+//        {
+//             if (pom<niz[j])
+//             {
+
+//                 niz[j+1]=niz[j];
+//                 niz[j]=pom;
+//             }else{
+//                 break;
+//             }
+//        }
+//     }
+
+//     for( i=0;i<n;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// Саставити програм за сортирање унетог низа целих бројева дужине n у неопадајући поредак
+// методом мехурића (Bubble Sort). Исписати сортирани низ.
+// Bubble Sort: Пролазимо кроз низ редом поредећи суседне елементе, и при том их замењујући
+// ако су у погрешном поретку. Овим се највећи елемент попут мехурића истискује на "површину", тј.
+// на крајњу десну позицију. Након тога је потребно овај поступак поновити над низом а[0],...,а[n-2], тј.
+// над првих n-1 елемената низа без последњег који је постављен на праву позицију. Након тога се исти
+// поступак понавља над све краћим и краћим префиксима низа, чиме се један по један истискују
+// елемененти на своје праве позиције. 
+
+
 #include <stdio.h>
-int generate(int niz[],int n);
-void insertSort(int niz[],int n);
+void generate(int niz[],int n);
+void bubbleSort(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
     generate(niz,n);
-    insertSort(niz,n);
+    bubbleSort(niz,n);
     return 0;
 }
 
-int generate(int niz[],int n)
+void generate(int niz[],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
         scanf("%d",&niz[i]);
     }
-    return niz;
 }
 
-void insertSort(int niz[],int n)
+void bubbleSort(int niz[],int n)
 {
     int i,j;
-    for(i=1;i<n;i++)
-    {
-        int pom = niz[i];
-       for (j=i-1;j>=0;j--)
-       {
-            if (pom<niz[j])
-            {
 
-                niz[j+1]=niz[j];
+    for(i=0;i<n-1;i++)
+    {
+        int pom=niz[i];
+        for(j=i+1;j<n;j++)
+        {
+            if (pom> niz[j])
+            {
+                niz[i]=niz[j];
                 niz[j]=pom;
-            }else{
-                break;
+                pom=niz[i];
             }
-       }
+
+        }
     }
 
-    for( i=0;i<n;i++)
+    for(i=0;i<n;i++)
     {
         printf("%d, ",niz[i]);
     }
