@@ -1329,29 +1329,53 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int i,j,m,n,matrica[100][100];
+//     printf("Unesite m redova i n kolona: ");
+//     scanf("%d %d",&m,&n);
+//     for(i=0;i<m;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             printf("Unesite %d. %d. element matrica ",i,j);
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+
+//     for(i=0;i<m;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             printf("%d ",matrica[i][j]);
+//         }
+//         printf("\n");
+//     }
+//     return 0;
+// }
+
+// Саставити програм који за унету матрицу димензија nxn врши сабирање њених елеменета и
+// исписује добијени резултат. Елементи су цели бројеви
+
 #include <stdio.h>
 
 int main(void)
 {
-    int i,j,m,n,matrica[100][100];
-    printf("Unesite m redova i n kolona: ");
-    scanf("%d %d",&m,&n);
-    for(i=0;i<m;i++)
+    int i,j,n,matrica[100][100],suma=0;
+    printf("Unesite n redova i kolona matrice ");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
     {
         for(j=0;j<n;j++)
         {
-            printf("Unesite %d. %d. element matrica ",i,j);
+            printf("Unesite %d. %d. element matrice ",i,j);
             scanf("%d",&matrica[i][j]);
+            suma+=matrica[i][j];
         }
     }
+printf("Suma elemenata matrice je %d",suma);
 
-    for(i=0;i<m;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            printf("%d ",matrica[i][j]);
-        }
-        printf("\n");
-    }
     return 0;
 }
