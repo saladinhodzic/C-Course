@@ -1359,23 +1359,76 @@
 // Саставити програм који за унету матрицу димензија nxn врши сабирање њених елеменета и
 // исписује добијени резултат. Елементи су цели бројеви
 
-#include <stdio.h>
+// #include <stdio.h>
 
+// int main(void)
+// {
+//     int i,j,n,matrica[100][100],suma=0;
+//     printf("Unesite n redova i kolona matrice ");
+//     scanf("%d",&n);
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             printf("Unesite %d. %d. element matrice ",i,j);
+//             scanf("%d",&matrica[i][j]);
+//             suma+=matrica[i][j];
+//         }
+//     }
+
+// printf("Suma elemenata matrice je %d",suma);
+
+//     return 0;
+// }
+
+// Саставити програм који учита две матрице целих бројева, a и b, обе димензија mхn, а затим
+// врши сабирање ове две матрице и исписује нову матрицу с. Матрице се сабирају тако што се
+// сабирају елементи матрица са истим индексима. 
+
+#include <stdio.h>
+void generate(int matrica[100][100],int m,int n);
+void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n);
 int main(void)
 {
-    int i,j,n,matrica[100][100],suma=0;
-    printf("Unesite n redova i kolona matrice ");
-    scanf("%d",&n);
-    for(i=0;i<n;i++)
+    int m,n,A[100][100],B[100][100],C[100][100];
+    printf("Unesite m i n: ");
+    scanf("%d %d",&m,&n);
+
+    generate(A,m,n);
+    generate(B,m,n);
+
+    sum(C,A,B,m,n);
+    return 0;
+}
+
+void generate(int matrica[100][100],int m,int n)
+{
+    int i,j;
+    for(i=0;i<m;i++)
     {
         for(j=0;j<n;j++)
         {
-            printf("Unesite %d. %d. element matrice ",i,j);
+            printf("Unesite %d. %d. element matrice\n",i,j);
             scanf("%d",&matrica[i][j]);
-            suma+=matrica[i][j];
         }
     }
-printf("Suma elemenata matrice je %d",suma);
+}
 
-    return 0;
+void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n)
+{
+    int i,j;
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            C[i][j]=A[i][j]+B[i][j];
+        }
+    }
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("%d ",C[i][j]);
+        }
+    }
 }
