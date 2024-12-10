@@ -1314,17 +1314,44 @@
 //     return 0;
 // }
 
+// #include <stdio.h>
+
+// int main() {
+//     int matrica[2][3] = {
+//         {1, 2, 3},
+//         {4, 5, 6}
+//     };
+//     for (int i = 0; i < 2; i++) { // Iteracija kroz redove
+//         for (int j = 0; j < 3; j++) { // Iteracija kroz kolone
+//             printf("Element [%d][%d] = %d\n", i, j, matrica[i][j]);
+//         }
+//     }
+//     return 0;
+// }
+
 #include <stdio.h>
 
-int main() {
-    int matrica[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
-    for (int i = 0; i < 2; i++) { // Iteracija kroz redove
-        for (int j = 0; j < 3; j++) { // Iteracija kroz kolone
-            printf("Element [%d][%d] = %d\n", i, j, matrica[i][j]);
+int main(void)
+{
+    int i,j,m,n,matrica[100][100];
+    printf("Unesite m redova i n kolona: ");
+    scanf("%d %d",&m,&n);
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("Unesite %d. %d. element matrica ",i,j);
+            scanf("%d",&matrica[i][j]);
         }
+    }
+
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("%d ",matrica[i][j]);
+        }
+        printf("\n");
     }
     return 0;
 }
