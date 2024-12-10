@@ -1196,16 +1196,70 @@
 // елемененти на своје праве позиције. 
 
 
+// #include <stdio.h>
+// void generate(int niz[],int n);
+// void bubbleSort(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     generate(niz,n);
+//     bubbleSort(niz,n);
+//     return 0;
+// }
+
+// void generate(int niz[],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void bubbleSort(int niz[],int n)
+// {
+//     int i,j;
+
+//     for(i=0;i<n-1;i++)
+//     {
+//         int pom=niz[i];
+//         for(j=i+1;j<n;j++)
+//         {
+//             if (pom> niz[j])
+//             {
+//                 niz[i]=niz[j];
+//                 niz[j]=pom;
+//                 pom=niz[i];
+//             }
+
+//         }
+//     }
+
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d, ",niz[i]);
+//     }
+// }
+
+// . Саставити програм којим се у уређени низ бројева умеће нови број тако да низ и даље буде
+// уређен. Исписати новодобијени низ. 
+
 #include <stdio.h>
 void generate(int niz[],int n);
-void bubbleSort(int niz[],int n);
+void sort(int niz[],int n,int noviBroj);
 int main(void)
-{
-    int niz[100],n;
+{   
+    int niz[100],n,noviBroj;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
+    printf("Unesite niz u rastucem redosledu:\n");
     generate(niz,n);
-    bubbleSort(niz,n);
+
+    printf("Unesite broj za umetanje u niz: ");
+    scanf("%d",&noviBroj);
+    sort(niz,n,noviBroj);
     return 0;
 }
 
@@ -1218,27 +1272,28 @@ void generate(int niz[],int n)
     }
 }
 
-void bubbleSort(int niz[],int n)
+void sort(int niz[],int n,int noviBroj)
 {
-    int i,j;
-
-    for(i=0;i<n-1;i++)
-    {
-        int pom=niz[i];
-        for(j=i+1;j<n;j++)
-        {
-            if (pom> niz[j])
-            {
-                niz[i]=niz[j];
-                niz[j]=pom;
-                pom=niz[i];
-            }
-
-        }
-    }
+    int noviNiz[100],i,brojac=0;
 
     for(i=0;i<n;i++)
     {
-        printf("%d, ",niz[i]);
+        if (niz[i]<noviBroj)
+        {
+            noviNiz[brojac]=niz[i];
+            brojac++;
+        }
     }
+        noviNiz[brojac]=noviBroj;
+    for(i=brojac;i<=n;i++)
+    {   
+        brojac++;
+        noviNiz[brojac]=niz[i];
+    }
+    for(i=0;i<brojac;i++)
+    {
+        printf("%d ",noviNiz[i]);
+    }
+
 }
+// 1, 2, 4, 5  (3) => 1, 2, 3, 4, 5
