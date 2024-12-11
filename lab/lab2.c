@@ -1464,45 +1464,77 @@
 
 // Implementiraj funkciju prostBroj koja proverava da li je zadati broj prost. Koristi ovu funkciju da pronađeš i ispišeš sve proste brojeve u opsegu od 1 do 100.
 
+// #include <stdio.h>
+// void prostBroj(int a);
+// int main(void)
+// {
+//     int a;
+//     printf("Unesite broj: ");
+//     scanf("%d",&a);
+//     printf("Prosti brojevi u opsegu od 1 do 100 su: \n");
+//     prostBroj(a);
+//     return 0;
+// }
+
+// void prostBroj(int a)
+// {
+//     int i,j;
+//     int checkOurs=0;
+//     for(i=2;i<=100;i++)
+//     {
+//     int check=0;
+//         for(j=i-1;j>1;j--)
+//         {
+//             if (i%i==0 && i%1==0 && i%j==0)
+//             {
+//                 check=1;
+//             }
+//         }
+//         if (check == 0)
+//         {
+//             if(a==i)
+//             {
+//                 checkOurs=1;
+//             }
+//             printf("%d ",i);
+//         }
+        
+//     }
+//     if (checkOurs==1)
+//     {
+//                 printf("Uneti broj je prost broj");
+
+//     }
+// }
+
+// Faktorijal:
+
+// Napiši rekurzivnu funkciju factorial koja računa faktorijal broja 
+// 𝑛
+// n. Testiraj je za 
+// 𝑛
+// =
+// 5
+// n=5.
+
 #include <stdio.h>
-void prostBroj(int a);
+int factorial(int n);
 int main(void)
 {
-    int a;
-    printf("Unesite broj: ");
-    scanf("%d",&a);
-    printf("Prosti brojevi u opsegu od 1 do 100 su: \n");
-    prostBroj(a);
+    int n;
+    printf("Unesite broj n: ");
+    scanf("%d",&n);
+    printf("Faktorijel broja n je %d",factorial(n));
     return 0;
 }
 
-void prostBroj(int a)
-{
-    int i,j;
-    int checkOurs=0;
-    for(i=2;i<=100;i++)
+int factorial(int n)
+{   
+    
+    if(n==1)
     {
-    int check=0;
-        for(j=i-1;j>1;j--)
-        {
-            if (i%i==0 && i%1==0 && i%j==0)
-            {
-                check=1;
-            }
-        }
-        if (check == 0)
-        {
-            if(a==i)
-            {
-                checkOurs=1;
-            }
-            printf("%d ",i);
-        }
-        
+        return 1;
     }
-    if (checkOurs==1)
-    {
-                printf("Uneti broj je prost broj");
-
-    }
+    
+    return n*factorial(n-1);
 }
