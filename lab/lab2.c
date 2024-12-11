@@ -1385,50 +1385,124 @@
 // врши сабирање ове две матрице и исписује нову матрицу с. Матрице се сабирају тако што се
 // сабирају елементи матрица са истим индексима. 
 
+// #include <stdio.h>
+// void generate(int matrica[100][100],int m,int n);
+// void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n);
+// int main(void)
+// {
+//     int m,n,A[100][100],B[100][100],C[100][100];
+//     printf("Unesite m i n: ");
+//     scanf("%d %d",&m,&n);
+
+//     generate(A,m,n);
+//     generate(B,m,n);
+
+//     sum(C,A,B,m,n);
+//     return 0;
+// }
+
+// void generate(int matrica[100][100],int m,int n)
+// {
+//     int i,j;
+//     for(i=0;i<m;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             printf("Unesite %d. %d. element matrice\n",i,j);
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n)
+// {
+//     int i,j;
+//     for(i=0;i<m;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             C[i][j]=A[i][j]+B[i][j];
+//         }
+//     }
+//     for(i=0;i<m;i++)
+//     {
+//         for(j=0;j<n;j++)
+//         {
+//             printf("%d ",C[i][j]);
+//         }
+//     }
+// }
+
+// Definicija i upotreba:
+
+// Napiši funkciju max2 koja prima dva cela broja i vraća veći od njih. Testiraj je u programu tako što ćeš uneti dva broja sa tastature.
+
+// #include <stdio.h>
+// int max2(int a,int b);
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesi a i b ");
+//     scanf("%d %d",&a,&b);
+//     int rezultat=max2(a,b);
+//     printf("Veci broj je %d",rezultat);
+//     return 0;
+// }
+
+// int max2(int a,int b)
+// {
+//     if (a>b)
+//     {
+//         return a;
+//     }
+//     else{
+//         return b;
+//     }
+// }
+
+// Poziv funkcije:
+
+// Implementiraj funkciju prostBroj koja proverava da li je zadati broj prost. Koristi ovu funkciju da pronađeš i ispišeš sve proste brojeve u opsegu od 1 do 100.
+
 #include <stdio.h>
-void generate(int matrica[100][100],int m,int n);
-void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n);
+void prostBroj(int a);
 int main(void)
 {
-    int m,n,A[100][100],B[100][100],C[100][100];
-    printf("Unesite m i n: ");
-    scanf("%d %d",&m,&n);
-
-    generate(A,m,n);
-    generate(B,m,n);
-
-    sum(C,A,B,m,n);
+    int a;
+    printf("Unesite broj: ");
+    scanf("%d",&a);
+    printf("Prosti brojevi u opsegu od 1 do 100 su: \n");
+    prostBroj(a);
     return 0;
 }
 
-void generate(int matrica[100][100],int m,int n)
+void prostBroj(int a)
 {
     int i,j;
-    for(i=0;i<m;i++)
+    int checkOurs=0;
+    for(i=2;i<=100;i++)
     {
-        for(j=0;j<n;j++)
+    int check=0;
+        for(j=i-1;j>1;j--)
         {
-            printf("Unesite %d. %d. element matrice\n",i,j);
-            scanf("%d",&matrica[i][j]);
+            if (i%i==0 && i%1==0 && i%j==0)
+            {
+                check=1;
+            }
         }
+        if (check == 0)
+        {
+            if(a==i)
+            {
+                checkOurs=1;
+            }
+            printf("%d ",i);
+        }
+        
     }
-}
+    if (checkOurs==1)
+    {
+                printf("Uneti broj je prost broj");
 
-void sum(int C[100][100],int A[100][100],int B[100][100],int m,int n)
-{
-    int i,j;
-    for(i=0;i<m;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            C[i][j]=A[i][j]+B[i][j];
-        }
-    }
-    for(i=0;i<m;i++)
-    {
-        for(j=0;j<n;j++)
-        {
-            printf("%d ",C[i][j]);
-        }
     }
 }
