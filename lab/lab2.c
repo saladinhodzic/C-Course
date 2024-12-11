@@ -1517,24 +1517,72 @@
 // 5
 // n=5.
 
-#include <stdio.h>
-int factorial(int n);
-int main(void)
-{
-    int n;
-    printf("Unesite broj n: ");
-    scanf("%d",&n);
-    printf("Faktorijel broja n je %d",factorial(n));
-    return 0;
-}
+// #include <stdio.h>
 
-int factorial(int n)
-{   
+// int fakt(int n);
+
+// int main(){
+//     int n;
+//     printf("Unesite vrednost n: ");
+//     scanf("%d",&n);
+//     int faktorijel=fakt(n);
+//     printf("\n%d",faktorijel);
+//     return 0;
+// }
+
+// int fakt(int n){
     
-    if(n==1)
-    {
-        return 1;
-    }
+//     if(n==0){
+//     return 1;
+//     }
+//     return n*fakt(n-1);
+  
+// }
+
+
+
+// #include <stdio.h>
+// int factorial(int n);
+// int main(void)
+// {
+//     int n;
+//     printf("Unesite broj n: ");
+//     scanf("%d",&n);
+//     printf("Faktorijel broja n je %d",factorial(n));
+//     return 0;
+// }
+
+// int factorial(int n)
+// {   
     
-    return n*factorial(n-1);
-}
+//     if(n==1)
+//     {
+//         return 1;
+//     }
+    
+//     return n*factorial(n-1);
+// }
+
+// Fibonacijevi brojevi:
+
+// Napiši rekurzivnu funkciju fibonacci koja vraća n-ti Fibonacijev broj. Testiraj je za 
+// 𝑛
+// =
+// 10
+// // n=10
+
+// #include <stdio.h>
+// int fibonacci(int n);
+// int main(void)
+// {
+//     int n;
+//     printf("Unesi n: ");
+//     scanf("%d",&n);
+//     fibonacci(n);
+//     return 0;
+// }
+
+// int fibonacci(int n)
+// {
+    
+// }
