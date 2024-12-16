@@ -38,5 +38,17 @@ int main(void)
     // If they are equal it returns 0 
 
     printf("%d",strcmp(string,string2));
+
+    // scaning strings - can scan without & but not more than one word also need to specify length of string
+    char string4[50];
+    printf("\nUnesite neki string: ");
+    // scanf("%s",string4);
+    // printf("%s",string4);
+
+    // for scaning multiple words use - fgets(name,size,stdin)
+    char name[100];
+    printf("\nUnesite vase ime i prezime: ");
+    fgets(name,sizeof(name),stdin);
+    printf("%s",name);
     return 0;
 }
