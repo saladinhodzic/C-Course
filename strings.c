@@ -23,5 +23,20 @@ int main(void)
     // if we want to output double quotes inside string use \""
     char string3[]="She says \"Its very nice outside\"";
     printf("%s",string3);
+
+    // some functions available using <string.h> library
+
+    // length of string - strlen(string)
+
+    printf("Length of \"%s\" is %d\n",string3,strlen(string3));
+
+    // concatenate string - strcat(str1,str2)
+
+    printf(strcat(string,string2));
+
+    // compare strings - strcmp(str1,str2) 
+    // If they are equal it returns 0 
+
+    printf("%d",strcmp(string,string2));
     return 0;
 }
