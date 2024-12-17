@@ -89,43 +89,125 @@
 // произвољан број комплета све док не на улазу не прочита уместо броја слово. Исписати резултат
 // операције. 
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
-int main(void)
-{   
-    int check=1;
-    while (check!=0)
-    {
+// int main(void)
+// {   
+//     int check=1;
+//     while (check!=0)
+//     {
 
-    char prviBroj[100];
-    char drugiBroj[100];
-    int znak;
-    printf("Unesite prvi broj: ");
-    gets(prviBroj);
-    printf("Unesite drugi broj: ");
-    gets(drugiBroj);
-    printf("Unesite aritmeticku operaciju: ");
+//     char prviBroj[100];
+//     char drugiBroj[100];
+//     int znak;
+//     printf("Unesite prvi broj: ");
+//     gets(prviBroj);
+//     printf("Unesite drugi broj: ");
+//     gets(drugiBroj);
+//     printf("Unesite aritmeticku operaciju: ");
 
-    znak=getchar();
+//     znak=getchar();
 
-    float noviBroj1=atof(prviBroj);
-    float noviBroj2=atof(drugiBroj);
+//     float noviBroj1=atof(prviBroj);
+//     float noviBroj2=atof(drugiBroj);
     
-    switch(znak)
+//     switch(znak)
+//     {
+//         case '+':
+//             printf("%.2f\n",noviBroj1 + noviBroj2);
+//             break;
+//         case '-':
+//             printf("%.2f\n",noviBroj1 - noviBroj2);
+//             break;
+//         case '*':
+//             printf("%.2f\n",noviBroj1 * noviBroj2);
+//             break;
+//         case '/':
+//             printf("%.2f\n",noviBroj1 / noviBroj2);
+//             break;
+//     }
+//     }   
+// }
+
+// Саставити функцију за испис ниске карактера, а затим је тестирати у главном програму. 
+
+// #include <stdio.h>
+// #include <string.h>
+// void print(char string[]);
+// int main(void)
+// {
+//     char string[100];
+//     gets(string);
+//     print(string);
+// }
+
+// void print(char string[])
+// {
+//     int i;
+//     int length=strlen(string);
+
+//     for(i=0;i<length;i++)
+//     {
+//         printf("%c",string[i]);
+//     }
+// }
+
+// Саставити функцију за учитавање једне речи, а затим је тестирати у главном програму. 
+
+// #include <stdio.h>
+// void generateString(char string[]);
+// int main(void)
+// {
+//     char string[100];
+//     generateString(string);
+//     printf("%s",string);
+// }
+
+// void generateString(char string[])
+// {
+//     printf("Unesite neku rec: ");
+//     gets(string);
+// }
+
+// Саставити функцију која:
+// а) израчунава дужину стринга;
+// б) копира стринг ѕ2 у стринг ѕ1, претпоставља да у ѕ1 има довољно простора;
+// в) надовезује стринг ѕ2 на крај стринга ѕ1, претпоставља да у ѕ1 има довољно простора
+// г) врши лексикографско поређење два стринга, враћа: 0 - уколико су стрингови једнаки, <0 -
+// уколико је ѕ1 лексикографски испред ѕ2, >0 - уколико је ѕ1 лексикографски иза ѕ2;
+// д) проналази прву позицију карактера с у стрингу ѕ, враћа позицију на којој је с, односно -1 уколико
+// ѕ не садржи с; 
+
+#include <stdio.h>
+void length(char string[]);
+void copy(char string[]);
+int main(void)
+{
+    char string[100]="Hello World!";
+    printf("%s",string);
+    length(string);
+    copy(string);
+}
+
+void length(char string[])
+{
+    int i=0,brojac=0;
+    while (string[i]!='\0')
     {
-        case '+':
-            printf("%.2f\n",noviBroj1 + noviBroj2);
-            break;
-        case '-':
-            printf("%.2f\n",noviBroj1 - noviBroj2);
-            break;
-        case '*':
-            printf("%.2f\n",noviBroj1 * noviBroj2);
-            break;
-        case '/':
-            printf("%.2f\n",noviBroj1 / noviBroj2);
-            break;
+        brojac++;
+        i++;
     }
-    }   
+    printf("Duzina stringa je %d\n",brojac);
+}
+
+void copy(char string[])
+{
+    int i;
+    char noviString[100];
+    for(i=0;string[i]!='\0';i++)
+    {
+        noviString[i]=string[i];
+    }
+    printf("Kopirani string je %s\n",noviString);
 }
