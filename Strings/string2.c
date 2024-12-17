@@ -51,19 +51,35 @@
 // б) копира првих n карактера од једног стринга у други, у продужетку постојећег садржаја другог
 // стринга помоћу функције strncat(). 
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char str1[100]="Hello";
+//     char str2[100]="World";
+//     // concatenate two strings
+//     strcat(str1,str2);
+//     printf("%s",str1);
+//     // concatenate n characters of str4 into str3
+//     char str3[100]="My name is ";
+//     char str4[100]="Saladin";
+//     strncat(str3,str4,5);
+//     printf("%s",str3);
+// }
+
+// Саставити програм који конвертује стринг у цео и реалан број (ако је могуће) употребом
+// уграђених функција atoi() и аtof(). Исписати резултате.
+
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    char str1[100]="Hello";
-    char str2[100]="World";
-    // concatenate two strings
-    strcat(str1,str2);
-    printf("%s",str1);
-    // concatenate n characters of str4 into str3
-    char str3[100]="My name is ";
-    char str4[100]="Saladin";
-    strncat(str3,str4,5);
-    printf("%s",str3);
+    char str[100]="12.34nesto";
+    int wholeInt=atoi(str);
+    printf("%d\n",wholeInt);
+
+    float decimalFloat=atof(str);
+    printf("%f",decimalFloat);
 }
