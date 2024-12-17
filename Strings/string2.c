@@ -71,15 +71,61 @@
 // Саставити програм који конвертује стринг у цео и реалан број (ако је могуће) употребом
 // уграђених функција atoi() и аtof(). Исписати резултате.
 
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// int main(void)
+// {
+//     char str[100]="12.34nesto";
+//     int wholeInt=atoi(str);
+//     printf("%d\n",wholeInt);
+
+//     float decimalFloat=atof(str);
+//     printf("%f",decimalFloat);
+// }
+
+// Саставити програм који симулира калкулатор са четири основне аритметичке операције над
+// реалним бројевима. Бројеви са улаза се прихватају као стрингови. Програм треба да обрађује
+// произвољан број комплета све док не на улазу не прочита уместо броја слово. Исписати резултат
+// операције. 
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(void)
-{
-    char str[100]="12.34nesto";
-    int wholeInt=atoi(str);
-    printf("%d\n",wholeInt);
+{   
+    int check=1;
+    while (check!=0)
+    {
 
-    float decimalFloat=atof(str);
-    printf("%f",decimalFloat);
+    char prviBroj[100];
+    char drugiBroj[100];
+    int znak;
+    printf("Unesite prvi broj: ");
+    gets(prviBroj);
+    printf("Unesite drugi broj: ");
+    gets(drugiBroj);
+    printf("Unesite aritmeticku operaciju: ");
+
+    znak=getchar();
+
+    float noviBroj1=atof(prviBroj);
+    float noviBroj2=atof(drugiBroj);
+    
+    switch(znak)
+    {
+        case '+':
+            printf("%.2f\n",noviBroj1 + noviBroj2);
+            break;
+        case '-':
+            printf("%.2f\n",noviBroj1 - noviBroj2);
+            break;
+        case '*':
+            printf("%.2f\n",noviBroj1 * noviBroj2);
+            break;
+        case '/':
+            printf("%.2f\n",noviBroj1 / noviBroj2);
+            break;
+    }
+    }   
 }
