@@ -257,27 +257,48 @@
 // Саставити програм који у задатом стрингу исписује дужину најдужег низа узастопно
 // једнаких знакова. Исписати тај низ.
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char string[]="Pooozdravv svimaaaaaaa!";
+//     int max=0;
+
+//     for(int i=0;i<strlen(string);i++)
+//     {
+//         int brojac=1;
+//         int j=i+1;
+//         while(string[i]==string[j])
+//         {
+//             brojac++;
+//             j++;
+//         }
+//         if (brojac>max)
+//         {
+//             max=brojac;
+//         }
+//     }
+//     printf("Najduzi podniz u stringu iznosi %d puta",max);
+// }
+
+// Саставити програм који у задатом стрингу (једна реч) врши конверзију свих малих слова у
+// велика, а осатала не мења. 
+
 #include <stdio.h>
 #include <string.h>
-
+#include <ctype.h>
 int main(void)
 {
-    char string[]="Pooozdravv svimaaaaaaa!";
-    int max=0;
-
-    for(int i=0;i<strlen(string);i++)
+    char string[]="Hello";
+    int i;
+    for(i=0;i<strlen(string);i++)
     {
-        int brojac=1;
-        int j=i+1;
-        while(string[i]==string[j])
+        if (!isupper(string[i]))
         {
-            brojac++;
-            j++;
-        }
-        if (brojac>max)
-        {
-            max=brojac;
+            // subtracting - 32 using ascii table
+            string[i]=string[i]-32;
         }
     }
-    printf("Najduzi podniz u stringu iznosi %d puta",max);
+    printf("%s",string);
 }
