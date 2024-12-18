@@ -235,21 +235,49 @@
 
 // Саставити програм који ће исписати колико речи има учитана реченица
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char string[100];
+//     int brojac=0;
+//     printf("Unesite recenicu ");
+//     gets(string);
+//     for(int i=0;i<strlen(string);i++)
+//     {
+//         if (string[i] == ' ')
+//         {
+//             brojac++;
+//         }
+//     }
+//     printf("Uneta recenica ima %d reci.",brojac+1);
+// }
+
+// Саставити програм који у задатом стрингу исписује дужину најдужег низа узастопно
+// једнаких знакова. Исписати тај низ.
+
 #include <stdio.h>
 #include <string.h>
 
 int main(void)
 {
-    char string[100];
-    int brojac=0;
-    printf("Unesite recenicu ");
-    gets(string);
+    char string[]="Pooozdravv svimaaaaaaa!";
+    int max=0;
+
     for(int i=0;i<strlen(string);i++)
     {
-        if (string[i] == ' ')
+        int brojac=1;
+        int j=i+1;
+        while(string[i]==string[j])
         {
             brojac++;
+            j++;
+        }
+        if (brojac>max)
+        {
+            max=brojac;
         }
     }
-    printf("Uneta recenica ima %d reci.",brojac+1);
+    printf("Najduzi podniz u stringu iznosi %d puta",max);
 }
