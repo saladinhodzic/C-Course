@@ -179,35 +179,56 @@
 // д) проналази прву позицију карактера с у стрингу ѕ, враћа позицију на којој је с, односно -1 уколико
 // ѕ не садржи с; 
 
+// #include <stdio.h>
+// void length(char string[]);
+// void copy(char string[]);
+// int main(void)
+// {
+//     char string[100]="Hello World!";
+//     printf("%s",string);
+//     length(string);
+//     copy(string);
+// }
+
+// void length(char string[])
+// {
+//     int i=0,brojac=0;
+//     while (string[i]!='\0')
+//     {
+//         brojac++;
+//         i++;
+//     }
+//     printf("Duzina stringa je %d\n",brojac);
+// }
+
+// void copy(char string[])
+// {
+//     int i;
+//     char noviString[100];
+//     for(i=0;string[i]!='\0';i++)
+//     {
+//         noviString[i]=string[i];
+//     }
+//     printf("Kopirani string je %s\n",noviString);
+// }
+
+// Саставити програм који ће исписати колико се пута унети знак појављује у учитаном
+// стрингу. 
+
 #include <stdio.h>
-void length(char string[]);
-void copy(char string[]);
+#include <string.h>
 int main(void)
 {
-    char string[100]="Hello World!";
-    printf("%s",string);
-    length(string);
-    copy(string);
-}
-
-void length(char string[])
-{
-    int i=0,brojac=0;
-    while (string[i]!='\0')
+    char string[]="Hello World!";
+    printf("Unesite slovo za pretrazivanje: ");
+    char slovo=getchar();
+    int brojac=0;
+    for(int i=0;i<strlen(string);i++)
     {
-        brojac++;
-        i++;
+        if (string[i]==slovo)
+        {
+            brojac++;
+        }
     }
-    printf("Duzina stringa je %d\n",brojac);
-}
-
-void copy(char string[])
-{
-    int i;
-    char noviString[100];
-    for(i=0;string[i]!='\0';i++)
-    {
-        noviString[i]=string[i];
-    }
-    printf("Kopirani string je %s\n",noviString);
+    printf("Slvo %c se nalazi %d puta u stringu.",slovo,brojac);
 }

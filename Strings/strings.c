@@ -44,7 +44,6 @@ int main(void)
     printf("\nUnesite neki string: ");
     // scanf("%s",string4);
     // printf("%s",string4);
-
     // for scaning multiple words use - fgets(name,size,stdin)
     char name[100];
     printf("\nUnesite vase ime i prezime: ");
