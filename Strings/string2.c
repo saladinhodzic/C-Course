@@ -215,20 +215,41 @@
 // Саставити програм који ће исписати колико се пута унети знак појављује у учитаном
 // стрингу. 
 
+// #include <stdio.h>
+// #include <string.h>
+// int main(void)
+// {
+//     char string[]="Hello World!";
+//     printf("Unesite slovo za pretrazivanje: ");
+//     char slovo=getchar();
+//     int brojac=0;
+//     for(int i=0;i<strlen(string);i++)
+//     {
+//         if (string[i]==slovo)
+//         {
+//             brojac++;
+//         }
+//     }
+//     printf("Slvo %c se nalazi %d puta u stringu.",slovo,brojac);
+// }
+
+// Саставити програм који ће исписати колико речи има учитана реченица
+
 #include <stdio.h>
 #include <string.h>
+
 int main(void)
 {
-    char string[]="Hello World!";
-    printf("Unesite slovo za pretrazivanje: ");
-    char slovo=getchar();
+    char string[100];
     int brojac=0;
+    printf("Unesite recenicu ");
+    gets(string);
     for(int i=0;i<strlen(string);i++)
     {
-        if (string[i]==slovo)
+        if (string[i] == ' ')
         {
             brojac++;
         }
     }
-    printf("Slvo %c se nalazi %d puta u stringu.",slovo,brojac);
+    printf("Uneta recenica ima %d reci.",brojac+1);
 }
