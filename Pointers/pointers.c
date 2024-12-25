@@ -25,24 +25,45 @@
 // дељењу два цела броја, а затим функцију тестирати у главном програму. Исписати адресе и
 // вредности резултата. Пренос аргумената функције вршити преко показивача.
 
+// #include <stdio.h>
+// void func(int a,int b,int *mod,int *div);
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesite vrednosti dva cela broja: ");
+//     scanf("%d %d",&a,&b);
+//     int mod,div;
+
+//     func(a,b,&mod,&div);
+
+//     printf("Nas moduo se nalazi na adresi %p a vrednost mu je %d\n",&mod,mod);
+//     printf("Nas celobrojni kolicnik se nalazi na adresi %p a vrednost mu je %d",&div,div);
+
+// }
+
+// void func(int a,int b,int *mod,int *div)
+// {
+//     *mod=a%b;
+//     *div=a/b;
+// }
+
+// Саставити програм који за унети датум исписује редни број тог дана у датој години. 
+
 #include <stdio.h>
-void func(int a,int b,int *mod,int *div);
+
 int main(void)
-{
-    int a,b;
-    printf("Unesite vrednosti dva cela broja: ");
-    scanf("%d %d",&a,&b);
-    int mod,div;
-
-    func(a,b,&mod,&div);
-
-    printf("Nas moduo se nalazi na adresi %p a vrednost mu je %d\n",&mod,mod);
-    printf("Nas celobrojni kolicnik se nalazi na adresi %p a vrednost mu je %d",&div,div);
-
-}
-
-void func(int a,int b,int *mod,int *div)
-{
-    *mod=a%b;
-    *div=a/b;
+{   
+    int daniUGodini[100]={31,28,31,30,31,30,31,31,30,31,30,31};
+    int dan,mesec,godina;
+    printf("Unesite datum u obliku dd:mm:gggg: ");
+    scanf("%d %d %d",&dan,&mesec,&godina);
+    int brojac=0;
+    for (int i=mesec-1;i>=0;i--)
+    {
+        for(int j=;j>=0;j--)
+        {
+            brojac++;
+        }
+    }
+    printf("Redni broj tog dana u godini je %d",brojac);
 }
