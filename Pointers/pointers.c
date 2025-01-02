@@ -49,21 +49,30 @@
 
 // Саставити програм који за унети датум исписује редни број тог дана у датој години. 
 
-#include <stdio.h>
+// #include <stdio.h>
+
+// int main(void)
+// {   
+//     int daniUGodini[100]={31,28,31,30,31,30,31,31,30,31,30,31};
+//     int dan,mesec,godina;
+//     printf("Unesite datum u obliku dd:mm:gggg: ");
+//     scanf("%d %d %d",&dan,&mesec,&godina);
+//     int brojac=0;
+//     for (int i=mesec-1;i>=0;i--)
+//     {
+//         for(int j=;j>=0;j--)
+//         {
+//             brojac++;
+//         }
+//     }
+//     printf("Redni broj tog dana u godini je %d",brojac);
+// }
+
+// Програм учитава текст са улаза. Унос текста се завршава сигналом ЕОF. Саставити функцију
+// која броји мала и велика слова, цифре, белине и редове, а затим је тестирати у главном програму.
+// Пренос аргумената функције вршити преко показивача
 
 int main(void)
-{   
-    int daniUGodini[100]={31,28,31,30,31,30,31,31,30,31,30,31};
-    int dan,mesec,godina;
-    printf("Unesite datum u obliku dd:mm:gggg: ");
-    scanf("%d %d %d",&dan,&mesec,&godina);
-    int brojac=0;
-    for (int i=mesec-1;i>=0;i--)
-    {
-        for(int j=;j>=0;j--)
-        {
-            brojac++;
-        }
-    }
-    printf("Redni broj tog dana u godini je %d",brojac);
+{
+    
 }
