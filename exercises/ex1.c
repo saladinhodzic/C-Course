@@ -106,15 +106,19 @@ int main(void)
     for (int i = 0;i<n;i++)
     {
         int check = 1;
-        for (int j = i + 1;j<n;j++)
+        for (int j = 0;j<n;j++)
         {
-            if (arr[i] == arr[j])
-            {   
-                check = 0;
-                break;
+            if (i != j)
+            {
+                if (arr[i] == arr[j])
+                {   
+                    check = 0;
+                    break;
+                }
             }
+            
         }
-        if (check != 0)
+        if (check == 1)
             {
                 printf("%d ",arr[i]);
             }
