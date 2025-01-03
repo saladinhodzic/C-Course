@@ -113,7 +113,6 @@ int main(void)
                 if (arr[i] == arr[j])
                 {   
                     check = 0;
-                    break;
                 }
             }
             
