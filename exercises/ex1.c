@@ -96,30 +96,83 @@
 
 // 6. Write a program in C to print all unique elements in an array.
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int arr[100] = {1,2,2,4};
+//     int n = 4;
+
+//     for (int i = 0;i<n;i++)
+//     {
+//         int check = 1;
+//         for (int j = 0;j<n;j++)
+//         {
+//             if (i != j)
+//             {
+//                 if (arr[i] == arr[j])
+//                 {   
+//                     check = 0;
+//                     break;
+//                 }
+//             }
+            
+//         }
+//         if (check == 1)
+//             {
+//                 printf("%d ",arr[i]);
+//             }
+//     }
+// }
+
+// 7. Write a program in C to merge two arrays of the same size sorted in descending order.
+
 #include <stdio.h>
 
 int main(void)
 {
-    int arr[100] = {1,2,2,4};
-    int n = 4;
+    int arr1[100],arr2[100],n;
+    printf("Enter the length n of two arrays: ");
+    scanf("%d",&n);
 
-    for (int i = 0;i<n;i++)
+    // inputing the two arrays
+    for(int i=0;i<n;i++){
+        printf("Enter the %d. number of array: ",i+1);
+        scanf("%d",&arr1[i]);
+    }
+    for(int i=0;i<n;i++){
+        printf("Enter the %d. number of array: ",i+1);
+        scanf("%d",&arr2[i]);
+    }
+    int merged[100];
+    // merging the two arrays
+    for (int i=0;i<n;i++)
     {
-        int check = 1;
-        for (int j = 0;j<n;j++)
+        merged[i] = arr1[i];
+    }
+    int brojac =0;
+    for (int i=n;i<n*2;i++)
+    {
+        
+        merged[i] = arr2[brojac];
+        brojac++;
+    }
+    // sorting the merged array
+    for(int i = 0;i<n*2-1;i++)
+    {
+        for (int j = i+1;j<n*2;j++)
         {
-            if (i != j)
+            if (merged[j]>=merged[i])
             {
-                if (arr[i] == arr[j])
-                {   
-                    check = 0;
-                }
+                int pom = merged[i];
+                merged[i] = merged[j];
+                merged[j] = pom;
             }
-            
+
         }
-        if (check == 1)
-            {
-                printf("%d ",arr[i]);
-            }
+    }
+
+    for(int i=0;i<n*2;i++){
+        printf("%d ",merged[i]);
     }
 }
