@@ -127,52 +127,96 @@
 
 // 7. Write a program in C to merge two arrays of the same size sorted in descending order.
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int arr1[100],arr2[100],n;
+//     printf("Enter the length n of two arrays: ");
+//     scanf("%d",&n);
+
+//     // inputing the two arrays
+//     for(int i=0;i<n;i++){
+//         printf("Enter the %d. number of array: ",i+1);
+//         scanf("%d",&arr1[i]);
+//     }
+//     for(int i=0;i<n;i++){
+//         printf("Enter the %d. number of array: ",i+1);
+//         scanf("%d",&arr2[i]);
+//     }
+//     int merged[100];
+//     // merging the two arrays
+//     for (int i=0;i<n;i++)
+//     {
+//         merged[i] = arr1[i];
+//     }
+//     int brojac =0;
+//     for (int i=n;i<n*2;i++)
+//     {
+        
+//         merged[i] = arr2[brojac];
+//         brojac++;
+//     }
+//     // sorting the merged array
+//     for(int i = 0;i<n*2-1;i++)
+//     {
+//         for (int j = i+1;j<n*2;j++)
+//         {
+//             if (merged[j]>=merged[i])
+//             {
+//                 int pom = merged[i];
+//                 merged[i] = merged[j];
+//                 merged[j] = pom;
+//             }
+
+//         }
+//     }
+
+//     for(int i=0;i<n*2;i++){
+//         printf("%d ",merged[i]);
+//     }
+// }
+
+// 8. Write a program in C to count the frequency of each element of an array.
+
 #include <stdio.h>
 
 int main(void)
 {
-    int arr1[100],arr2[100],n;
-    printf("Enter the length n of two arrays: ");
+    int arr[100],n;
+    printf("Enter the length n of array: ");
     scanf("%d",&n);
 
-    // inputing the two arrays
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++)
+    {
         printf("Enter the %d. number of array: ",i+1);
-        scanf("%d",&arr1[i]);
+        scanf("%d",&arr[i]);
     }
-    for(int i=0;i<n;i++){
-        printf("Enter the %d. number of array: ",i+1);
-        scanf("%d",&arr2[i]);
-    }
-    int merged[100];
-    // merging the two arrays
-    for (int i=0;i<n;i++)
+
+    int check[100];
+
+    for(int i=0;i<n;i++)
     {
-        merged[i] = arr1[i];
+        check[i] = 0;
     }
-    int brojac =0;
-    for (int i=n;i<n*2;i++)
+
+    for(int i=0;i<n;i++)
     {
-        
-        merged[i] = arr2[brojac];
-        brojac++;
-    }
-    // sorting the merged array
-    for(int i = 0;i<n*2-1;i++)
-    {
-        for (int j = i+1;j<n*2;j++)
+        if (check[i] == 0)
         {
-            if (merged[j]>=merged[i])
+        int brojac = 1;
+        for (int j=i+1;j<n;j++)
+        {
+
+            if (arr[i] == arr[j])
             {
-                int pom = merged[i];
-                merged[i] = merged[j];
-                merged[j] = pom;
+                check[j] = 1;
+                brojac++;
             }
 
         }
-    }
-
-    for(int i=0;i<n*2;i++){
-        printf("%d ",merged[i]);
+        printf("%d occurs %d in array.",arr[i],brojac);
+        }
+        
     }
 }
