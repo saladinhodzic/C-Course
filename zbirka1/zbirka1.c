@@ -31,36 +31,68 @@
 
 // Napisati program koji nalazi najveci broj u nizu od 10 brojeva
 
+// #include <stdio.h>
+// void formiraj(int niz[],int n);
+// void najveci(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+
+//     printf("Unesite duzinu n: ");
+//     scanf("%d",&n);
+//     formiraj(niz,n);
+//     najveci(niz,n);
+// }
+
+// void formiraj(int niz[],int n)
+// {
+//     int i;
+//     for (i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+// void najveci(int niz[],int n)
+// {
+//     int najveci = niz[0];
+//     for (int i=0;i<n;i++)
+//     {
+//         if (niz[i]>najveci)
+//         {
+//             najveci = niz[i];
+//         }
+//     }
+//     printf("Najveci broj u nizu je %d.",najveci);
+// }
+
+// Napisati program koji racuna aritmeticku sredinu brojeva niza
+
 #include <stdio.h>
 void formiraj(int niz[],int n);
-void najveci(int niz[],int n);
+void aritmetickaSredina(int niz[],int n);
 int main(void)
 {
     int niz[100],n;
-
-    printf("Unesite duzinu n: ");
+    printf("Unesite duzinu niza n: ");
     scanf("%d",&n);
     formiraj(niz,n);
-    najveci(niz,n);
+    aritmetickaSredina(niz,n);
 }
-
 void formiraj(int niz[],int n)
 {
     int i;
-    for (i=0;i<n;i++)
+    for(i = 0;i<n;i++)
     {
         scanf("%d",&niz[i]);
     }
 }
-void najveci(int niz[],int n)
+
+void aritmetickaSredina(int niz[],int n)
 {
-    int najveci = niz[0];
+    float suma=0;
     for (int i=0;i<n;i++)
     {
-        if (niz[i]>najveci)
-        {
-            najveci = niz[i];
-        }
+        suma+=niz[i];
     }
-    printf("Najveci broj u nizu je %d.",najveci);
+    printf("Aritmeticka sredina niza je %.2f",suma/n);
 }
