@@ -67,32 +67,67 @@
 
 // Napisati program koji racuna aritmeticku sredinu brojeva niza
 
+// #include <stdio.h>
+// void formiraj(int niz[],int n);
+// void aritmetickaSredina(int niz[],int n);
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza n: ");
+//     scanf("%d",&n);
+//     formiraj(niz,n);
+//     aritmetickaSredina(niz,n);
+// }
+// void formiraj(int niz[],int n)
+// {
+//     int i;
+//     for(i = 0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void aritmetickaSredina(int niz[],int n)
+// {
+//     float suma=0;
+//     for (int i=0;i<n;i++)
+//     {
+//         suma+=niz[i];
+//     }
+//     printf("Aritmeticka sredina niza je %.2f",suma/n);
+// }
+
+// Napisati program koji unosi i ispisuje matrixu 2x3
+
 #include <stdio.h>
-void formiraj(int niz[],int n);
-void aritmetickaSredina(int niz[],int n);
+void formiraj(int matrica[100][100],int n,int m);
+void ispisi(int matrica[100][100],int n,int m);
 int main(void)
 {
-    int niz[100],n;
-    printf("Unesite duzinu niza n: ");
-    scanf("%d",&n);
-    formiraj(niz,n);
-    aritmetickaSredina(niz,n);
+    int matrica[100][100],n=2,m=3;
+    formiraj(matrica,n,m);
+    ispisi(matrica,n,m);
 }
-void formiraj(int niz[],int n)
+
+void formiraj(int matrica[100][100],int n,int m)
 {
-    int i;
-    for(i = 0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
-        scanf("%d",&niz[i]);
+        for (int j=0;j<m;j++)
+        {
+            scanf("%d",&matrica[i][j]);
+        }
     }
 }
 
-void aritmetickaSredina(int niz[],int n)
+void ispisi(int matrica[100][100],int n,int m)
 {
-    float suma=0;
-    for (int i=0;i<n;i++)
+    for(int i=0;i<n;i++)
     {
-        suma+=niz[i];
+        for (int j=0;j<m;j++)
+        {
+            printf("%d ",matrica[i][j]);
+        } 
+        printf("\n");
     }
-    printf("Aritmeticka sredina niza je %.2f",suma/n);
 }
