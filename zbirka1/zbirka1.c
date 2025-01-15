@@ -99,35 +99,71 @@
 
 // Napisati program koji unosi i ispisuje matrixu 2x3
 
+// #include <stdio.h>
+// void formiraj(int matrica[100][100],int n,int m);
+// void ispisi(int matrica[100][100],int n,int m);
+// int main(void)
+// {
+//     int matrica[100][100],n=2,m=3;
+//     formiraj(matrica,n,m);
+//     ispisi(matrica,n,m);
+// }
+
+// void formiraj(int matrica[100][100],int n,int m)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         for (int j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void ispisi(int matrica[100][100],int n,int m)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         for (int j=0;j<m;j++)
+//         {
+//             printf("%d ",matrica[i][j]);
+//         } 
+//         printf("\n");
+//     }
+// }
+
+// Napisati program koji racuna zbir dve matrice 2x2
+
 #include <stdio.h>
-void formiraj(int matrica[100][100],int n,int m);
-void ispisi(int matrica[100][100],int n,int m);
+void zbir(int matrica1[100][100],int matrica2[100][100], int n);
+void formiraj(int matrica[100][100], int n);
 int main(void)
 {
-    int matrica[100][100],n=2,m=3;
-    formiraj(matrica,n,m);
-    ispisi(matrica,n,m);
+    int matrica1[100][100],matrica2[100][100],n=2;
+    formiraj(matrica1,n); 
+    formiraj(matrica2,n); 
+    zbir(matrica1,matrica2,n);
 }
 
-void formiraj(int matrica[100][100],int n,int m)
+void formiraj(int matrica[100][100], int n)
 {
     for(int i=0;i<n;i++)
     {
-        for (int j=0;j<m;j++)
+        for(int j=0;j<n;j++)
         {
             scanf("%d",&matrica[i][j]);
         }
     }
 }
-
-void ispisi(int matrica[100][100],int n,int m)
+void zbir(int matrica1[100][100],int matrica2[100][100], int n)
 {
-    for(int i=0;i<n;i++)
+    int suma=0;
+    for (int i=0;i<n;i++)
     {
-        for (int j=0;j<m;j++)
+        for(int j=0;j<n;j++)
         {
-            printf("%d ",matrica[i][j]);
-        } 
-        printf("\n");
+            suma += matrica1[i][j] + matrica2[i][j];
+        }
     }
+    printf("Zbir obe matrice je %d",suma);
 }
