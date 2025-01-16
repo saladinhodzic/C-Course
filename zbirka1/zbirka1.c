@@ -221,12 +221,26 @@
 // Саставити програм који омогућује унос три знаковне променљиве са тастатуре, а затим
 // приказује њихове вредности и њихов одговарајући АSCII код. 
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     char a,b,c;
+//     printf("Unesite tri znakovne promenljive: ");
+//     scanf("%c %c %c",&a,&b,&c);
+//     printf("%c:%d\n%c:%d\n%c:%d",a,a,b,b,c,c);
+// }
+
+// Саставити програм који омогућује унос једне знаковне променљиве, приказује њену вредност
+// и њен ASCII код, а затим у следећа три реда приказује променљиве чији је код за један већи од
+// претходне.
+
 #include <stdio.h>
 
 int main(void)
 {
-    char a,b,c;
-    printf("Unesite tri znakovne promenljive: ");
-    scanf("%c %c %c",&a,&b,&c);
-    printf("%c:%d\n%c:%d\n%c:%d",a,a,b,b,c,c);
+    char ch;
+    printf("Unesite jednu znakovnu promenljivu: ");
+    scanf("%c",&ch);
+    printf("%c:%d\n%c:%d\n%c:%d\n%c:%d",ch,ch,ch+1,ch+1,ch+2,ch+2,ch+3,ch+3);
 }
