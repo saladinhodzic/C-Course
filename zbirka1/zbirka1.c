@@ -134,36 +134,76 @@
 
 // Napisati program koji racuna zbir dve matrice 2x2
 
+// #include <stdio.h>
+// void zbir(int matrica1[100][100],int matrica2[100][100], int n);
+// void formiraj(int matrica[100][100], int n);
+// int main(void)
+// {
+//     int matrica1[100][100],matrica2[100][100],n=2;
+//     formiraj(matrica1,n); 
+//     formiraj(matrica2,n); 
+//     zbir(matrica1,matrica2,n);
+// }
+
+// void formiraj(int matrica[100][100], int n)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+// void zbir(int matrica1[100][100],int matrica2[100][100], int n)
+// {
+//     int suma=0;
+//     for (int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             suma += matrica1[i][j] + matrica2[i][j];
+//         }
+//     }
+//     printf("Zbir obe matrice je %d",suma);
+// }
+
+/*Написати наредбу којом се штампају:
+а) променљива х у декадном систему;
+б) реалне променљиве х и у;
+в) промељива х у декадном, окталном и хексадецималном систему;
+г) штампа вредност променљиве х типа char. */
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int x = 15;
+//     printf("%d %o %x",x,x,x);
+// }
+
+// Саставити програм којим се учитавају и приказују један цео и један реалан број. 
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int x;
+//     float y;
+//     scanf("%d",&x);
+//     scanf("%f",&y);
+//     printf("Ceo broj %d\nRealan broj %f",x,y);
+// }
+
+// Саставити програм који омогућује унос целог броја са тастатуре и његов приказ у
+// децималном, окталном и хексaдецималном облику. 
+
 #include <stdio.h>
-void zbir(int matrica1[100][100],int matrica2[100][100], int n);
-void formiraj(int matrica[100][100], int n);
+
 int main(void)
 {
-    int matrica1[100][100],matrica2[100][100],n=2;
-    formiraj(matrica1,n); 
-    formiraj(matrica2,n); 
-    zbir(matrica1,matrica2,n);
-}
-
-void formiraj(int matrica[100][100], int n)
-{
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            scanf("%d",&matrica[i][j]);
-        }
-    }
-}
-void zbir(int matrica1[100][100],int matrica2[100][100], int n)
-{
-    int suma=0;
-    for (int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            suma += matrica1[i][j] + matrica2[i][j];
-        }
-    }
-    printf("Zbir obe matrice je %d",suma);
+    int x;
+    printf("Unesite ceo broj x: ");
+    scanf("%d",&x);
+    printf("Dekadni sistem: %d\nOktalni sistem: %o\nHeksadecimalni sistem: %x",x,x,x);
 }
