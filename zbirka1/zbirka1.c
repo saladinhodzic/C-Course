@@ -198,12 +198,35 @@
 // Саставити програм који омогућује унос целог броја са тастатуре и његов приказ у
 // децималном, окталном и хексaдецималном облику. 
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int x;
+//     printf("Unesite ceo broj x: ");
+//     scanf("%d",&x);
+//     printf("Dekadni sistem: %d\nOktalni sistem: %o\nHeksadecimalni sistem: %x",x,x,x);
+// }
+
+// Саставити програм којим се на екрану исписује распоред слова као што је приказано на
+// слици. 
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     printf("%c\n%2c\n%3c\n%4c\n%5c",'A','B','C','D','E');
+// }
+
+// Саставити програм који омогућује унос три знаковне променљиве са тастатуре, а затим
+// приказује њихове вредности и њихов одговарајући АSCII код. 
+
 #include <stdio.h>
 
 int main(void)
 {
-    int x;
-    printf("Unesite ceo broj x: ");
-    scanf("%d",&x);
-    printf("Dekadni sistem: %d\nOktalni sistem: %o\nHeksadecimalni sistem: %x",x,x,x);
+    char a,b,c;
+    printf("Unesite tri znakovne promenljive: ");
+    scanf("%c %c %c",&a,&b,&c);
+    printf("%c:%d\n%c:%d\n%c:%d",a,a,b,b,c,c);
 }
