@@ -235,12 +235,69 @@
 // и њен ASCII код, а затим у следећа три реда приказује променљиве чији је код за један већи од
 // претходне.
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     char ch;
+//     printf("Unesite jednu znakovnu promenljivu: ");
+//     scanf("%c",&ch);
+//     printf("%c:%d\n%c:%d\n%c:%d\n%c:%d",ch,ch,ch+1,ch+1,ch+2,ch+2,ch+3,ch+3);
+// }
+
+/*Саставити програм који приказује величину у бајтовима следећих типова података: char,
+unsigned char, int, unsigned int, long, unsigned long, float, double. */
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     printf("%d",sizeof(float));
+// }
+
+/*Саставити програм којим се замењују вредности два унета цела броја. */
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesite dve celobrojne promenljive: ");
+//     scanf("%d %d",&a,&b);
+//     printf("Pre zamene: a = %d, b = %d\n",a,b);
+//     int pom = a;
+//     a = b;
+//     b = pom;
+//     printf("Posle zamene: a = %d, b = %d",a,b);
+// }
+
+/*Саставити програм који учитава два цела броја са тастатуре и исписује њихов збир */
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesite dve celobrojne promenljive a i b: ");
+//     scanf("%d %d",&a,&b);
+//     printf("Zbir dve unete promenljive je %d",a+b);
+// }
+
+/*Саставити програм који учитава два цела броја и исписује њихов збир, разлику, производ,
+целобројни количник, реални количник и остатак при целобројном дељењу. 
+*/
+
 #include <stdio.h>
 
 int main(void)
 {
-    char ch;
-    printf("Unesite jednu znakovnu promenljivu: ");
-    scanf("%c",&ch);
-    printf("%c:%d\n%c:%d\n%c:%d\n%c:%d",ch,ch,ch+1,ch+1,ch+2,ch+2,ch+3,ch+3);
+    int a,b;
+    printf("Unesite dve celobrojne promenljive a i b: ");
+    scanf("%d %d",&a,&b);
+    printf("Zbir dve promenljive je %d\n",a+b);
+    printf("Razlika dve promenljive je %d\n",a-b);
+    printf("Proizvod dve promenljive %d\n",a*b);
+    printf("Celobrojni kolicnik dve promenljive %d\n",a/b);
+    printf("Realni kolicnik dve promenljive %.2f\n",(float)a/b);
+    printf("Ostatak pri celobrojnom deljenju %d",a%b);
 }
