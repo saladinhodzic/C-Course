@@ -287,17 +287,30 @@ unsigned char, int, unsigned int, long, unsigned long, float, double. */
 целобројни количник, реални количник и остатак при целобројном дељењу. 
 */
 
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesite dve celobrojne promenljive a i b: ");
+//     scanf("%d %d",&a,&b);
+//     printf("Zbir dve promenljive je %d\n",a+b);
+//     printf("Razlika dve promenljive je %d\n",a-b);
+//     printf("Proizvod dve promenljive %d\n",a*b);
+//     printf("Celobrojni kolicnik dve promenljive %d\n",a/b);
+//     printf("Realni kolicnik dve promenljive %.2f\n",(float)a/b);
+//     printf("Ostatak pri celobrojnom deljenju %d",a%b);
+// }
+
+// Саставити програм који за унете странице правоугаоника исписује његов обим и површину. 
+
 #include <stdio.h>
 
 int main(void)
 {
     int a,b;
-    printf("Unesite dve celobrojne promenljive a i b: ");
+    printf("Unesite a i b stranice pravugaonika: ");
     scanf("%d %d",&a,&b);
-    printf("Zbir dve promenljive je %d\n",a+b);
-    printf("Razlika dve promenljive je %d\n",a-b);
-    printf("Proizvod dve promenljive %d\n",a*b);
-    printf("Celobrojni kolicnik dve promenljive %d\n",a/b);
-    printf("Realni kolicnik dve promenljive %.2f\n",(float)a/b);
-    printf("Ostatak pri celobrojnom deljenju %d",a%b);
+    printf("Obim pravugaonika je %dcm\n",2*a+2*b);
+    printf("Povrsina pravugaonika je %dcm",a*b);
 }
