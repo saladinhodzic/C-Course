@@ -304,13 +304,110 @@ unsigned char, int, unsigned int, long, unsigned long, float, double. */
 
 // Саставити програм који за унете странице правоугаоника исписује његов обим и површину. 
 
-#include <stdio.h>
+// #include <stdio.h>
 
+// int main(void)
+// {
+//     int a,b;
+//     printf("Unesite a i b stranice pravugaonika: ");
+//     scanf("%d %d",&a,&b);
+//     printf("Obim pravugaonika je %dcm\n",2*a+2*b);
+//     printf("Povrsina pravugaonika je %dcm",a*b);
+// }
+
+//Саставити програм којим се вредност темепературе унете у Фаренхајтима приказује у
+// Целзијусима 
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int F,C;
+//     printf("Unesite temperaturu u Farehajtovima: ");
+//     scanf("%d",&F);
+//     C = (5.0/9) * (F-32);
+//     printf("Farenhajt:%d\nCelzijus:%d",F,C);
+// }
+
+// Саставити програм за решавање линеарне једначине AX+B=0, где се коефицијенти А и В
+// уносе са тастатуре (А≠0).
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     float a,b,x;
+//     printf("Unesite koeficijente a i b: ");
+//     scanf("%f %f",&a,&b);
+//     x = -b/a;
+//     printf("Resenje linearne jednacine %fX + %f = 0, x = %f",a,b,x);
+// }
+
+/*Саставити програм за рачунање израза 2 3
+y = x + x + x за унету вредност х. */
+
+// #include <stdio.h>
+// #include <math.h>
+
+// int main(void)
+// {
+//     int x;
+//     float y;
+//     printf("Unesite vrednost x: ");
+//     scanf("%d",&x);
+//     y = sqrt(x + x*x + x*x*x);
+//     printf("Resenje izraza je %.2f",y);
+// }
+
+// Саставити програм који за унети троцифрени број исписује његове цифре и суму цифара
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int x;
+//     printf("Unesite trocifren broj x: ");
+//     scanf("%d",&x);
+//     int a = x/100;
+//     int b = (x%100)/10;
+//     int c = (x%100)%10;
+//     printf("Cifre trocifrenog broja su %d %d %d\n",a,b,c);
+//     printf("Suma cifara trocifrenog broja je %d",a+b+c);
+// }
+
+// Саставити програм који учитава вредност производа у динарима, а затим израчунава и
+// приказује колико је потребно новчаница од 500 дин., 100 дин. и 1 дин. за плаћање тог производа. 
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+//     int cena;
+//     printf("Unesite cenu proizvoda: ");
+//     scanf("%d",&cena);
+//     int nov500 = cena/500;
+//     int nov100 = (cena%500)/100;
+//     int nov1 = (cena%500)%100;
+//     printf("Za placanje proizvoda po ceni od %d dinara, potrebno je:\n",cena);
+//     printf("%d novcanica od 500 dinara.\n%d novcanica od 100 dinara\n%d novcanica od 1 dinar.",nov500,nov100,nov1);
+// }
+
+// Саставити програм који за унети временски интервал у секундама и исписује га у облику
+// дани : часови : минуте : секунде
+
+#include <stdio.h>
 int main(void)
 {
-    int a,b;
-    printf("Unesite a i b stranice pravugaonika: ");
-    scanf("%d %d",&a,&b);
-    printf("Obim pravugaonika je %dcm\n",2*a+2*b);
-    printf("Povrsina pravugaonika je %dcm",a*b);
+    int sekunde;
+    printf("Unesite interval u sekundama: ");
+    scanf("%d",&sekunde);
+    int sec = sekunde%60;
+    int minuti = sekunde/60;
+    int sati = minuti/60;
+    minuti = minuti % 60;
+    int dani = sati/24;
+    sati = sati% 24;
+
+    printf("Interval od %d sekundi iznosi:\n",sekunde);
+    printf("%dd : %dh : %dmin : %dsec",dani,sati,minuti,sec);
 }
