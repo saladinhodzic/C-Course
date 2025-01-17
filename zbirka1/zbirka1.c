@@ -414,59 +414,112 @@ y = x + x + x за унету вредност х. */
 
 // 1.	Napisati program kojim se k-ta vrsta matrice A uređuje rastuće. Učitavanje matrice i traženu obradu realizovati pomoću odvojenih potprograma
 
-#include <stdio.h>
-void unos(int matrica[100][100],int n);
-void sortiranje(int matrica[100][100],int n,int k);
-void ispis(int matrica[100][100],int n);
-int main(void)
-{   
-    int matrica[100][100],n,k;
-    printf("Unesite n vrsta i kolona matrice: ");
-    scanf("%d",&n);
-    unos(matrica,n);
-    printf("Koju zelite k-vrstu matrice sortirati: ");
-    scanf("%d",&k);
-    sortiranje(matrica,n,k-1);
-    ispis(matrica,n);
-}
-void unos(int matrica[100][100],int n)
-{
-    for(int i=0;i<n;i++)
-{
-    for (int j=0;j<n;j++)
-    {
-        scanf("%d",&matrica[i][j]);
-    }
+// #include <stdio.h>
+// void unos(int matrica[100][100],int n);
+// void sortiranje(int matrica[100][100],int n,int k);
+// void ispis(int matrica[100][100],int n);
+// int main(void)
+// {   
+//     int matrica[100][100],n,k;
+//     printf("Unesite n vrsta i kolona matrice: ");
+//     scanf("%d",&n);
+//     unos(matrica,n);
+//     printf("Koju zelite k-vrstu matrice sortirati: ");
+//     scanf("%d",&k);
+//     sortiranje(matrica,n,k-1);
+//     ispis(matrica,n);
+// }
+// void unos(int matrica[100][100],int n)
+// {
+//     for(int i=0;i<n;i++)
+// {
+//     for (int j=0;j<n;j++)
+//     {
+//         scanf("%d",&matrica[i][j]);
+//     }
 
-}
-}
+// }
+// }
 
-void sortiranje(int matrica[100][100],int n,int k)
-{
-    for(int i = 0;i<n-1;i++)
-    {
-        for (int j =1;j<n;j++)
-        {
-            if (matrica[k][i]>matrica[k][j])
-        {
-            int temp = matrica[k][i];
-            matrica[k][i] = matrica[k][j];
-            matrica[k][j] = temp;
-        }
-        }
+// void sortiranje(int matrica[100][100],int n,int k)
+// {
+//     for(int i = 0;i<n-1;i++)
+//     {
+//         for (int j =1;j<n;j++)
+//         {
+//             if (matrica[k][i]>matrica[k][j])
+//         {
+//             int temp = matrica[k][i];
+//             matrica[k][i] = matrica[k][j];
+//             matrica[k][j] = temp;
+//         }
+//         }
         
-    }
+//     }
    
+// }
+
+// void ispis(int matrica[100][100],int n)
+// {
+//     for(int i=0;i<n;i++)
+//     {
+//         for(int j =0;j<n;j++)
+//         {
+//             printf("%d ",matrica[i][j]);
+//         }
+//         printf("\n");
+//     }
+// }
+
+/*2.	Napisati program kojim se određuje da li je matrica A savršena. Matrica je savršena ako je suma elemenata svake vrste veća od nule. Za određivanje sume elemenata u vrsti napraviti funkciju. Učitavanje matrice A uraditi pomoću potprograma.*/
+
+#include <stdio.h>
+int odredi_sume(int matrica[100][100],int n,int m);
+void unos(int matrica[100][100],int n,int m);
+
+int main(void)
+{
+    int matrica[100][100], n,m;
+    printf("Unesite nxm dimenzije matrice: ");
+    scanf("%d %d",&n,&m);
+    unos(matrica,n,m);
+    int savrsena = odredi_sume(matrica,n,m);
+    if (savrsena == 1)
+    {
+        printf("Matrica je savrsena!");
+        return 0;
+    }
+    printf("Matrica nije savrsena!");
+    return 1;
 }
 
-void ispis(int matrica[100][100],int n)
+void unos(int matrica[100][100],int n,int m)
 {
-    for(int i=0;i<n;i++)
+    int i,j;
+    for(i=0;i<n;i++)
     {
-        for(int j =0;j<n;j++)
+        for(j=0;j<m;j++)
         {
-            printf("%d ",matrica[i][j]);
+            printf("Unesite element %d vrste %d kolone matrice: ",i,j);
+            scanf("%d",&matrica[i][j]);
         }
-        printf("\n");
     }
+}
+
+int odredi_sume(int matrica[100][100],int n,int m)
+{
+    int check = 1,i,j;
+    for(i=0;i<n;i++){
+        int suma = 0;
+        for(j=0;j<m;j++)
+        {
+            suma+= matrica[i][j];
+        }
+        if (suma <= 0)
+        {
+            check = 0;
+            return check;
+        }
+    }
+    return check;
 }
