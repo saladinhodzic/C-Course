@@ -395,19 +395,78 @@ y = x + x + x за унету вредност х. */
 // Саставити програм који за унети временски интервал у секундама и исписује га у облику
 // дани : часови : минуте : секунде
 
-#include <stdio.h>
-int main(void)
-{
-    int sekunde;
-    printf("Unesite interval u sekundama: ");
-    scanf("%d",&sekunde);
-    int sec = sekunde%60;
-    int minuti = sekunde/60;
-    int sati = minuti/60;
-    minuti = minuti % 60;
-    int dani = sati/24;
-    sati = sati% 24;
+// #include <stdio.h>
+// int main(void)
+// {
+//     int sekunde;
+//     printf("Unesite interval u sekundama: ");
+//     scanf("%d",&sekunde);
+//     int sec = sekunde%60;
+//     int minuti = sekunde/60;
+//     int sati = minuti/60;
+//     minuti = minuti % 60;
+//     int dani = sati/24;
+//     sati = sati% 24;
 
-    printf("Interval od %d sekundi iznosi:\n",sekunde);
-    printf("%dd : %dh : %dmin : %dsec",dani,sati,minuti,sec);
+//     printf("Interval od %d sekundi iznosi:\n",sekunde);
+//     printf("%dd : %dh : %dmin : %dsec",dani,sati,minuti,sec);
+// }
+
+// 1.	Napisati program kojim se k-ta vrsta matrice A uređuje rastuće. Učitavanje matrice i traženu obradu realizovati pomoću odvojenih potprograma
+
+#include <stdio.h>
+void unos(int matrica[100][100],int n);
+void sortiranje(int matrica[100][100],int n,int k);
+void ispis(int matrica[100][100],int n);
+int main(void)
+{   
+    int matrica[100][100],n,k;
+    printf("Unesite n vrsta i kolona matrice: ");
+    scanf("%d",&n);
+    unos(matrica,n);
+    printf("Koju zelite k-vrstu matrice sortirati: ");
+    scanf("%d",&k);
+    sortiranje(matrica,n,k-1);
+    ispis(matrica,n);
+}
+void unos(int matrica[100][100],int n)
+{
+    for(int i=0;i<n;i++)
+{
+    for (int j=0;j<n;j++)
+    {
+        scanf("%d",&matrica[i][j]);
+    }
+
+}
+}
+
+void sortiranje(int matrica[100][100],int n,int k)
+{
+    for(int i = 0;i<n-1;i++)
+    {
+        for (int j =1;j<n;j++)
+        {
+            if (matrica[k][i]>matrica[k][j])
+        {
+            int temp = matrica[k][i];
+            matrica[k][i] = matrica[k][j];
+            matrica[k][j] = temp;
+        }
+        }
+        
+    }
+   
+}
+
+void ispis(int matrica[100][100],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j =0;j<n;j++)
+        {
+            printf("%d ",matrica[i][j]);
+        }
+        printf("\n");
+    }
 }
