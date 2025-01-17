@@ -473,31 +473,84 @@ y = x + x + x за унету вредност х. */
 
 /*2.	Napisati program kojim se određuje da li je matrica A savršena. Matrica je savršena ako je suma elemenata svake vrste veća od nule. Za određivanje sume elemenata u vrsti napraviti funkciju. Učitavanje matrice A uraditi pomoću potprograma.*/
 
+// #include <stdio.h>
+// int odredi_sume(int matrica[100][100],int n,int m);
+// void unos(int matrica[100][100],int n,int m);
+
+// int main(void)
+// {
+//     int matrica[100][100], n,m;
+//     printf("Unesite nxm dimenzije matrice: ");
+//     scanf("%d %d",&n,&m);
+//     unos(matrica,n,m);
+//     int savrsena = odredi_sume(matrica,n,m);
+//     if (savrsena == 1)
+//     {
+//         printf("Matrica je savrsena!");
+//         return 0;
+//     }
+//     printf("Matrica nije savrsena!");
+//     return 1;
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             printf("Unesite element %d vrste %d kolone matrice: ",i,j);
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int odredi_sume(int matrica[100][100],int n,int m)
+// {
+//     int check = 1,i,j;
+//     for(i=0;i<n;i++){
+//         int suma = 0;
+//         for(j=0;j<m;j++)
+//         {
+//             suma+= matrica[i][j];
+//         }
+//         if (suma <= 0)
+//         {
+//             check = 0;
+//             return check;
+//         }
+//     }
+//     return check;
+// }
+
+/*3.	Napisati program kojim se na izlazu ispisuje 1 ako u svakoj koloni matrice postoji broj b. Za ispitivanje napraviti funkciju. Učitavanje matrice A uraditi pomoću potprograma. */
+
 #include <stdio.h>
-int odredi_sume(int matrica[100][100],int n,int m);
-void unos(int matrica[100][100],int n,int m);
+
+int ispitivanje(int matrica[100][100],int n,int m, int b);
+void unos(int matrica[100][100],int n, int m);
 
 int main(void)
 {
-    int matrica[100][100], n,m;
+    int matrica[100][100], n, m,  b;
     printf("Unesite nxm dimenzije matrice: ");
     scanf("%d %d",&n,&m);
     unos(matrica,n,m);
-    int savrsena = odredi_sume(matrica,n,m);
-    if (savrsena == 1)
+    printf("Unesite broj b za ispitivanje: ");
+    scanf("%d",&b);
+    int check = ispitivanje(matrica,n,m,b);
+    if (check == 1)
     {
-        printf("Matrica je savrsena!");
+        printf("1");
         return 0;
     }
-    printf("Matrica nije savrsena!");
-    return 1;
 }
 
-void unos(int matrica[100][100],int n,int m)
+void unos(int matrica[100][100],int n, int m)
 {
     int i,j;
-    for(i=0;i<n;i++)
-    {
+    for(i=0;i<n;i++){
         for(j=0;j<m;j++)
         {
             printf("Unesite element %d vrste %d kolone matrice: ",i,j);
@@ -506,19 +559,24 @@ void unos(int matrica[100][100],int n,int m)
     }
 }
 
-int odredi_sume(int matrica[100][100],int n,int m)
+int ispitivanje(int matrica[100][100],int n,int m, int b)
 {
-    int check = 1,i,j;
-    for(i=0;i<n;i++){
-        int suma = 0;
+    int check=1,i,j;
+    for(i=0;i<n;i++)
+    {
+        int tempCheck=0;
         for(j=0;j<m;j++)
         {
-            suma+= matrica[i][j];
+            if(matrica[j][i] == b)
+            {
+                tempCheck = 1;
+                break;
+            }
         }
-        if (suma <= 0)
+        if (tempCheck != 1)
         {
             check = 0;
-            return check;
+            break;
         }
     }
     return check;
