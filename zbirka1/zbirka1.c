@@ -584,26 +584,72 @@ y = x + x + x за унету вредност х. */
 
 /*4.	Napisati program kojim se na izlazu ispisuje 1 ako je A>B, gde su A i B matrice. A>B ako je suma elemenata matrice A veća od sume elemenata matrice B. Za određivanje sume elemenata matrice napraviti funkciju.Za određivanje da li je A veće od B napraviti funkciju. */
 
+// #include <stdio.h>
+// void unos(int matrica[100][100],int n,int m);
+// int sume(int m1[100][100],int m2[100][100],int n,int m);
+// int main(void)
+// {
+//     int matrica1[100][100],matrica2[100][100],n,m;
+//     printf("Unesite dimenzije dve matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente prve matrice:\n");
+//     unos(matrica1,n,m);
+//     printf("Unesite elemente druge matrice:\n");
+//     unos(matrica2,n,m);
+//     int check = sume(matrica1,matrica2,n,m);
+//     if (check == 1)
+//     {
+//         printf("1");
+//     }
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int sume(int m1[100][100],int m2[100][100],int n,int m)
+// {
+//     int suma1 = 0,suma2 = 0,i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             suma1 += m1[i][j];
+//             suma2 += m2[i][j];
+//         }
+//     }
+//     if (suma1 > suma2)
+//     {
+//         return 1;
+//     }
+// }
+
+/*5.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B indeks najvećeg element odgovarajuće vrste matrice A. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
-void unos(int matrica[100][100],int n,int m);
-int sume(int m1[100][100],int m2[100][100],int n,int m);
+void unosMatrice(int matrica[100][100],int n,int m);
+void unosNiza(int matrica[100][100],int niz[100],int n,int m);
+void ispis(int niz[100],int n);
 int main(void)
 {
-    int matrica1[100][100],matrica2[100][100],n,m;
-    printf("Unesite dimenzije dve matrice nxm: ");
+    int matrica[100][100],niz[100], n, m;
+    printf("Unesite dimenzije matrice nxm: ");
     scanf("%d %d",&n,&m);
-    printf("Unesite elemente prve matrice:\n");
-    unos(matrica1,n,m);
-    printf("Unesite elemente druge matrice:\n");
-    unos(matrica2,n,m);
-    int check = sume(matrica1,matrica2,n,m);
-    if (check == 1)
-    {
-        printf("1");
-    }
+    printf("Unesite elemente matrice:\n");
+    unosMatrice(matrica,n,m);
+    unosNiza(matrica,niz,n,m);
+    ispis(niz,n);
 }
 
-void unos(int matrica[100][100],int n,int m)
+void unosMatrice(int matrica[100][100],int n,int m)
 {
     int i,j;
     for(i=0;i<n;i++)
@@ -615,19 +661,29 @@ void unos(int matrica[100][100],int n,int m)
     }
 }
 
-int sume(int m1[100][100],int m2[100][100],int n,int m)
+void unosNiza(int matrica[100][100],int niz[100],int n,int m)
 {
-    int suma1 = 0,suma2 = 0,i,j;
+    int index = 0,i,j;
+    for(i=0;i<n;i++)
+    {   
+        int max = matrica[i][0];
+        for(j=1;j<m;j++)
+        {
+            if (matrica[i][j]>max)
+            {
+                max = matrica[i][j];
+            }
+        }
+        niz[index] = max;
+        index++;
+    }
+}
+
+void ispis(int niz[100],int n)
+{
+    int i;
     for(i=0;i<n;i++)
     {
-        for(j=0;j<m;j++)
-        {
-            suma1 += m1[i][j];
-            suma2 += m2[i][j];
-        }
-    }
-    if (suma1 > suma2)
-    {
-        return 1;
+        printf("%d ",niz[i]);
     }
 }
