@@ -526,58 +526,108 @@ y = x + x + x за унету вредност х. */
 
 /*3.	Napisati program kojim se na izlazu ispisuje 1 ako u svakoj koloni matrice postoji broj b. Za ispitivanje napraviti funkciju. Učitavanje matrice A uraditi pomoću potprograma. */
 
+// #include <stdio.h>
+
+// int ispitivanje(int matrica[100][100],int n,int m, int b);
+// void unos(int matrica[100][100],int n, int m);
+
+// int main(void)
+// {
+//     int matrica[100][100], n, m,  b;
+//     printf("Unesite nxm dimenzije matrice: ");
+//     scanf("%d %d",&n,&m);
+//     unos(matrica,n,m);
+//     printf("Unesite broj b za ispitivanje: ");
+//     scanf("%d",&b);
+//     int check = ispitivanje(matrica,n,m,b);
+//     if (check == 1)
+//     {
+//         printf("1");
+//         return 0;
+//     }
+// }
+
+// void unos(int matrica[100][100],int n, int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++){
+//         for(j=0;j<m;j++)
+//         {
+//             printf("Unesite element %d vrste %d kolone matrice: ",i,j);
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int ispitivanje(int matrica[100][100],int n,int m, int b)
+// {
+//     int check=1,i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         int tempCheck=0;
+//         for(j=0;j<m;j++)
+//         {
+//             if(matrica[j][i] == b)
+//             {
+//                 tempCheck = 1;
+//                 break;
+//             }
+//         }
+//         if (tempCheck != 1)
+//         {
+//             check = 0;
+//             break;
+//         }
+//     }
+//     return check;
+// }
+
+/*4.	Napisati program kojim se na izlazu ispisuje 1 ako je A>B, gde su A i B matrice. A>B ako je suma elemenata matrice A veća od sume elemenata matrice B. Za određivanje sume elemenata matrice napraviti funkciju.Za određivanje da li je A veće od B napraviti funkciju. */
+
 #include <stdio.h>
-
-int ispitivanje(int matrica[100][100],int n,int m, int b);
-void unos(int matrica[100][100],int n, int m);
-
+void unos(int matrica[100][100],int n,int m);
+int sume(int m1[100][100],int m2[100][100],int n,int m);
 int main(void)
 {
-    int matrica[100][100], n, m,  b;
-    printf("Unesite nxm dimenzije matrice: ");
+    int matrica1[100][100],matrica2[100][100],n,m;
+    printf("Unesite dimenzije dve matrice nxm: ");
     scanf("%d %d",&n,&m);
-    unos(matrica,n,m);
-    printf("Unesite broj b za ispitivanje: ");
-    scanf("%d",&b);
-    int check = ispitivanje(matrica,n,m,b);
+    printf("Unesite elemente prve matrice:\n");
+    unos(matrica1,n,m);
+    printf("Unesite elemente druge matrice:\n");
+    unos(matrica2,n,m);
+    int check = sume(matrica1,matrica2,n,m);
     if (check == 1)
     {
         printf("1");
-        return 0;
     }
 }
 
-void unos(int matrica[100][100],int n, int m)
+void unos(int matrica[100][100],int n,int m)
 {
     int i,j;
-    for(i=0;i<n;i++){
+    for(i=0;i<n;i++)
+    {
         for(j=0;j<m;j++)
         {
-            printf("Unesite element %d vrste %d kolone matrice: ",i,j);
             scanf("%d",&matrica[i][j]);
         }
     }
 }
 
-int ispitivanje(int matrica[100][100],int n,int m, int b)
+int sume(int m1[100][100],int m2[100][100],int n,int m)
 {
-    int check=1,i,j;
+    int suma1 = 0,suma2 = 0,i,j;
     for(i=0;i<n;i++)
     {
-        int tempCheck=0;
         for(j=0;j<m;j++)
         {
-            if(matrica[j][i] == b)
-            {
-                tempCheck = 1;
-                break;
-            }
-        }
-        if (tempCheck != 1)
-        {
-            check = 0;
-            break;
+            suma1 += m1[i][j];
+            suma2 += m2[i][j];
         }
     }
-    return check;
+    if (suma1 > suma2)
+    {
+        return 1;
+    }
 }
