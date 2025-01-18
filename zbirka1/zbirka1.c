@@ -666,12 +666,12 @@ void unosNiza(int matrica[100][100],int niz[100],int n,int m)
     int index = 0,i,j;
     for(i=0;i<n;i++)
     {   
-        int max = matrica[i][0];
+        int max = 0;
         for(j=1;j<m;j++)
         {
-            if (matrica[i][j]>max)
+            if (matrica[i][j]>matrica[i][j-1])
             {
-                max = matrica[i][j];
+                max = j;
             }
         }
         niz[index] = max;
