@@ -813,48 +813,107 @@ y = x + x + x за унету вредност х. */
 // }
 
 /*8.	Napisati program koji na osnovu datog niza realnih brojeva X formira novi niz Y koji sadrži elemente niza X koji su manji od srednje vrednosti niza X. Ispisati elemente niza Y. Učitavanje niza X, formiranje niza Y i ispis niza Y realizovati pomoću odvojenih potprograma. */
+// #include <stdio.h>
+// void unosX(float niz[100],int n);
+// void formirajY(float nizX[100],float nizY[100],int n,int* length);
+// void ispis(float niz[100],int n);
+
+// int main(void)
+// {
+//     float nizX[100], nizY[100];
+//     int n;
+//     printf("Unesite duzinu niza X: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza X:\n");
+//     unosX(nizX,n);
+//     int length = 0;
+//     formirajY(nizX,nizY,n,&length);
+//     printf("Formirani niz Y glasi:\n");
+//     ispis(nizY,length);
+// }
+
+// void unosX(float niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%f",&niz[i]);
+//     }
+// }
+
+// void formirajY(float nizX[100],float nizY[100],int n,int* length)
+// {
+//     float srednja = 0;
+//     int i,index = 0;
+
+//     for(i=0;i<n;i++)
+//     {
+//         srednja += nizX[i];
+//     }
+//     srednja = srednja / n;
+
+//     for(i=0;i<n;i++)
+//     {
+//         if(nizX[i]<srednja)
+//         {
+//             nizY[index] = nizX[i];
+//             (*length)++;
+//             index++;
+//         }
+//     }
+// }
+
+// void ispis(float niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%.2f ",niz[i]);
+//     }
+// }
+
+/*10.	Napisati program koji na osnovu datog niza X formira novi niz Y tako da Y sadrži samo različite elemente niza X. Ispisati elemente niza Y. Učitavanje niza X, formiranje niza Y i ispis niza Y realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
-void unosX(float niz[100],int n);
-void formirajY(float nizX[100],float nizY[100],int n,int* length);
-void ispis(float niz[100],int n);
+void unosX(int niz[100],int n);
+void unosY(int nizX[100],int nizY[100],int n,int * length);
+void ispis(int niz[100],int n);
 
 int main(void)
 {
-    float nizX[100], nizY[100];
-    int n;
+    int nizX[100],nizY[100],n;
     printf("Unesite duzinu niza X: ");
     scanf("%d",&n);
     printf("Unesite elemente niza X:\n");
     unosX(nizX,n);
     int length = 0;
-    formirajY(nizX,nizY,n,&length);
-    printf("Formirani niz Y glasi:\n");
+    unosY(nizX,nizY,n,&length);
     ispis(nizY,length);
 }
 
-void unosX(float niz[100],int n)
+void unosX(int niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        scanf("%f",&niz[i]);
+        scanf("%d",&niz[i]);
     }
 }
 
-void formirajY(float nizX[100],float nizY[100],int n,int* length)
+void unosY(int nizX[100],int nizY[100],int n,int * length)
 {
-    float srednja = 0;
     int i,index = 0;
-
     for(i=0;i<n;i++)
-    {
-        srednja += nizX[i];
-    }
-    srednja = srednja / n;
-
-    for(i=0;i<n;i++)
-    {
-        if(nizX[i]<srednja)
+    {   
+        int check = 1;
+        for (int j = index;j>=0;j--)
+        {
+            if (nizX[i] == nizY[j])
+            {
+                check = 0;
+            }
+        }
+        if (check == 1)
         {
             nizY[index] = nizX[i];
             (*length)++;
@@ -863,11 +922,11 @@ void formirajY(float nizX[100],float nizY[100],int n,int* length)
     }
 }
 
-void ispis(float niz[100],int n)
+void ispis(int niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%.2f ",niz[i]);
+        printf("%d ",niz[i]);
     }
 }
