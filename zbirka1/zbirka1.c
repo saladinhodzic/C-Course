@@ -752,62 +752,122 @@ y = x + x + x за унету вредност х. */
 
 /*7.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B: 1 ukoliko je suma elemenata odgovarajuće vrste matrice A veća od nule 0 ukoliko je suma elemenata odgovarajuće vrste matrice A manja od nule. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void unosMatrice(int matrica[100][100],int n,int m);
-void formirajNiz(int matrica[100][100],int niz[100],int n,int m);
-void ispisNiz(int niz[100],int n);
+// void unosMatrice(int matrica[100][100],int n,int m);
+// void formirajNiz(int matrica[100][100],int niz[100],int n,int m);
+// void ispisNiz(int niz[100],int n);
+
+// int main(void)
+// {
+//     int matrica[100][100],niz[100],n,m;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unosMatrice(matrica,n,m);
+//     formirajNiz(matrica,niz,n,m);
+//     printf("Formirani niz na osnovu matrice glasi:\n");
+//     ispisNiz(niz,n);
+// }
+
+// void unosMatrice(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void formirajNiz(int matrica[100][100],int niz[100],int n,int m)
+// {
+//     int index = 0,i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         int suma = 0;
+//         for(j=0;j<m;j++)
+//         {
+//             suma += matrica[i][j];
+//         }
+
+//         if (suma > 0)
+//         {
+//             niz[index] = 1;
+//         }else{
+//             niz[index] = 0;
+//         }
+//         index++;
+//     }
+// }
+
+// void ispisNiz(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*8.	Napisati program koji na osnovu datog niza realnih brojeva X formira novi niz Y koji sadrži elemente niza X koji su manji od srednje vrednosti niza X. Ispisati elemente niza Y. Učitavanje niza X, formiranje niza Y i ispis niza Y realizovati pomoću odvojenih potprograma. */
+#include <stdio.h>
+void unosX(float niz[100],int n);
+void formirajY(float nizX[100],float nizY[100],int n,int* length);
+void ispis(float niz[100],int n);
 
 int main(void)
 {
-    int matrica[100][100],niz[100],n,m;
-    printf("Unesite dimenzije matrice nxm: ");
-    scanf("%d %d",&n,&m);
-    printf("Unesite elemente matrice:\n");
-    unosMatrice(matrica,n,m);
-    formirajNiz(matrica,niz,n,m);
-    printf("Formirani niz na osnovu matrice glasi:\n");
-    ispisNiz(niz,n);
+    float nizX[100], nizY[100];
+    int n;
+    printf("Unesite duzinu niza X: ");
+    scanf("%d",&n);
+    printf("Unesite elemente niza X:\n");
+    unosX(nizX,n);
+    int length = 0;
+    formirajY(nizX,nizY,n,&length);
+    printf("Formirani niz Y glasi:\n");
+    ispis(nizY,length);
 }
 
-void unosMatrice(int matrica[100][100],int n,int m)
-{
-    int i,j;
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<m;j++)
-        {
-            scanf("%d",&matrica[i][j]);
-        }
-    }
-}
-
-void formirajNiz(int matrica[100][100],int niz[100],int n,int m)
-{
-    int index = 0,i,j;
-    for(i=0;i<n;i++)
-    {
-        int suma = 0;
-        for(j=0;j<m;j++)
-        {
-            suma += matrica[i][j];
-        }
-
-        if (suma > 0)
-        {
-            niz[index] = 1;
-        }else{
-            niz[index] = 0;
-        }
-        index++;
-    }
-}
-
-void ispisNiz(int niz[100],int n)
+void unosX(float niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%d ",niz[i]);
+        scanf("%f",&niz[i]);
+    }
+}
+
+void formirajY(float nizX[100],float nizY[100],int n,int* length)
+{
+    float srednja = 0;
+    int i,index = 0;
+
+    for(i=0;i<n;i++)
+    {
+        srednja += nizX[i];
+    }
+    srednja = srednja / n;
+
+    for(i=0;i<n;i++)
+    {
+        if(nizX[i]<srednja)
+        {
+            nizY[index] = nizX[i];
+            *length =*length + 1;
+            index++;
+        }
+    }
+}
+
+void ispis(float niz[100],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("%.2f ",niz[i]);
     }
 }
