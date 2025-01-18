@@ -690,24 +690,87 @@ y = x + x + x за унету вредност х. */
 
 /*6.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B proizvod najvećeg i najmanjeg elementa odgovarajuće vrste matrice A. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
 
+// #include <stdio.h>
+// void unos(int matrica[100][100],int n,int m);
+// void unosNiza(int matrica[100][100],int niz[100],int n,int m);
+// void ispis(int niz[100],int n);
+
+// int main(void)
+// {
+//     int matrica[100][100], niz[100], n , m;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice: ");
+//     unos(matrica,n,m);
+//     unosNiza(matrica,niz,n,m);
+//     printf("Novi niz izgleda ovako:\n");
+//     ispis(niz,n);
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void unosNiza(int matrica[100][100],int niz[100],int n,int m)
+// {
+//     int index = 0,i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         int min = matrica[i][0];
+//         int max = matrica[i][0];
+//         for(j=1;j<m;j++)
+//         {
+//             if (matrica[i][j]> max)
+//             {
+//                 max = matrica[i][j];
+//             }else if (matrica[i][j]< min)
+//             {
+//                 min = matrica[i][j];
+//             }
+//         }
+//         niz[index] = max * min;
+//         index++;
+//     }
+// }
+
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*7.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B: 1 ukoliko je suma elemenata odgovarajuće vrste matrice A veća od nule 0 ukoliko je suma elemenata odgovarajuće vrste matrice A manja od nule. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
-void unos(int matrica[100][100],int n,int m);
-void unosNiza(int matrica[100][100],int niz[100],int n,int m);
-void ispis(int niz[100],int n);
+
+void unosMatrice(int matrica[100][100],int n,int m);
+void formirajNiz(int matrica[100][100],int niz[100],int n,int m);
+void ispisNiz(int niz[100],int n);
 
 int main(void)
 {
-    int matrica[100][100], niz[100], n , m;
+    int matrica[100][100],niz[100],n,m;
     printf("Unesite dimenzije matrice nxm: ");
     scanf("%d %d",&n,&m);
-    printf("Unesite elemente matrice: ");
-    unos(matrica,n,m);
-    unosNiza(matrica,niz,n,m);
-    printf("Novi niz izgleda ovako:\n");
-    ispis(niz,n);
+    printf("Unesite elemente matrice:\n");
+    unosMatrice(matrica,n,m);
+    formirajNiz(matrica,niz,n,m);
+    printf("Formirani niz na osnovu matrice glasi:\n");
+    ispisNiz(niz,n);
 }
 
-void unos(int matrica[100][100],int n,int m)
+void unosMatrice(int matrica[100][100],int n,int m)
 {
     int i,j;
     for(i=0;i<n;i++)
@@ -719,29 +782,28 @@ void unos(int matrica[100][100],int n,int m)
     }
 }
 
-void unosNiza(int matrica[100][100],int niz[100],int n,int m)
+void formirajNiz(int matrica[100][100],int niz[100],int n,int m)
 {
     int index = 0,i,j;
     for(i=0;i<n;i++)
     {
-        int min = matrica[i][0];
-        int max = matrica[i][0];
-        for(j=1;j<m;j++)
+        int suma = 0;
+        for(j=0;j<m;j++)
         {
-            if (matrica[i][j]> max)
-            {
-                max = matrica[i][j];
-            }else if (matrica[i][j]< min)
-            {
-                min = matrica[i][j];
-            }
+            suma += matrica[i][j];
         }
-        niz[index] = max * min;
+
+        if (suma > 0)
+        {
+            niz[index] = 1;
+        }else{
+            niz[index] = 0;
+        }
         index++;
     }
 }
 
-void ispis(int niz[100],int n)
+void ispisNiz(int niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
