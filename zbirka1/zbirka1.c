@@ -634,22 +634,80 @@ y = x + x + x за унету вредност х. */
 
 /*5.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B indeks najvećeg element odgovarajuće vrste matrice A. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
 
+// #include <stdio.h>
+// void unosMatrice(int matrica[100][100],int n,int m);
+// void unosNiza(int matrica[100][100],int niz[100],int n,int m);
+// void ispis(int niz[100],int n);
+// int main(void)
+// {
+//     int matrica[100][100],niz[100], n, m;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unosMatrice(matrica,n,m);
+//     unosNiza(matrica,niz,n,m);
+//     ispis(niz,n);
+// }
+
+// void unosMatrice(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void unosNiza(int matrica[100][100],int niz[100],int n,int m)
+// {
+//     int index = 0,i,j;
+//     for(i=0;i<n;i++)
+//     {   
+//         int max = 0;
+//         for(j=1;j<m;j++)
+//         {
+//             if (matrica[i][j]>matrica[i][j-1])
+//             {
+//                 max = j;
+//             }
+//         }
+//         niz[index] = max;
+//         index++;
+//     }
+// }
+
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*6.	Napisati program kojim se na osnovu matrice A pravi niz B tako da je svaki element niza B proizvod najvećeg i najmanjeg elementa odgovarajuće vrste matrice A. Učitavanje niza A, formiranje niza B i ispis niza B realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
-void unosMatrice(int matrica[100][100],int n,int m);
+void unos(int matrica[100][100],int n,int m);
 void unosNiza(int matrica[100][100],int niz[100],int n,int m);
 void ispis(int niz[100],int n);
+
 int main(void)
 {
-    int matrica[100][100],niz[100], n, m;
+    int matrica[100][100], niz[100], n , m;
     printf("Unesite dimenzije matrice nxm: ");
     scanf("%d %d",&n,&m);
-    printf("Unesite elemente matrice:\n");
-    unosMatrice(matrica,n,m);
+    printf("Unesite elemente matrice: ");
+    unos(matrica,n,m);
     unosNiza(matrica,niz,n,m);
+    printf("Novi niz izgleda ovako:\n");
     ispis(niz,n);
 }
 
-void unosMatrice(int matrica[100][100],int n,int m)
+void unos(int matrica[100][100],int n,int m)
 {
     int i,j;
     for(i=0;i<n;i++)
@@ -665,16 +723,20 @@ void unosNiza(int matrica[100][100],int niz[100],int n,int m)
 {
     int index = 0,i,j;
     for(i=0;i<n;i++)
-    {   
-        int max = 0;
+    {
+        int min = matrica[i][0];
+        int max = matrica[i][0];
         for(j=1;j<m;j++)
         {
-            if (matrica[i][j]>matrica[i][j-1])
+            if (matrica[i][j]> max)
             {
-                max = j;
+                max = matrica[i][j];
+            }else if (matrica[i][j]< min)
+            {
+                min = matrica[i][j];
             }
         }
-        niz[index] = max;
+        niz[index] = max * min;
         index++;
     }
 }
