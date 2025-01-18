@@ -857,7 +857,7 @@ void formirajY(float nizX[100],float nizY[100],int n,int* length)
         if(nizX[i]<srednja)
         {
             nizY[index] = nizX[i];
-            *length =*length + 1;
+            (*length)++;
             index++;
         }
     }
