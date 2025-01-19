@@ -933,62 +933,104 @@ y = x + x + x за унету вредност х. */
 
 /*9.	Napisati program koji na osnovu date matrice realnih brojeva X formira novu matricu Y koja sadrži elemente matrice X koji su deljivi sa 2, a kod kojih je zbir indeksa jednak 3. Ispisati elemente matrice Y. Učitavanje matrice X, formiranje matrice Y i ispis matrice Y realizovati pomoću odvojenih potprograma. */
 
-#include <stdio.h>
+// #include <stdio.h>
 
-void unosX(float matrica[100][100],int n,int m);
-void formirajY(float X[100][100], float Y[100],int n,int m,int *length);
-void ispis(float niz[100],int n);
+// void unosX(float matrica[100][100],int n,int m);
+// void formirajY(float X[100][100], float Y[100],int n,int m,int *length);
+// void ispis(float niz[100],int n);
+
+// int main(void)
+// {
+//     float matrica[100][100],niz[100];
+//     int n,m;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unosX(matrica,n,m);
+//     int length = 0;
+//     formirajY(matrica,niz,n,m,&length);
+//     printf("Novi niz Y:\n");
+//     ispis(niz,length);
+// }
+
+// void unosX(float matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%f",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// void formirajY(float X[100][100], float Y[100],int n,int m,int *length)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             if (i + j == 3)
+//             {
+//                 if ((int)X[i][j]%2 == 0)
+//                 {
+//                     Y[*length] = X[i][j];
+//                     (*length)++;
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// void ispis(float niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%.2f ",niz[i]);
+//     }
+// }
+
+/*11.	Napisati program kojim se određuje najveći negativni element niza X. Koristiti odgovarajuću funkciju. */
+
+#include <stdio.h>
+void unos(int niz[100],int n);
+int negativni(int niz[100],int n);
 
 int main(void)
 {
-    float matrica[100][100],niz[100];
-    int n,m;
-    printf("Unesite dimenzije matrice nxm: ");
-    scanf("%d %d",&n,&m);
-    printf("Unesite elemente matrice:\n");
-    unosX(matrica,n,m);
-    int length = 0;
-    formirajY(matrica,niz,n,m,&length);
-    printf("Novi niz Y:\n");
-    ispis(niz,length);
+    int niz[100],n;
+    printf("Unesite duzinu niza n: ");
+    scanf("%d",&n);
+    printf("Unesite elemente niza:\n");
+    unos(niz,n);
+    printf("Najveci negativni element niza je %d",negativni(niz,n));
 }
 
-void unosX(float matrica[100][100],int n,int m)
-{
-    int i,j;
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<m;j++)
-        {
-            scanf("%f",&matrica[i][j]);
-        }
-    }
-}
-
-void formirajY(float X[100][100], float Y[100],int n,int m,int *length)
-{
-    int i,j;
-    for(i=0;i<n;i++)
-    {
-        for(j=0;j<m;j++)
-        {
-            if (i + j == 3)
-            {
-                if ((int)X[i][j]%2 == 0)
-                {
-                    Y[*length] = X[i][j];
-                    (*length)++;
-                }
-            }
-        }
-    }
-}
-
-void ispis(float niz[100],int n)
+void unos(int niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%.2f ",niz[i]);
+        scanf("%d",&niz[i]);
     }
+}
+
+int negativni(int niz[100],int n)
+{
+    int i;
+    int negativni = niz[0];
+    for(i=1;i<n;i++)
+    {
+        if(niz[i] < 0 && negativni >= 0)
+        {
+            negativni = niz[i];
+        }else if(niz[i]<0 && niz[i]>negativni)
+        {
+            negativni = niz[i];
+        }
+    }
+    return negativni;
 }
