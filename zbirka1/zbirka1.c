@@ -995,18 +995,61 @@ y = x + x + x за унету вредност х. */
 
 /*11.	Napisati program kojim se određuje najveći negativni element niza X. Koristiti odgovarajuću funkciju. */
 
+// #include <stdio.h>
+// void unos(int niz[100],int n);
+// int negativni(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza n: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     printf("Najveci negativni element niza je %d",negativni(niz,n));
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// int negativni(int niz[100],int n)
+// {
+//     int i;
+//     int negativni = niz[0];
+//     for(i=1;i<n;i++)
+//     {
+//         if(niz[i] < 0 && negativni >= 0)
+//         {
+//             negativni = niz[i];
+//         }else if(niz[i]<0 && niz[i]>negativni)
+//         {
+//             negativni = niz[i];
+//         }
+//     }
+//     return negativni;
+// }
+
+/*12.	Napisati program kojim se određuje najmanji pozitivni element niza X. Koristiti odgovarajuću funkciju. */
+
 #include <stdio.h>
+
 void unos(int niz[100],int n);
-int negativni(int niz[100],int n);
+int pozitivni(int niz[100],int n);
 
 int main(void)
 {
     int niz[100],n;
-    printf("Unesite duzinu niza n: ");
+    printf("Unesite duzinu niza: ");
     scanf("%d",&n);
     printf("Unesite elemente niza:\n");
     unos(niz,n);
-    printf("Najveci negativni element niza je %d",negativni(niz,n));
+    printf("Najmanji pozitivni element niza je %d",pozitivni(niz,n));
 }
 
 void unos(int niz[100],int n)
@@ -1018,19 +1061,19 @@ void unos(int niz[100],int n)
     }
 }
 
-int negativni(int niz[100],int n)
+int pozitivni(int niz[100],int n)
 {
-    int i;
-    int negativni = niz[0];
-    for(i=1;i<n;i++)
+    int i, pozitivni = niz[0];
+    
+    for(i=0;i<n;i++)
     {
-        if(niz[i] < 0 && negativni >= 0)
+        if(niz[i] > 0 && pozitivni <=0)
         {
-            negativni = niz[i];
-        }else if(niz[i]<0 && niz[i]>negativni)
+            pozitivni = niz[i];
+        }else if(niz[i]>0 && niz[i]<pozitivni)
         {
-            negativni = niz[i];
+            pozitivni = niz[i];
         }
     }
-    return negativni;
+    return pozitivni;
 }
