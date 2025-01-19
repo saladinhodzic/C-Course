@@ -874,59 +874,121 @@ y = x + x + x за унету вредност х. */
 
 /*10.	Napisati program koji na osnovu datog niza X formira novi niz Y tako da Y sadrži samo različite elemente niza X. Ispisati elemente niza Y. Učitavanje niza X, formiranje niza Y i ispis niza Y realizovati pomoću odvojenih potprograma. */
 
+// #include <stdio.h>
+// void unosX(int niz[100],int n);
+// void unosY(int nizX[100],int nizY[100],int n,int * length);
+// void ispis(int niz[100],int n);
+
+// int main(void)
+// {
+//     int nizX[100],nizY[100],n;
+//     printf("Unesite duzinu niza X: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza X:\n");
+//     unosX(nizX,n);
+//     int length = 0;
+//     unosY(nizX,nizY,n,&length);
+//     ispis(nizY,length);
+// }
+
+// void unosX(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void unosY(int nizX[100],int nizY[100],int n,int * length)
+// {
+//     int i,index = 0;
+//     for(i=0;i<n;i++)
+//     {   
+//         int check = 1;
+//         for (int j = index;j>=0;j--)
+//         {
+//             if (nizX[i] == nizY[j])
+//             {
+//                 check = 0;
+//             }
+//         }
+//         if (check == 1)
+//         {
+//             nizY[index] = nizX[i];
+//             (*length)++;
+//             index++;
+//         }
+//     }
+// }
+
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*9.	Napisati program koji na osnovu date matrice realnih brojeva X formira novu matricu Y koja sadrži elemente matrice X koji su deljivi sa 2, a kod kojih je zbir indeksa jednak 3. Ispisati elemente matrice Y. Učitavanje matrice X, formiranje matrice Y i ispis matrice Y realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
-void unosX(int niz[100],int n);
-void unosY(int nizX[100],int nizY[100],int n,int * length);
-void ispis(int niz[100],int n);
+
+void unosX(float matrica[100][100],int n,int m);
+void formirajY(float X[100][100], float Y[100],int n,int m,int *length);
+void ispis(float niz[100],int n);
 
 int main(void)
 {
-    int nizX[100],nizY[100],n;
-    printf("Unesite duzinu niza X: ");
-    scanf("%d",&n);
-    printf("Unesite elemente niza X:\n");
-    unosX(nizX,n);
+    float matrica[100][100],niz[100];
+    int n,m;
+    printf("Unesite dimenzije matrice nxm: ");
+    scanf("%d %d",&n,&m);
+    printf("Unesite elemente matrice:\n");
+    unosX(matrica,n,m);
     int length = 0;
-    unosY(nizX,nizY,n,&length);
-    ispis(nizY,length);
+    formirajY(matrica,niz,n,m,&length);
+    printf("Novi niz Y:\n");
+    ispis(niz,length);
 }
 
-void unosX(int niz[100],int n)
+void unosX(float matrica[100][100],int n,int m)
 {
-    int i;
+    int i,j;
     for(i=0;i<n;i++)
     {
-        scanf("%d",&niz[i]);
+        for(j=0;j<m;j++)
+        {
+            scanf("%f",&matrica[i][j]);
+        }
     }
 }
 
-void unosY(int nizX[100],int nizY[100],int n,int * length)
+void formirajY(float X[100][100], float Y[100],int n,int m,int *length)
 {
-    int i,index = 0;
+    int i,j;
     for(i=0;i<n;i++)
-    {   
-        int check = 1;
-        for (int j = index;j>=0;j--)
+    {
+        for(j=0;j<m;j++)
         {
-            if (nizX[i] == nizY[j])
+            if (i + j == 3)
             {
-                check = 0;
+                if ((int)X[i][j]%2 == 0)
+                {
+                    Y[*length] = X[i][j];
+                    (*length)++;
+                }
             }
         }
-        if (check == 1)
-        {
-            nizY[index] = nizX[i];
-            (*length)++;
-            index++;
-        }
     }
 }
 
-void ispis(int niz[100],int n)
+void ispis(float niz[100],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%d ",niz[i]);
+        printf("%.2f ",&niz[i]);
     }
 }
