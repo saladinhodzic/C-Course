@@ -989,6 +989,6 @@ void ispis(float niz[100],int n)
     int i;
     for(i=0;i<n;i++)
     {
-        printf("%.2f ",&niz[i]);
+        printf("%.2f ",niz[i]);
     }
 }
