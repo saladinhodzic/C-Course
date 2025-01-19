@@ -1080,6 +1080,44 @@ y = x + x + x за унету вредност х. */
 
 /*13.	Napisati program kojim se određuje suma pozitivnih elemenata niza X koji su deljivi sa 7. Određivanje sume uraditi pomoću funkcije. */
 
+// #include <stdio.h>
+// void unos(int niz[100],int n);
+// int suma(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     printf("Suma elemenata niza deljivih sa 7 je %d",suma(niz,n));
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// int suma(int niz[100],int n)
+// {
+//     int suma = 0,i;
+//     for(i=0;i<n;i++)
+//     {
+//         if (niz[i] % 7 == 0)
+//         {
+//             suma+= niz[i];
+//         }
+//     }
+//     return suma;
+// }
+
+/*14.	Napisati program kojim se određuje suma negativnih elemenata niza X koji su deljivi sa 3. Određivanje sume uraditi pomoću funkcije. */
+
 #include <stdio.h>
 void unos(int niz[100],int n);
 int suma(int niz[100],int n);
@@ -1091,7 +1129,7 @@ int main(void)
     scanf("%d",&n);
     printf("Unesite elemente niza:\n");
     unos(niz,n);
-    printf("Suma elemenata niza deljivih sa 7 je %d",suma(niz,n));
+    printf("Suma negativnih elemenata niza deljivih sa 3 je %d",suma(niz,n));
 }
 
 void unos(int niz[100],int n)
@@ -1108,9 +1146,9 @@ int suma(int niz[100],int n)
     int suma = 0,i;
     for(i=0;i<n;i++)
     {
-        if (niz[i] % 7 == 0)
+        if(niz[i]< 0 && niz[i]%3 == 0)
         {
-            suma+= niz[i];
+            suma += niz[i];
         }
     }
     return suma;
