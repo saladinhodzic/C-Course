@@ -1199,22 +1199,83 @@ y = x + x + x за унету вредност х. */
 
 /*16.	Napisati program kojim se iz datog niza celih brojeva X izbacuje maksimalni element. Nije dozvoljeno korišćenje pomoćnog niza. */
 
+// #include <stdio.h>
+// void unos(int niz[100],int n);
+// void izbacivanje(int niz[100],int n,int * brojac);
+// void ispis(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     int brojac = 0;
+//     izbacivanje(niz,n,&brojac);
+//     printf("Niz posle izbacivanja maksimalnog elementa glasi:\n");
+//     ispis(niz,brojac);
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void izbacivanje(int niz[100],int n,int * brojac)
+// {
+//     int i, max = niz[0];
+//     // nalazenje maksimalnog elementa niza
+//     for(i=1;i<n;i++)
+//     {
+//         if(niz[i]>max)
+//         {
+//             max = niz[i];
+//         }
+//     }
+
+//     for(i=0;i<n;i++)
+//     {
+//         if (niz[i] != max)
+//         {
+//             niz[*brojac] = niz[i];
+//             (*brojac)++;
+//         }
+//     }
+// }
+
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*17.	Napisati program kojim se u niz X umeće broj b neposredno iza minimalnog elementa niza. Nije dozvoljeno korišćenje pomoćnog niza.  */
 #include <stdio.h>
 void unos(int niz[100],int n);
-void izbacivanje(int niz[100],int n,int * brojac);
+void umetanje(int niz[100],int n,int b,int* brojac);
 void ispis(int niz[100],int n);
 
 int main(void)
 {
-    int niz[100],n;
+    int niz[100],n,b;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
     printf("Unesite elemente niza:\n");
     unos(niz,n);
+    printf("Unesite broj za umetanje: ");
+    scanf("%d",&b);
     int brojac = 0;
-    izbacivanje(niz,n,&brojac);
-    printf("Niz posle izbacivanja maksimalnog elementa glasi:\n");
-    ispis(niz,brojac);
+    umetanje(niz,n,b,&brojac);
+    printf("Novi niz glasi: \n");
+    ispis(niz,n+1);
 }
 
 void unos(int niz[100],int n)
@@ -1226,24 +1287,31 @@ void unos(int niz[100],int n)
     }
 }
 
-void izbacivanje(int niz[100],int n,int * brojac)
+void umetanje(int niz[100],int n,int b,int * brojac)
 {
-    int i, max = niz[0];
-    // nalazenje maksimalnog elementa niza
+    int i,min = niz[0];
+    // nalazenje minimalnog elementa niza
     for(i=1;i<n;i++)
     {
-        if(niz[i]>max)
+        if (niz[i]< min)
         {
-            max = niz[i];
+            min = niz[i];
         }
     }
-
-    for(i=0;i<n;i++)
+    for(i=0;i<n+1;i++)
     {
-        if (niz[i] != max)
+        // 4,1,2,3,5 (7) => 4,7,1,2,3,5
+        if(niz[i] == min)
         {
-            niz[*brojac] = niz[i];
-            (*brojac)++;
+            niz[i] = b;
+            for(int j = n;j>i;j--)
+            {
+                niz[j] = niz[j-1];
+            }
+            niz[i+1] = min;
+            break;
+        }else{
+            niz[i] = niz[i];
         }
     }
 }
