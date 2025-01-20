@@ -1260,7 +1260,7 @@ y = x + x + x за унету вредност х. */
 /*17.	Napisati program kojim se u niz X umeće broj b neposredno iza minimalnog elementa niza. Nije dozvoljeno korišćenje pomoćnog niza.  */
 #include <stdio.h>
 void unos(int niz[100],int n);
-void umetanje(int niz[100],int n,int b,int* brojac);
+void umetanje(int niz[100],int* n,int b);
 void ispis(int niz[100],int n);
 
 int main(void)
@@ -1272,10 +1272,9 @@ int main(void)
     unos(niz,n);
     printf("Unesite broj za umetanje: ");
     scanf("%d",&b);
-    int brojac = 0;
-    umetanje(niz,n,b,&brojac);
+    umetanje(niz,&n,b);
     printf("Novi niz glasi: \n");
-    ispis(niz,n+1);
+    ispis(niz,n);
 }
 
 void unos(int niz[100],int n)
@@ -1287,33 +1286,26 @@ void unos(int niz[100],int n)
     }
 }
 
-void umetanje(int niz[100],int n,int b,int * brojac)
+void umetanje(int niz[100],int* n,int b)
 {
-    int i,min = niz[0];
+    int i,min = niz[0],min_index = 0;
     // nalazenje minimalnog elementa niza
-    for(i=1;i<n;i++)
+    for(i=1;i<*n;i++)
     {
         if (niz[i]< min)
         {
             min = niz[i];
+            min_index = i;
         }
     }
-    for(i=0;i<n+1;i++)
+    for(i=*n;i>min_index;i--)
     {
-        // 4,1,2,3,5 (7) => 4,7,1,2,3,5
-        if(niz[i] == min)
-        {
-            niz[i] = b;
-            for(int j = n;j>i;j--)
-            {
-                niz[j] = niz[j-1];
-            }
-            niz[i+1] = min;
-            break;
-        }else{
-            niz[i] = niz[i];
-        }
+        niz[i] = niz[i-1];
     }
+
+    niz[min_index+1] = b;
+
+    (*n)++;
 }
 
 void ispis(int niz[100],int n)
