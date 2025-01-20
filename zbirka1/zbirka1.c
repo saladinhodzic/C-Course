@@ -1156,9 +1156,53 @@ y = x + x + x за унету вредност х. */
 
 /*15.	Napisati program kojim se određuje suma minimalnog i maksimalnog elementa niza X. Određivanje sume uraditi pomoću funkcije. */
 
+// #include <stdio.h>
+// void unos(int niz[100],int n);
+// int suma(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     printf("Suma najmanjeg i najveceg elementa niza je %d",suma(niz,n));
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// int suma(int niz[100],int n)
+// {
+//     int i,suma = 0;
+//     int min = niz[0],max = niz[0];
+//     for(i=1;i<n;i++)
+//     {
+//         if(niz[i] > max)
+//         {
+//             max = niz[i];
+//         }else if(niz[i]<min)
+//         {
+//             min = niz[i];
+//         }
+//     }
+//     suma += min + max;
+//     return suma;
+// }
+
+/*16.	Napisati program kojim se iz datog niza celih brojeva X izbacuje maksimalni element. Nije dozvoljeno korišćenje pomoćnog niza. */
+
 #include <stdio.h>
 void unos(int niz[100],int n);
-int suma(int niz[100],int n);
+void izbacivanje(int niz[100],int n,int * brojac);
+void ispis(int niz[100],int n);
 
 int main(void)
 {
@@ -1167,7 +1211,10 @@ int main(void)
     scanf("%d",&n);
     printf("Unesite elemente niza:\n");
     unos(niz,n);
-    printf("Suma najmanjeg i najveceg elementa niza je %d",suma(niz,n));
+    int brojac = 0;
+    izbacivanje(niz,n,&brojac);
+    printf("Niz posle izbacivanja maksimalnog elementa glasi:\n");
+    ispis(niz,brojac);
 }
 
 void unos(int niz[100],int n)
@@ -1179,20 +1226,33 @@ void unos(int niz[100],int n)
     }
 }
 
-int suma(int niz[100],int n)
+void izbacivanje(int niz[100],int n,int * brojac)
 {
-    int i,suma = 0;
-    int min = niz[0],max = niz[0];
+    int i, max = niz[0];
+    // nalazenje maksimalnog elementa niza
     for(i=1;i<n;i++)
     {
-        if(niz[i] > max)
+        if(niz[i]>max)
         {
             max = niz[i];
-        }else if(niz[i]<min)
-        {
-            min = niz[i];
         }
     }
-    suma += min + max;
-    return suma;
+
+    for(i=0;i<n;i++)
+    {
+        if (niz[i] != max)
+        {
+            niz[*brojac] = niz[i];
+            (*brojac)++;
+        }
+    }
+}
+
+void ispis(int niz[100],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        printf("%d ",niz[i]);
+    }
 }
