@@ -1298,7 +1298,7 @@ void umetanje(int niz[100],int* n,int b)
             min_index = i;
         }
     }
-    for(i=*n;i>min_index;i--)
+    for(i=*n;i>min_index + 1;i--)
     {
         niz[i] = niz[i-1];
     }
@@ -1307,7 +1307,6 @@ void umetanje(int niz[100],int* n,int b)
 
     (*n)++;
 }
-
 void ispis(int niz[100],int n)
 {
     int i;
