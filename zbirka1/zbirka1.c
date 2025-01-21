@@ -1374,6 +1374,49 @@ y = x + x + x за унету вредност х. */
 
 /*19.	Napisati program kojim se određuje suma elemenata u k-toj koloni matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje sume realizovati pomoću funkcije. */
 
+// #include <stdio.h>
+
+// void unos(int matrica[100][100],int n,int m);
+// int suma(int matrica[100][100],int n,int m,int k);
+
+// int main(void)
+// {
+//     int matrica[100][100],n,m,k;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unos(matrica,n,m);
+//     printf("Unesite k-tu kolonu matrice: ");
+//     scanf("%d",&k);
+//     printf("Suma elemenata k-te kolone matrice je %d",suma(matrica,n,m,k-1));
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int suma(int matrica[100][100],int n,int m,int k)
+// {
+//     int suma = 0,i;
+
+//     for(i=0;i<n;i++)
+//     {
+//         suma += matrica[i][k];
+//     }
+
+//     return suma;
+// }
+
+/*20.	Napisati program kojim se određuje suma elemenata u k-toj vrsti matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje sume realizovati pomoću funkcije. */
+
 #include <stdio.h>
 
 void unos(int matrica[100][100],int n,int m);
@@ -1386,9 +1429,9 @@ int main(void)
     scanf("%d %d",&n,&m);
     printf("Unesite elemente matrice:\n");
     unos(matrica,n,m);
-    printf("Unesite k-tu kolonu matrice: ");
+    printf("Unesite k-tu vrstu matrice: ");
     scanf("%d",&k);
-    printf("Suma elemenata k-te kolone matrice je %d",suma(matrica,n,m,k-1));
+    printf("Suma k-te vrste matrice je %d",suma(matrica,n,m,k-1));
 }
 
 void unos(int matrica[100][100],int n,int m)
@@ -1407,10 +1450,9 @@ int suma(int matrica[100][100],int n,int m,int k)
 {
     int suma = 0,i;
 
-    for(i=0;i<n;i++)
+    for(i=0;i<m;i++)
     {
-        suma += matrica[i][k];
+        suma += matrica[k][i];
     }
-
     return suma;
 }
