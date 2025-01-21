@@ -1258,22 +1258,81 @@ y = x + x + x за унету вредност х. */
 // }
 
 /*17.	Napisati program kojim se u niz X umeće broj b neposredno iza minimalnog elementa niza. Nije dozvoljeno korišćenje pomoćnog niza.  */
+// #include <stdio.h>
+// void unos(int niz[100],int n);
+// void umetanje(int niz[100],int* n,int b);
+// void ispis(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n,b;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     printf("Unesite broj za umetanje: ");
+//     scanf("%d",&b);
+//     umetanje(niz,&n,b);
+//     printf("Novi niz glasi: \n");
+//     ispis(niz,n);
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void umetanje(int niz[100],int* n,int b)
+// {
+//     int i,min = niz[0],min_index = 0;
+//     // nalazenje minimalnog elementa niza
+//     for(i=1;i<*n;i++)
+//     {
+//         if (niz[i]< min)
+//         {
+//             min = niz[i];
+//             min_index = i;
+//         }
+//     }
+//     for(i=*n;i>min_index + 1;i--)
+//     {
+//         niz[i] = niz[i-1];
+//     }
+
+//     niz[min_index+1] = b;
+
+//     (*n)++;
+// }
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*18.	Napisati program kojim se niz X uređuje rastuće. Učitavanje niza X, uređivanje i ispis realizovati pomoću odvojenih potprograma. */
+
 #include <stdio.h>
+
 void unos(int niz[100],int n);
-void umetanje(int niz[100],int* n,int b);
+void uredjivanje(int niz[100],int n);
 void ispis(int niz[100],int n);
 
 int main(void)
 {
-    int niz[100],n,b;
+    int niz[100],n;
     printf("Unesite duzinu niza: ");
     scanf("%d",&n);
     printf("Unesite elemente niza:\n");
     unos(niz,n);
-    printf("Unesite broj za umetanje: ");
-    scanf("%d",&b);
-    umetanje(niz,&n,b);
-    printf("Novi niz glasi: \n");
+    uredjivanje(niz,n);
+    printf("Uredjeni niz rastuce glasi:\n");
     ispis(niz,n);
 }
 
@@ -1286,27 +1345,24 @@ void unos(int niz[100],int n)
     }
 }
 
-void umetanje(int niz[100],int* n,int b)
+void uredjivanje(int niz[100],int n)
 {
-    int i,min = niz[0],min_index = 0;
-    // nalazenje minimalnog elementa niza
-    for(i=1;i<*n;i++)
+    int i,j;
+
+    for(i=0;i<n-1;i++)
     {
-        if (niz[i]< min)
+        for(j=i+1;j<n;j++)
         {
-            min = niz[i];
-            min_index = i;
+            if (niz[i]>niz[j])
+            {
+                int temp = niz[i];
+                niz[i] = niz[j];
+                niz[j] = temp;
+            }
         }
     }
-    for(i=*n;i>min_index + 1;i--)
-    {
-        niz[i] = niz[i-1];
-    }
-
-    niz[min_index+1] = b;
-
-    (*n)++;
 }
+
 void ispis(int niz[100],int n)
 {
     int i;
