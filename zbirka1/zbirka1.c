@@ -1417,26 +1417,67 @@ y = x + x + x за унету вредност х. */
 
 /*20.	Napisati program kojim se određuje suma elemenata u k-toj vrsti matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje sume realizovati pomoću funkcije. */
 
+// #include <stdio.h>
+
+// void unos(int matrica[100][100],int n,int m);
+// int suma(int matrica[100][100],int n,int m,int k);
+
+// int main(void)
+// {
+//     int matrica[100][100],n,m,k;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unos(matrica,n,m);
+//     printf("Unesite k-tu vrstu matrice: ");
+//     scanf("%d",&k);
+//     printf("Suma k-te vrste matrice je %d",suma(matrica,n,m,k-1));
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int suma(int matrica[100][100],int n,int m,int k)
+// {
+//     int suma = 0,i;
+
+//     for(i=0;i<m;i++)
+//     {
+//         suma += matrica[k][i];
+//     }
+//     return suma;
+// }
+
+/*21.	Napisati program kojim se određuje proizvod najmenjeg i najvećeg elemenata matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje proizvoda realizovati pomoću funkcije. */
+
 #include <stdio.h>
 
 void unos(int matrica[100][100],int n,int m);
-int suma(int matrica[100][100],int n,int m,int k);
+int prozivod(int matrica[100][100],int n,int m);
 
 int main(void)
 {
-    int matrica[100][100],n,m,k;
+    int matrica[100][100],n,m;
     printf("Unesite dimenzije matrice nxm: ");
     scanf("%d %d",&n,&m);
     printf("Unesite elemente matrice:\n");
     unos(matrica,n,m);
-    printf("Unesite k-tu vrstu matrice: ");
-    scanf("%d",&k);
-    printf("Suma k-te vrste matrice je %d",suma(matrica,n,m,k-1));
+    printf("Proizvod najmanjeg i najveceg elementa matrica je %d",prozivod(matrica,n,m));
 }
 
 void unos(int matrica[100][100],int n,int m)
 {
     int i,j;
+
     for(i=0;i<n;i++)
     {
         for(j=0;j<m;j++)
@@ -1446,13 +1487,22 @@ void unos(int matrica[100][100],int n,int m)
     }
 }
 
-int suma(int matrica[100][100],int n,int m,int k)
+int prozivod(int matrica[100][100],int n,int m)
 {
-    int suma = 0,i;
-
-    for(i=0;i<m;i++)
+    int i,j;
+    int min = matrica[0][0],max = matrica[0][0];
+    for(i=0;i<n;i++)
     {
-        suma += matrica[k][i];
+        for(j=0;j<m;j++)
+        {
+            if(min>matrica[i][j])
+            {
+                min = matrica[i][j];
+            }else if (max< matrica[i][j])
+            {
+                max = matrica[i][j];
+            }
+        }
     }
-    return suma;
+    return min * max;
 }
