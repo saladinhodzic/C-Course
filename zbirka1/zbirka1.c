@@ -1459,25 +1459,76 @@ y = x + x + x за унету вредност х. */
 
 /*21.	Napisati program kojim se određuje proizvod najmenjeg i najvećeg elemenata matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje proizvoda realizovati pomoću funkcije. */
 
+// #include <stdio.h>
+
+// void unos(int matrica[100][100],int n,int m);
+// int prozivod(int matrica[100][100],int n,int m);
+
+// int main(void)
+// {
+//     int matrica[100][100],n,m;
+//     printf("Unesite dimenzije matrice nxm: ");
+//     scanf("%d %d",&n,&m);
+//     printf("Unesite elemente matrice:\n");
+//     unos(matrica,n,m);
+//     printf("Proizvod najmanjeg i najveceg elementa matrica je %d",prozivod(matrica,n,m));
+// }
+
+// void unos(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             scanf("%d",&matrica[i][j]);
+//         }
+//     }
+// }
+
+// int prozivod(int matrica[100][100],int n,int m)
+// {
+//     int i,j;
+//     int min = matrica[0][0],max = matrica[0][0];
+//     for(i=0;i<n;i++)
+//     {
+//         for(j=0;j<m;j++)
+//         {
+//             if(min>matrica[i][j])
+//             {
+//                 min = matrica[i][j];
+//             }else if (max< matrica[i][j])
+//             {
+//                 max = matrica[i][j];
+//             }
+//         }
+//     }
+//     return min * max;
+// }
+
+/*22.	Napisati program kojim se vrši zamena mesta najvećeg i najmanjeg elemenata ispod sporedne dijagonale matrice X. Učitavanje matrice i traženu obradu realizovati pomoću odvojenih funkcija. */
+
 #include <stdio.h>
 
 void unos(int matrica[100][100],int n,int m);
-int prozivod(int matrica[100][100],int n,int m);
-
+void zamena(int matrica[100][100],int n,int m);
+void ispis(int matrica[100][100],int n,int m);
 int main(void)
 {
     int matrica[100][100],n,m;
-    printf("Unesite dimenzije matrice nxm: ");
+    printf("Dimenzije matrice nxm: ");
     scanf("%d %d",&n,&m);
-    printf("Unesite elemente matrice:\n");
+    printf("Elementi matrice:\n");
     unos(matrica,n,m);
-    printf("Proizvod najmanjeg i najveceg elementa matrica je %d",prozivod(matrica,n,m));
+    zamena(matrica,n,m);
+    printf("Matrica posle zamene:\n");
+    ispis(matrica,n,m);
 }
 
 void unos(int matrica[100][100],int n,int m)
 {
     int i,j;
-
     for(i=0;i<n;i++)
     {
         for(j=0;j<m;j++)
@@ -1487,22 +1538,26 @@ void unos(int matrica[100][100],int n,int m)
     }
 }
 
-int prozivod(int matrica[100][100],int n,int m)
+void zamena(int matrica[100][100],int n,int m)
 {
     int i,j;
-    int min = matrica[0][0],max = matrica[0][0];
-    for(i=0;i<n;i++)
+    int min = matrica[n-1][m-1],max = matrica[n-1][m-1];
+    for(i=n-1;i>=0;i--)
     {
-        for(j=0;j<m;j++)
+        for(j=m-1;j>=0;j--)
         {
-            if(min>matrica[i][j])
+            if (j!= i)
             {
-                min = matrica[i][j];
-            }else if (max< matrica[i][j])
-            {
-                max = matrica[i][j];
+                if (matrica[i][j]>max)
+                {
+                    max = matrica[i][j];
+                }
+                if(matrica[i][j]<min)
+                {
+                    min = matrica[i][j];
+                }
             }
         }
     }
-    return min * max;
+    // trebam sad da zavrsim zadatak, nasao sam najveci i najmanji element ispod sporedne dijagonale sad samo treba da im zamenim mesta
 }
