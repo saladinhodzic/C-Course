@@ -1318,56 +1318,99 @@ y = x + x + x за унету вредност х. */
 
 /*18.	Napisati program kojim se niz X uređuje rastuće. Učitavanje niza X, uređivanje i ispis realizovati pomoću odvojenih potprograma. */
 
+// #include <stdio.h>
+
+// void unos(int niz[100],int n);
+// void uredjivanje(int niz[100],int n);
+// void ispis(int niz[100],int n);
+
+// int main(void)
+// {
+//     int niz[100],n;
+//     printf("Unesite duzinu niza: ");
+//     scanf("%d",&n);
+//     printf("Unesite elemente niza:\n");
+//     unos(niz,n);
+//     uredjivanje(niz,n);
+//     printf("Uredjeni niz rastuce glasi:\n");
+//     ispis(niz,n);
+// }
+
+// void unos(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         scanf("%d",&niz[i]);
+//     }
+// }
+
+// void uredjivanje(int niz[100],int n)
+// {
+//     int i,j;
+
+//     for(i=0;i<n-1;i++)
+//     {
+//         for(j=i+1;j<n;j++)
+//         {
+//             if (niz[i]>niz[j])
+//             {
+//                 int temp = niz[i];
+//                 niz[i] = niz[j];
+//                 niz[j] = temp;
+//             }
+//         }
+//     }
+// }
+
+// void ispis(int niz[100],int n)
+// {
+//     int i;
+//     for(i=0;i<n;i++)
+//     {
+//         printf("%d ",niz[i]);
+//     }
+// }
+
+/*19.	Napisati program kojim se određuje suma elemenata u k-toj koloni matrice X. Učitavanje matrice realizovati pomoću funkcije, određivanje sume realizovati pomoću funkcije. */
+
 #include <stdio.h>
 
-void unos(int niz[100],int n);
-void uredjivanje(int niz[100],int n);
-void ispis(int niz[100],int n);
+void unos(int matrica[100][100],int n,int m);
+int suma(int matrica[100][100],int n,int m,int k);
 
 int main(void)
 {
-    int niz[100],n;
-    printf("Unesite duzinu niza: ");
-    scanf("%d",&n);
-    printf("Unesite elemente niza:\n");
-    unos(niz,n);
-    uredjivanje(niz,n);
-    printf("Uredjeni niz rastuce glasi:\n");
-    ispis(niz,n);
+    int matrica[100][100],n,m,k;
+    printf("Unesite dimenzije matrice nxm: ");
+    scanf("%d %d",&n,&m);
+    printf("Unesite elemente matrice:\n");
+    unos(matrica,n,m);
+    printf("Unesite k-tu kolonu matrice: ");
+    scanf("%d",&k);
+    printf("Suma elemenata k-te kolone matrice je %d",suma(matrica,n,m,k-1));
 }
 
-void unos(int niz[100],int n)
-{
-    int i;
-    for(i=0;i<n;i++)
-    {
-        scanf("%d",&niz[i]);
-    }
-}
-
-void uredjivanje(int niz[100],int n)
+void unos(int matrica[100][100],int n,int m)
 {
     int i,j;
-
-    for(i=0;i<n-1;i++)
+    for(i=0;i<n;i++)
     {
-        for(j=i+1;j<n;j++)
+        for(j=0;j<m;j++)
         {
-            if (niz[i]>niz[j])
-            {
-                int temp = niz[i];
-                niz[i] = niz[j];
-                niz[j] = temp;
-            }
+            scanf("%d",&matrica[i][j]);
         }
     }
 }
 
-void ispis(int niz[100],int n)
+int suma(int matrica[100][100],int n,int m,int k)
 {
-    int i;
+    int suma = 0,i;
+
     for(i=0;i<n;i++)
     {
-        printf("%d ",niz[i]);
+        suma += matrica[i][k];
     }
+
+    return suma;
 }
