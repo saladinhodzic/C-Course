@@ -216,23 +216,135 @@ strncpy(). */
 
 /*Саставити функцију за учитавање једне речи, а затим је тестирати у главном програму.*/
 
+// #include <stdio.h>
+// #include <ctype.h>
+// void unos(char rec[]);
+
+// int main(void)
+// {
+//     char rec[100];
+//     unos(rec);
+//     puts(rec);
+// }
+
+// void unos(char rec[])
+// {
+//     int i=0,c;
+//     while(!isspace(c=getchar()))
+//     {
+//         rec[i++] = c;
+//     }
+//     rec[i] = '\0';
+// }
+
+/*Саставити функцију која:
+а) израчунава дужину стринга;
+б) копира стринг ѕ2 у стринг ѕ1, претпоставља да у ѕ1 има довољно простора;
+в) надовезује стринг ѕ2 на крај стринга ѕ1, претпоставља да у ѕ1 има довољно простора
+г) врши лексикографско поређење два стринга, враћа: 0 - уколико су стрингови једнаки, <0 -
+уколико је ѕ1 лексикографски испред ѕ2, >0 - уколико је ѕ1 лексикографски иза ѕ2;
+д) проналази прву позицију карактера с у стрингу ѕ, враћа позицију на којој је с, односно -1 уколико
+ѕ не садржи с; */
 #include <stdio.h>
-#include <ctype.h>
-void unos(char rec[]);
+int duzina(char string[]);
+void kopiranje(char string1[],char string2[],int* duzina);
+void udruzivanje(char string1[],char string2[],int *duzina);
+int poredjenje(char string1[],char string2[],int*duzina);
+int index(char string[],int c);
 
 int main(void)
 {
-    char rec[100];
-    unos(rec);
-    puts(rec);
+    char string1[50]="C",string2[]= "Zdravo";
+    int duzina1 = duzina(string1);
+    int duzina2 = duzina(string2);
+    printf("Duzina prvog stringa %d, duzina drugog stringa %d\n",duzina1,duzina2);
+    kopiranje(string1,string2,&duzina1);
+    printf("Kopirani prvi string glasi:\n");
+    puts(string1);
+    udruzivanje(string1,string2,&duzina1);
+    printf("Udruzeni prvi string:\n");
+    puts(string1);
+    int check = poredjenje(string1,string2,&duzina1);
+    if (check > 0)
+    {
+        printf("Prvi string je veci.\n");
+    }else if (check<0)
+    {
+        printf("Drugi string je veci.\n");
+    }else
+    {
+        printf("Stringovi su identicni.\n");
+    }
+    printf("Unesite karakter za pretrazivanje: ");
+    int c = getchar();
+    while(getchar() != '\n');
+    printf("Karakter %c se nalazi na %d mestu stringa.",c,index(string1,c));
 }
 
-void unos(char rec[])
+int duzina(char string[])
 {
-    int i=0,c;
-    while(!isspace(c=getchar()))
+    int length = 0,i;
+    for(i=0;string[i]!='\0';i++)
     {
-        rec[i++] = c;
+        length++;
     }
-    rec[i] = '\0';
+    return length;
+}
+
+void kopiranje(char string1[],char string2[],int*duzina)
+{
+    int i;
+    for(i=0;string2[i]!='\0';i++)
+    {
+        string1[i]= string2[i];
+    }
+    string1[i] = '\0';
+    *duzina=i;
+}
+
+void udruzivanje(char string1[],char string2[],int *duzina)
+{
+    int i;
+    for(i=0;string2[i]!='\0';i++)
+    {
+        string1[*duzina+i] = string2[i];
+    }
+    string1[*duzina+i] = '\0';
+    *duzina += i;
+
+}
+
+int poredjenje(char string1[],char string2[],int* duzina)
+{
+    int i;
+    int znak1 = 0,znak2=0;
+    for(i=0;i<*duzina;i++)
+    {
+         znak1+=string1[i];
+         znak2 += string2[i];
+        
+    }
+    if(znak1 > znak2)
+        {
+            return 1;
+        }else if (znak2 > znak1)
+        {
+            return -1;
+        }else
+        {
+            return 0;
+        }
+}
+
+int index(char string[],int c)
+{
+    int i;
+    for(i=0;string[i]!='\0';i++)
+    {
+        if(string[i] == c)
+        {
+            return i;
+        }
+    }
+    return -1;
 }
