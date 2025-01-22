@@ -110,8 +110,8 @@ a) без употребе уграђене функције strlen();
 б) копира првих n карактера једног стринга у други (од почетка другог стринга) помоћу функције
 strncpy(). */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 // a)
 // int main(void)
 // {
@@ -123,13 +123,33 @@ strncpy(). */
 
 // b)
 
+// int main(void)
+// {
+//     char str[] = "Zdravo";
+//     char str2[10];
+//     int n;
+//     printf("Unesite n karaktera za kopiranje: ");
+//     scanf("%d",&n);
+//     strncpy(str2,str,n);
+//     puts(str2);
+// }
+
+/*Саставити програм који:
+а) копира један стринг у продужетку постојећег садржаја другог стринга помоћу функције strcat();
+б) копира првих n карактера од једног стринга у други, у продужетку постојећег садржаја другог
+стринга помоћу функције strncat(). 
+*/
+
+#include <stdio.h>
+#include <string.h>
+
 int main(void)
 {
-    char str[] = "Zdravo";
-    char str2[10];
-    int n;
-    printf("Unesite n karaktera za kopiranje: ");
-    scanf("%d",&n);
-    strncpy(str2,str,n);
+    char str[10] = "Zdravo";
+    char str2[10] = "Cao";
+    char str3[10]="hai";
+    strcat(str2,str);
+    strncat(str3,str2,1);
     puts(str2);
+    puts(str3);
 }
