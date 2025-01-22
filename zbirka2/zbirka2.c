@@ -172,44 +172,67 @@ strncpy(). */
 операције. 
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-int main(void)
-{
-    float prvi,drugi;
-    char str1[10],str2[10];
-    while(1)
-    {
-    printf("Unesite prvi broj: ");
-    fgets(str1,10,stdin);
-    printf("Unesite drugi broj: ");
-    fgets(str2,10,stdin);
-    if(!isdigit(str1[0]))
-    {
-        break;
-    }
-    prvi = atof(str1);
-    drugi= atof(str2);
-    int znak = getchar();
-    getchar();
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <ctype.h>
+// int main(void)
+// {
+//     float prvi,drugi;
+//     char str1[10],str2[10];
+//     while(1)
+//     {
+//     printf("Unesite prvi broj: ");
+//     fgets(str1,10,stdin);
+//     printf("Unesite drugi broj: ");
+//     fgets(str2,10,stdin);
+//     if(!isdigit(str1[0]))
+//     {
+//         break;
+//     }
+//     prvi = atof(str1);
+//     drugi= atof(str2);
+//     int znak = getchar();
+//     getchar();
 
-    switch(znak)
-    {
-        case '+':
-            printf("%.2f",prvi+drugi);
-            break;
-        case '-':
-            printf("%.2f",prvi - drugi);
-            break;
-        case '*':
-            printf("%.2f",prvi*drugi);
-            break;
-        case '/':
-            printf("%.2f",prvi/drugi);
-            break;
-    }
-    }
+//     switch(znak)
+//     {
+//         case '+':
+//             printf("%.2f",prvi+drugi);
+//             break;
+//         case '-':
+//             printf("%.2f",prvi - drugi);
+//             break;
+//         case '*':
+//             printf("%.2f",prvi*drugi);
+//             break;
+//         case '/':
+//             printf("%.2f",prvi/drugi);
+//             break;
+//     }
+//     }
     
 
+// }
+
+/*Саставити функцију за учитавање једне речи, а затим је тестирати у главном програму.*/
+
+#include <stdio.h>
+#include <ctype.h>
+void unos(char rec[]);
+
+int main(void)
+{
+    char rec[100];
+    unos(rec);
+    puts(rec);
+}
+
+void unos(char rec[])
+{
+    int i=0,c;
+    while(!isspace(c=getchar()))
+    {
+        rec[i++] = c;
+    }
+    rec[i] = '\0';
 }
