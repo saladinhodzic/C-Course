@@ -140,16 +140,28 @@ strncpy(). */
 стринга помоћу функције strncat(). 
 */
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char str[10] = "Zdravo";
+//     char str2[10] = "Cao";
+//     char str3[10]="hai";
+//     strcat(str2,str);
+//     strncat(str3,str2,1);
+//     puts(str2);
+//     puts(str3);
+// }
+
+/*Саставити програм који конвертује стринг у цео и реалан број (ако је могуће) употребом
+уграђених функција atoi() и аtof(). Исписати резултате. */
+
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
-    char str[10] = "Zdravo";
-    char str2[10] = "Cao";
-    char str3[10]="hai";
-    strcat(str2,str);
-    strncat(str3,str2,1);
-    puts(str2);
-    puts(str3);
+    char str[] = "1.3";
+    printf("Ceo broj %d, decimalan broj %.2f",atoi(str),atof(str));
 }
