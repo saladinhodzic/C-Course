@@ -157,11 +157,59 @@ strncpy(). */
 /*Саставити програм који конвертује стринг у цео и реалан број (ако је могуће) употребом
 уграђених функција atoi() и аtof(). Исписати резултате. */
 
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// int main(void)
+// {
+//     char str[] = "1.3";
+//     printf("Ceo broj %d, decimalan broj %.2f",atoi(str),atof(str));
+// }
+
+/*Саставити програм који симулира калкулатор са четири основне аритметичке операције над
+реалним бројевима. Бројеви са улаза се прихватају као стрингови. Програм треба да обрађује
+произвољан број комплета све док не на улазу не прочита уместо броја слово. Исписати резултат
+операције. 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <ctype.h>
 int main(void)
 {
-    char str[] = "1.3";
-    printf("Ceo broj %d, decimalan broj %.2f",atoi(str),atof(str));
+    float prvi,drugi;
+    char str1[10],str2[10];
+    while(1)
+    {
+    printf("Unesite prvi broj: ");
+    fgets(str1,10,stdin);
+    printf("Unesite drugi broj: ");
+    fgets(str2,10,stdin);
+    if(!isdigit(str1[0]))
+    {
+        break;
+    }
+    prvi = atof(str1);
+    drugi= atof(str2);
+    int znak = getchar();
+    getchar();
+
+    switch(znak)
+    {
+        case '+':
+            printf("%.2f",prvi+drugi);
+            break;
+        case '-':
+            printf("%.2f",prvi - drugi);
+            break;
+        case '*':
+            printf("%.2f",prvi*drugi);
+            break;
+        case '/':
+            printf("%.2f",prvi/drugi);
+            break;
+    }
+    }
+    
+
 }
