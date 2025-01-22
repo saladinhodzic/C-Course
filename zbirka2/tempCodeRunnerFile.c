@@ -1,6 +1,7 @@
 int main(void)
 // {
-//     char str[]="Cao";
-//     int length = sizeof(str) - 1;
-//     printf("%d",length);
+//     char str1[] = "Zdravo";
+//     char str2[10];
+//     strcpy(str2,str1);
+//     puts(str2);
 // }

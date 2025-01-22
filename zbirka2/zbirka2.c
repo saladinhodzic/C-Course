@@ -62,8 +62,8 @@ a) без употребе уграђене функције strlen();
 а) поређење два задата стринга помоћу функције strcmp().
 б) првих n карактера два стринга помоћу функције strncmp(). */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 // a)
 // int main(void)
 // {
@@ -85,22 +85,51 @@ a) без употребе уграђене функције strlen();
 //     }
 // }
 
+// int main(void)
+// {
+//     char str1[100],str2[100];
+//     fgets(str1,100,stdin);
+//     fgets(str2,100,stdin);
+//     int n;
+//     printf("Unesite prvih n karaktera za poredjenje: ");
+//     scanf("%d",&n);
+//     if(strncmp(str1,str2,n)>0)
+//     {
+//         printf("Prvi string je veci");
+//     }else if(strncmp(str1,str2,n)<0)
+//     {
+//         printf("Drugi string je veci");
+//     }else
+//     {
+//         printf("Prvih n znakova su identicni");
+//     }
+// }
+
+/*0. Саставити програм који:
+а) копира један стринг у други (од почетка другог стринга) помоћу функције strcpy().
+б) копира првих n карактера једног стринга у други (од почетка другог стринга) помоћу функције
+strncpy(). */
+
+#include <stdio.h>
+#include <string.h>
+// a)
+// int main(void)
+// {
+//     char str1[] = "Zdravo";
+//     char str2[10];
+//     strcpy(str2,str1);
+//     puts(str2);
+// }
+
+// b)
+
 int main(void)
 {
-    char str1[100],str2[100];
-    fgets(str1,100,stdin);
-    fgets(str2,100,stdin);
+    char str[] = "Zdravo";
+    char str2[10];
     int n;
-    printf("Unesite prvih n karaktera za poredjenje: ");
+    printf("Unesite n karaktera za kopiranje: ");
     scanf("%d",&n);
-    if(strncmp(str1,str2,n)>0)
-    {
-        printf("Prvi string je veci");
-    }else if(strncmp(str1,str2,n)<0)
-    {
-        printf("Drugi string je veci");
-    }else
-    {
-        printf("Prvih n znakova su identicni");
-    }
+    strncpy(str2,str,n);
+    puts(str2);
 }
