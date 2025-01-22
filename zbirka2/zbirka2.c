@@ -21,7 +21,7 @@ a) без употребе уграђене функције strlen();
 употребом уграђене функције strlen(); 
 */
 
-#include <stdio.h>
+// #include <stdio.h>
 
 // a)
 
@@ -43,17 +43,44 @@ a) без употребе уграђене функције strlen();
 
 // v)
 
+// #include <string.h>
+
+// int main(void)
+// {
+//     char str1[] = "cao cao";
+//     char str2[] = "cao";
+//     if(strlen(str1)>strlen(str2))
+//     {
+//         printf("Prvi string je duzi.");
+//     }else
+//     {
+//         printf("Drugi string je duzi.");
+//     }
+// }
+
+/*Саставити програм који врши:
+а) поређење два задата стринга помоћу функције strcmp().
+б) првих n карактера два стринга помоћу функције strncmp(). */
+
+#include <stdio.h>
 #include <string.h>
 
 int main(void)
 {
-    char str1[] = "cao cao";
-    char str2[] = "cao";
-    if(strlen(str1)>strlen(str2))
+    char str1[100];
+    char str2[100];
+    printf("Unesite prvi string:\n");
+    fgets(str1,100,stdin);
+    printf("Unesite drugi strin:\n");
+    fgets(str2,100,stdin);
+    if(strcmp(str1,str2) > 0)
     {
-        printf("Prvi string je duzi.");
+        printf("Prvi string je veci");
+    }else if (strcmp(str1,str2)<0)
+    {
+        printf("Drugi string je veci");
     }else
     {
-        printf("Drugi string je duzi.");
+        printf("Stringovi su identicni");
     }
 }
