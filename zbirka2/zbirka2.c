@@ -64,23 +64,43 @@ a) без употребе уграђене функције strlen();
 
 #include <stdio.h>
 #include <string.h>
+// a)
+// int main(void)
+// {
+//     char str1[100];
+//     char str2[100];
+//     printf("Unesite prvi string:\n");
+//     fgets(str1,100,stdin);
+//     printf("Unesite drugi strin:\n");
+//     fgets(str2,100,stdin);
+//     if(strcmp(str1,str2) > 0)
+//     {
+//         printf("Prvi string je veci");
+//     }else if (strcmp(str1,str2)<0)
+//     {
+//         printf("Drugi string je veci");
+//     }else
+//     {
+//         printf("Stringovi su identicni");
+//     }
+// }
 
 int main(void)
 {
-    char str1[100];
-    char str2[100];
-    printf("Unesite prvi string:\n");
+    char str1[100],str2[100];
     fgets(str1,100,stdin);
-    printf("Unesite drugi strin:\n");
     fgets(str2,100,stdin);
-    if(strcmp(str1,str2) > 0)
+    int n;
+    printf("Unesite prvih n karaktera za poredjenje: ");
+    scanf("%d",&n);
+    if(strncmp(str1,str2,n)>0)
     {
         printf("Prvi string je veci");
-    }else if (strcmp(str1,str2)<0)
+    }else if(strncmp(str1,str2,n)<0)
     {
         printf("Drugi string je veci");
     }else
     {
-        printf("Stringovi su identicni");
+        printf("Prvih n znakova su identicni");
     }
 }
