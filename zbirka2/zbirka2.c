@@ -351,27 +351,59 @@ strncpy(). */
 
 /*Саставити програм који у задатом стрингу исписује дужину најдужег низа узастопно једнаких знакова. Исписати тај низ*/
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char *str ="Caaaaaooo";
+//     int length = 1;
+//     int max = 0;
+//     for(int i=1;str[i]!='\0';i++)
+//     {
+//         if(str[i] == str[i-1] )
+//         {
+//             length++;
+//         }else{
+//             max = length;
+//             length = 1;
+//         }
+//     }
+//         if(length>max)
+//         {
+//             max = length;
+//         }
+//     printf("Duzina najduzeg podstringa je %d",max);
+// }
+
+/*Саставити програм за одређивање најдужег и најкраћег реда од 20 задатих редова текста. STOP кôд при задавању редова текста може бити празан ред.*/
+
 #include <stdio.h>
 #include <string.h>
-
+#define MAX 20
 int main(void)
 {
-    char *str ="Caaaaaooo";
-    int length = 1;
-    int max = 0;
-    for(int i=1;str[i]!='\0';i++)
+    char tekst[MAX][100];
+    int i=0;
+    int najkraci_ind=0,najduzi_ind=0;
+    while(i<MAX)
     {
-        if(str[i] == str[i-1] )
+        fgets(tekst[i],100,stdin);
+        if(strcmp(tekst[i],"\n") == 0)
         {
-            length++;
-        }else{
-            max = length;
-            length = 1;
+            break;
         }
+
+        tekst[i][strcspn(tekst[i],"\n")] = '\0';
+
+        if(strlen(tekst[i])>strlen(tekst[najduzi_ind]))
+        {
+            najduzi_ind = i;
+        }else if(strlen(tekst[i])< strlen(tekst[najkraci_ind]))
+        {
+            najkraci_ind = i;
+        }
+        i++;
     }
-        if(length>max)
-        {
-            max = length;
-        }
-    printf("Duzina najduzeg podstringa je %d",max);
+    printf("Najduzi string se nalazi na %d mestu a najkraci na %d mestu",najduzi_ind+1,najkraci_ind+1);
 }
