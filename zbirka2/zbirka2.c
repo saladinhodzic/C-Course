@@ -461,23 +461,56 @@ strncpy(). */
 
 /*Саставити програм који за унети стринг уклања све размаке и табулаторе. Исписати нови стринг.*/
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
+// int main(void)
+// {
+//     char str[100];
+//     char novi[100];
+//     fgets(str,100,stdin);
+//     int i,j=0;
+//     for(i=0;i<strlen(str);i++)
+//     {
+//         if(str[i] != ' ' && str[i] != '\t')
+//         {
+//             novi[j] = str[i];
+//             j++;
+//         }
+//     }
+//     novi[strcspn(novi,"\n")] = '\0';
+//     puts(novi);
+// }
+
+/*Саставити функцију која уклања задати карактер у унетом стрингу. Затим, тестирати функцију у главном програму за конкретан стринг и карактер. */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+void uklanjanje(char * string,char k);
 int main(void)
 {
-    char str[100];
-    char novi[100];
-    fgets(str,100,stdin);
-    int i,j=0;
-    for(i=0;i<strlen(str);i++)
+    char *string = malloc(20*sizeof(char));
+    strcpy(string,"Zdravo");
+    char k;
+    printf("Unesite karakter za uklanjanje: ");
+    scanf("%c",&k);
+    uklanjanje(string,k);
+    puts(string);
+    free(string);
+}
+
+void uklanjanje(char * string,char k)
+{
+    int i,brojac=0;
+    for(i=0;i<strlen(string);i++)
     {
-        if(str[i] != ' ' && str[i] != '\t')
+        if(string[i] != k)
         {
-            novi[j] = str[i];
-            j++;
+            string[brojac] = string[i];
+            brojac++;
         }
     }
-    novi[strcspn(novi,"\n")] = '\0';
-    puts(novi);
+    string[brojac] = '\0';
+
 }
