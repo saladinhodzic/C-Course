@@ -491,9 +491,16 @@ void uklanjanje(char * string,char k);
 int main(void)
 {
     char *string = malloc(20*sizeof(char));
+    if(string == NULL)
+    {
+        printf("Neuspesno alociranje memorije");
+        return 1;
+    }
     strcpy(string,"Zdravo");
     char k;
     printf("Unesite karakter za uklanjanje: ");
+    // getchar() za prociscenje bafera
+    getchar();
     scanf("%c",&k);
     uklanjanje(string,k);
     puts(string);
@@ -503,7 +510,8 @@ int main(void)
 void uklanjanje(char * string,char k)
 {
     int i,brojac=0;
-    for(i=0;i<strlen(string);i++)
+    int length = strlen(string);
+    for(i=0;i<length;i++)
     {
         if(string[i] != k)
         {
@@ -512,5 +520,4 @@ void uklanjanje(char * string,char k)
         }
     }
     string[brojac] = '\0';
-
 }
