@@ -410,12 +410,51 @@ strncpy(). */
 
 /*Саставити програм који у задатом стрингу (једна реч) врши конверзију свих малих слова у велика, а осатала не мења.*/
 
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+//     char str[100] = "Zdravo";
+//     strupr(str);
+//     puts(str);
+// }
+
+/*Саставити програм који учитава стринг, који представља реченицу, и који проверава да ли је реченица исправно унета. Исправно унета реченица задовољава следеће услове: - реченица мора почети великим словом и завршити се тачком; - речи су произвољни подстрингови који могу садржати само мала слова. - речи могу бити раздвојени једним размаком (SPACE), зарезом или тачка-зарезом. На излазу исписати обавештење да ли је реченица исправно унета.*/
+
 #include <stdio.h>
 #include <string.h>
-
+#include <ctype.h>
 int main(void)
 {
-    char str[100] = "Zdravo";
-    strupr(str);
-    puts(str);
+    char str[100];
+    fgets(str,100,stdin);
+    int i;
+    if(islower(str[0]) || str[strlen(str) - 2] != '.')
+    {
+        printf("Neispravno");
+        return 1;
+    }
+    int check=1;
+    for(i=1;i<strlen(str);i++)
+    {
+        if(isupper(str[i]))
+        {
+            check=0;
+            break;
+        }
+        if(str[i] == ' ' && str[i+1] == ' ')
+        {
+            check=0;
+            break;
+        }
+    }
+
+    if(check == 1)
+    {
+        printf("Ispravno");
+    }else
+    {
+        printf("Neispravno");
+    }
 }
