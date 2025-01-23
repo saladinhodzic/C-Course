@@ -378,32 +378,44 @@ strncpy(). */
 
 /*Саставити програм за одређивање најдужег и најкраћег реда од 20 задатих редова текста. STOP кôд при задавању редова текста може бити празан ред.*/
 
+// #include <stdio.h>
+// #include <string.h>
+// #define MAX 20
+// int main(void)
+// {
+//     char tekst[MAX][100];
+//     int i=0;
+//     int najkraci_ind=0,najduzi_ind=0;
+//     while(i<MAX)
+//     {
+//         fgets(tekst[i],100,stdin);
+//         if(strcmp(tekst[i],"\n") == 0)
+//         {
+//             break;
+//         }
+
+//         tekst[i][strcspn(tekst[i],"\n")] = '\0';
+
+//         if(strlen(tekst[i])>strlen(tekst[najduzi_ind]))
+//         {
+//             najduzi_ind = i;
+//         }else if(strlen(tekst[i])< strlen(tekst[najkraci_ind]))
+//         {
+//             najkraci_ind = i;
+//         }
+//         i++;
+//     }
+//     printf("Najduzi string se nalazi na %d mestu a najkraci na %d mestu",najduzi_ind+1,najkraci_ind+1);
+// }
+
+/*Саставити програм који у задатом стрингу (једна реч) врши конверзију свих малих слова у велика, а осатала не мења.*/
+
 #include <stdio.h>
 #include <string.h>
-#define MAX 20
+
 int main(void)
 {
-    char tekst[MAX][100];
-    int i=0;
-    int najkraci_ind=0,najduzi_ind=0;
-    while(i<MAX)
-    {
-        fgets(tekst[i],100,stdin);
-        if(strcmp(tekst[i],"\n") == 0)
-        {
-            break;
-        }
-
-        tekst[i][strcspn(tekst[i],"\n")] = '\0';
-
-        if(strlen(tekst[i])>strlen(tekst[najduzi_ind]))
-        {
-            najduzi_ind = i;
-        }else if(strlen(tekst[i])< strlen(tekst[najkraci_ind]))
-        {
-            najkraci_ind = i;
-        }
-        i++;
-    }
-    printf("Najduzi string se nalazi na %d mestu a najkraci na %d mestu",najduzi_ind+1,najkraci_ind+1);
+    char str[100] = "Zdravo";
+    strupr(str);
+    puts(str);
 }
