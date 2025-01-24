@@ -560,14 +560,23 @@ strncpy(). */
 Napiši program koji broji broj karaktera u stringu bez korišćenja strlen() funkcije.*/
 
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
 int main(void)
 {
     int length = 0,i;
-    char * string = "Zdravo";
+    char* string = malloc(10 * sizeof(char));
+    if(string == NULL)
+    {
+        printf("Allocation failed");
+        return 1;
+    }
+    fgets(string,10,stdin);
+    string[strcspn(string,"\n")] = '\0';
     for(i=0;string[i]!= '\0';i++)
     {
         length++;
     }
     printf("Duzina stringa je %d",length);
+    free(string);
 }
