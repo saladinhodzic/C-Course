@@ -484,40 +484,74 @@ strncpy(). */
 
 /*Саставити функцију која уклања задати карактер у унетом стрингу. Затим, тестирати функцију у главном програму за конкретан стринг и карактер. */
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// void uklanjanje(char * string,char k);
+// int main(void)
+// {
+//     char *string = malloc(20*sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Neuspesno alociranje memorije");
+//         return 1;
+//     }
+//     strcpy(string,"Zdravo");
+//     char k;
+//     printf("Unesite karakter za uklanjanje: ");
+//     // getchar() za prociscenje bafera
+//     getchar();
+//     scanf("%c",&k);
+//     uklanjanje(string,k);
+//     puts(string);
+//     free(string);
+// }
+
+// void uklanjanje(char * string,char k)
+// {
+//     int i,brojac=0;
+//     int length = strlen(string);
+//     for(i=0;i<length;i++)
+//     {
+//         if(string[i] != k)
+//         {
+//             string[brojac] = string[i];
+//             brojac++;
+//         }
+//     }
+//     string[brojac] = '\0';
+// }
+
+/*Саставити програм који учитани стринг исписује уназад (с десна на лево).*/
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-void uklanjanje(char * string,char k);
+#include <stdlib.h>
 int main(void)
 {
+
     char *string = malloc(20*sizeof(char));
     if(string == NULL)
     {
-        printf("Neuspesno alociranje memorije");
+        printf("Alociranje neuspesno");
         return 1;
     }
     strcpy(string,"Zdravo");
-    char k;
-    printf("Unesite karakter za uklanjanje: ");
-    // getchar() za prociscenje bafera
-    getchar();
-    scanf("%c",&k);
-    uklanjanje(string,k);
-    puts(string);
-    free(string);
-}
-
-void uklanjanje(char * string,char k)
-{
-    int i,brojac=0;
-    int length = strlen(string);
-    for(i=0;i<length;i++)
+    int i=0,length = strlen(string);
+    char *dest = malloc(20*sizeof(char));
+    if(dest == NULL)
     {
-        if(string[i] != k)
-        {
-            string[brojac] = string[i];
-            brojac++;
-        }
+        printf("Alociranje neuspesno");
+        return 1;
     }
-    string[brojac] = '\0';
+    strcpy(dest,string);
+    while(*string)
+    {
+        dest[length-1-i] = *string;
+        i++;
+        *string++;
+    }
+    puts(dest);
+    free(dest);
+    free(string);
 }
