@@ -524,34 +524,50 @@ strncpy(). */
 
 /*Саставити програм који учитани стринг исписује уназад (с десна на лево).*/
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <stdlib.h>
+// int main(void)
+// {
+
+//     char *string = malloc(20*sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Alociranje neuspesno");
+//         return 1;
+//     }
+//     strcpy(string,"Zdravo");
+//     int i=0,length = strlen(string);
+//     char *dest = malloc(20*sizeof(char));
+//     if(dest == NULL)
+//     {
+//         printf("Alociranje neuspesno");
+//         return 1;
+//     }
+//     strcpy(dest,string);
+//     while(*string)
+//     {
+//         dest[length-1-i] = *string;
+//         i++;
+//         *string++;
+//     }
+//     puts(dest);
+//     free(dest);
+//     free(string);
+// }
+
+/*1. Brojanje karaktera u stringu
+Napiši program koji broji broj karaktera u stringu bez korišćenja strlen() funkcije.*/
+
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+
 int main(void)
 {
-
-    char *string = malloc(20*sizeof(char));
-    if(string == NULL)
+    int length = 0,i;
+    char * string = "Zdravo";
+    for(i=0;string[i]!= '\0';i++)
     {
-        printf("Alociranje neuspesno");
-        return 1;
+        length++;
     }
-    strcpy(string,"Zdravo");
-    int i=0,length = strlen(string);
-    char *dest = malloc(20*sizeof(char));
-    if(dest == NULL)
-    {
-        printf("Alociranje neuspesno");
-        return 1;
-    }
-    strcpy(dest,string);
-    while(*string)
-    {
-        dest[length-1-i] = *string;
-        i++;
-        *string++;
-    }
-    puts(dest);
-    free(dest);
-    free(string);
+    printf("Duzina stringa je %d",length);
 }
