@@ -584,44 +584,85 @@ Napiši program koji broji broj karaktera u stringu bez korišćenja strlen() fu
 /*2. Obrtanje stringa
 Napiši funkciju koja prima string i vraća novi string u obrnutom redosledu.*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// char* obrni(char *string);
+
+// int main(void)
+// {
+//     char *string = malloc(10 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed");
+//         return 1;
+//     }
+//     fgets(string,10,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     char *novi_string = obrni(string);
+//     // printf("%s\n",string);
+//     // printf("%s\n",novi_string);
+//     puts(novi_string);
+//     free(string);
+//     free(novi_string);
+// }
+
+// char* obrni(char *string)
+// {
+//     char *novi= malloc(10 * sizeof(char));
+//     if(novi == NULL)
+//     {
+//         printf("Allocation failed");
+//         exit(1);
+//     }
+//     int i,brojac = 0,length = strlen(string);
+//     for(i=length-1;i>=0;i--)
+//     {
+//         novi[brojac] = string[i];
+//         brojac++;
+//     }
+//     novi[brojac] = '\0';
+//     return novi;
+// }
+
+/*3. Brojanje samoglasnika i suglasnika
+Napiši funkciju koja prima string i broji broj samoglasnika (a, e, i, o, u) i suglasnika u njemu.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-char* obrni(char *string);
+#define MAX 100
+void broj(char *string,int length);
 
 int main(void)
 {
-    char *string = malloc(10 * sizeof(char));
+    char *string = malloc(MAX * sizeof(char));
     if(string == NULL)
     {
-        printf("Allocation failed");
+        printf("Allocation failed.");
         return 1;
     }
-    fgets(string,10,stdin);
+    printf("Unesite neki string:\n");
+    fgets(string,MAX,stdin);
     string[strcspn(string,"\n")] = '\0';
-    char *novi_string = obrni(string);
-    // printf("%s\n",string);
-    // printf("%s\n",novi_string);
-    puts(novi_string);
+    int length = strlen(string);
+    broj(strlwr(string),length);
     free(string);
-    free(novi_string);
 }
 
-char* obrni(char *string)
+void broj(char *string,int length)
 {
-    char *novi= malloc(10 * sizeof(char));
-    if(novi == NULL)
+    int sam=0,su=0,i;
+    for(i=0;i<length;i++)
     {
-        printf("Allocation failed");
-        exit(1);
+        if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u')
+        {
+            sam++;
+        }else if(string[i] != ' ' && string[i] != ',')
+        {
+            su++;
+        }
     }
-    int i,brojac = 0,length = strlen(string);
-    for(i=length-1;i>=0;i--)
-    {
-        novi[brojac] = string[i];
-        brojac++;
-    }
-    novi[brojac] = '\0';
-    return novi;
+    printf("U stringu imamo %d samoglasnika i %d suglasnika",sam,su);
 }
