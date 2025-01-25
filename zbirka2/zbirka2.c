@@ -796,10 +796,53 @@ Napiši funkciju koja proverava da li je string palindrom (string koji se isto �
 /*8. Zamena karaktera
 Napiši funkciju koja zamenjuje sve pojave određenog karaktera drugim karakterom. Primer: "zdravo" sa zamenom 'r' u 'l' postaje "zdlavo".*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// void zamena(char*string,int length,char c,char n);
+
+// int main(void)
+// {
+//     char *string = malloc(100 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite neki string:\n");
+//     fgets(string,100,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     printf("Unesite karakter za zamenu: ");
+//     char c,n;
+//     scanf("%c",&c);
+//     printf("Unesite karakter koji zelite zameniti: ");
+//     getchar();
+//     scanf("%c",&n);
+//     zamena(string,length,c,n);
+//     puts(string);
+//     free(string);
+// }
+
+// void zamena(char*string,int length,char c,char n)
+// {
+//     int i;
+//     for(i=0;i<length;i++)
+//     {
+//         if(string[i] == c)
+//         {
+//             string[i] = n;
+//         }
+//     }
+// }
+
+/*9. Uklanjanje ponovljenih karaktera
+Napiši funkciju koja uklanja sve duplikate karaktera iz stringa. Primer: "programiranje" -> "progaminje".*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void zamena(char*string,int length,char c,char n);
+void uklanjanje(char*string,int length);
 
 int main(void)
 {
@@ -809,29 +852,43 @@ int main(void)
         printf("Allocation failed.");
         return 1;
     }
-    printf("Unesite neki string:\n");
+    printf("Unesite neki string: ");
     fgets(string,100,stdin);
     string[strcspn(string,"\n")] = '\0';
     int length = strlen(string);
-    printf("Unesite karakter za zamenu: ");
-    char c,n;
-    scanf("%c",&c);
-    printf("Unesite karakter koji zelite zameniti: ");
-    getchar();
-    scanf("%c",&n);
-    zamena(string,length,c,n);
+    uklanjanje(string,length);
     puts(string);
     free(string);
 }
 
-void zamena(char*string,int length,char c,char n)
+void uklanjanje(char*string,int length)
 {
-    int i;
+    int i,j,brojac = 0;
+    char *provera = malloc(100 * sizeof(char));
+    if(provera == NULL)
+    {
+        printf("Allocation failed.");
+        exit(1);
+    }
     for(i=0;i<length;i++)
     {
-        if(string[i] == c)
+        int check = 1;
+        for(j=i-1;j>=0;j--)
         {
-            string[i] = n;
+            if(provera[j] == string[i])
+            {
+                check = 0;
+                break;
+            }
         }
+        if (check)
+        {
+            provera[brojac] = string[i];
+            brojac++;
+        }
+
     }
+    provera[brojac] = '\0';
+    strcpy(string,provera);
+    free(provera);
 }
