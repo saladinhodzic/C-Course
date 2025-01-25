@@ -710,10 +710,47 @@ Napiši funkciju koja uklanja sve razmake iz stringa. Primer: "Zdravo svet" -> "
 /*5. Prebrojavanje reči u stringu
 Napiši funkciju koja broji broj reči u stringu. Pretpostavi da su reči razdvojene jednim razmakom.*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// int brojReci(char*string,int length);
+
+// int main(void)
+// {
+//     char *string = malloc(100 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite neki string:\n");
+//     fgets(string,100,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     printf("U nasem stringu imamo %d reci.",brojReci(string,length));
+//     free(string);
+// }
+
+// int brojReci(char*string,int length)
+// {
+//     int i,brojac=1;
+//     for(i=0;i<length;i++)
+//     {
+//         if(string[i] == ' ')
+//         {
+//             brojac++;
+//         }
+//     }
+//     return brojac;
+// }
+
+/*7. Provera palindroma
+Napiši funkciju koja proverava da li je string palindrom (string koji se isto čita s leva na desno i s desna na levo). Primer: "radar" je palindrom, "zdravo" nije.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-int brojReci(char*string,int length);
+void palindrom(char*string,int length);
 
 int main(void)
 {
@@ -727,19 +764,31 @@ int main(void)
     fgets(string,100,stdin);
     string[strcspn(string,"\n")] = '\0';
     int length = strlen(string);
-    printf("U nasem stringu imamo %d reci.",brojReci(string,length));
+    palindrom(string,length);
     free(string);
 }
 
-int brojReci(char*string,int length)
+void palindrom(char*string,int length)
 {
-    int i,brojac=1;
-    for(i=0;i<length;i++)
+    int i,brojac = 0;
+    char *provera  = malloc(100 * sizeof(char));
+    if(provera == NULL)
     {
-        if(string[i] == ' ')
-        {
-            brojac++;
-        }
+        printf("Allocation failed.");
+        exit(1);
     }
-    return brojac;
+    for(i=length-1;i>=0;i--)
+    {
+        provera[brojac] = string[i];
+        brojac++;
+    }
+    provera[brojac] = '\0';
+    if(strcmp(string,provera) == 0)
+    {
+        printf("String je palindrom.");
+    }else
+    {
+        printf("String nije palindrom.");
+    }
+    free(provera);
 }
