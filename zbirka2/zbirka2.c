@@ -670,11 +670,50 @@ Napiši funkciju koja prima string i broji broj samoglasnika (a, e, i, o, u) i s
 /*4. Uklanjanje svih razmaka
 Napiši funkciju koja uklanja sve razmake iz stringa. Primer: "Zdravo svet" -> "Zdravosvet"*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+
+// void uklanjanje(char*string,int length);
+
+// int main(void)
+// {
+//     char *string = malloc(100 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite string:\n");
+//     fgets(string,100,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     uklanjanje(string,length);
+//     puts(string);
+//     free(string);
+// }
+
+// void uklanjanje(char*string,int length)
+// {
+//     int i,brojac=0;
+//     for(i=0;i<length;i++)
+//     {
+//         if(string[i] != ' ' && string[i] != '\t')
+//         {
+//             string[brojac] = string[i];
+//             brojac++;
+//         }
+//     }
+//     string[brojac] = '\0';
+// }
+
+/*5. Prebrojavanje reči u stringu
+Napiši funkciju koja broji broj reči u stringu. Pretpostavi da su reči razdvojene jednim razmakom.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void uklanjanje(char*string,int length);
+int brojReci(char*string,int length);
 
 int main(void)
 {
@@ -684,25 +723,23 @@ int main(void)
         printf("Allocation failed.");
         return 1;
     }
-    printf("Unesite string:\n");
+    printf("Unesite neki string:\n");
     fgets(string,100,stdin);
     string[strcspn(string,"\n")] = '\0';
     int length = strlen(string);
-    uklanjanje(string,length);
-    puts(string);
+    printf("U nasem stringu imamo %d reci.",brojReci(string,length));
     free(string);
 }
 
-void uklanjanje(char*string,int length)
+int brojReci(char*string,int length)
 {
-    int i,brojac=0;
+    int i,brojac=1;
     for(i=0;i<length;i++)
     {
-        if(string[i] != ' ' && string[i] != '\t')
+        if(string[i] == ' ')
         {
-            string[brojac] = string[i];
             brojac++;
         }
     }
-    string[brojac] = '\0';
+    return brojac;
 }
