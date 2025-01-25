@@ -747,10 +747,59 @@ Napiši funkciju koja broji broj reči u stringu. Pretpostavi da su reči razdvo
 /*7. Provera palindroma
 Napiši funkciju koja proverava da li je string palindrom (string koji se isto čita s leva na desno i s desna na levo). Primer: "radar" je palindrom, "zdravo" nije.*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// void palindrom(char*string,int length);
+
+// int main(void)
+// {
+//     char *string = malloc(100 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite neki string:\n");
+//     fgets(string,100,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     palindrom(string,length);
+//     free(string);
+// }
+
+// void palindrom(char*string,int length)
+// {
+//     int i,brojac = 0;
+//     char *provera  = malloc(100 * sizeof(char));
+//     if(provera == NULL)
+//     {
+//         printf("Allocation failed.");
+//         exit(1);
+//     }
+//     for(i=length-1;i>=0;i--)
+//     {
+//         provera[brojac] = string[i];
+//         brojac++;
+//     }
+//     provera[brojac] = '\0';
+//     if(strcmp(string,provera) == 0)
+//     {
+//         printf("String je palindrom.");
+//     }else
+//     {
+//         printf("String nije palindrom.");
+//     }
+//     free(provera);
+// }
+
+/*8. Zamena karaktera
+Napiši funkciju koja zamenjuje sve pojave određenog karaktera drugim karakterom. Primer: "zdravo" sa zamenom 'r' u 'l' postaje "zdlavo".*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-void palindrom(char*string,int length);
+void zamena(char*string,int length,char c,char n);
 
 int main(void)
 {
@@ -764,31 +813,25 @@ int main(void)
     fgets(string,100,stdin);
     string[strcspn(string,"\n")] = '\0';
     int length = strlen(string);
-    palindrom(string,length);
+    printf("Unesite karakter za zamenu: ");
+    char c,n;
+    scanf("%c",&c);
+    printf("Unesite karakter koji zelite zameniti: ");
+    getchar();
+    scanf("%c",&n);
+    zamena(string,length,c,n);
+    puts(string);
     free(string);
 }
 
-void palindrom(char*string,int length)
+void zamena(char*string,int length,char c,char n)
 {
-    int i,brojac = 0;
-    char *provera  = malloc(100 * sizeof(char));
-    if(provera == NULL)
+    int i;
+    for(i=0;i<length;i++)
     {
-        printf("Allocation failed.");
-        exit(1);
+        if(string[i] == c)
+        {
+            string[i] = n;
+        }
     }
-    for(i=length-1;i>=0;i--)
-    {
-        provera[brojac] = string[i];
-        brojac++;
-    }
-    provera[brojac] = '\0';
-    if(strcmp(string,provera) == 0)
-    {
-        printf("String je palindrom.");
-    }else
-    {
-        printf("String nije palindrom.");
-    }
-    free(provera);
 }
