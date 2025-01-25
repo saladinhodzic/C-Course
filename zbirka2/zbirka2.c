@@ -559,13 +559,40 @@ strncpy(). */
 /*1. Brojanje karaktera u stringu
 Napiši program koji broji broj karaktera u stringu bez korišćenja strlen() funkcije.*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// int main(void)
+// {
+//     int length = 0,i;
+//     char* string = malloc(10 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed");
+//         return 1;
+//     }
+//     fgets(string,10,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     for(i=0;string[i]!= '\0';i++)
+//     {
+//         length++;
+//     }
+//     printf("Duzina stringa je %d",length);
+//     free(string);
+// }
+
+/*2. Obrtanje stringa
+Napiši funkciju koja prima string i vraća novi string u obrnutom redosledu.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+char* obrni(char *string);
+
 int main(void)
 {
-    int length = 0,i;
-    char* string = malloc(10 * sizeof(char));
+    char *string = malloc(10 * sizeof(char));
     if(string == NULL)
     {
         printf("Allocation failed");
@@ -573,10 +600,28 @@ int main(void)
     }
     fgets(string,10,stdin);
     string[strcspn(string,"\n")] = '\0';
-    for(i=0;string[i]!= '\0';i++)
-    {
-        length++;
-    }
-    printf("Duzina stringa je %d",length);
+    char *novi_string = obrni(string);
+    // printf("%s\n",string);
+    // printf("%s\n",novi_string);
+    puts(novi_string);
     free(string);
+    free(novi_string);
+}
+
+char* obrni(char *string)
+{
+    char *novi= malloc(10 * sizeof(char));
+    if(novi == NULL)
+    {
+        printf("Allocation failed");
+        exit(1);
+    }
+    int i,brojac = 0,length = strlen(string);
+    for(i=length-1;i>=0;i--)
+    {
+        novi[brojac] = string[i];
+        brojac++;
+    }
+    novi[brojac] = '\0';
+    return novi;
 }
