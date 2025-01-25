@@ -629,40 +629,80 @@ Napiši funkciju koja prima string i vraća novi string u obrnutom redosledu.*/
 /*3. Brojanje samoglasnika i suglasnika
 Napiši funkciju koja prima string i broji broj samoglasnika (a, e, i, o, u) i suglasnika u njemu.*/
 
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// #define MAX 100
+// void broj(char *string,int length);
+
+// int main(void)
+// {
+//     char *string = malloc(MAX * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite neki string:\n");
+//     fgets(string,MAX,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     broj(strlwr(string),length);
+//     free(string);
+// }
+
+// void broj(char *string,int length)
+// {
+//     int sam=0,su=0,i;
+//     for(i=0;i<length;i++)
+//     {
+//         if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u')
+//         {
+//             sam++;
+//         }else if(string[i] != ' ' && string[i] != ',')
+//         {
+//             su++;
+//         }
+//     }
+//     printf("U stringu imamo %d samoglasnika i %d suglasnika",sam,su);
+// }
+
+/*4. Uklanjanje svih razmaka
+Napiši funkciju koja uklanja sve razmake iz stringa. Primer: "Zdravo svet" -> "Zdravosvet"*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX 100
-void broj(char *string,int length);
+
+void uklanjanje(char*string,int length);
 
 int main(void)
 {
-    char *string = malloc(MAX * sizeof(char));
+    char *string = malloc(100 * sizeof(char));
     if(string == NULL)
     {
         printf("Allocation failed.");
         return 1;
     }
-    printf("Unesite neki string:\n");
-    fgets(string,MAX,stdin);
+    printf("Unesite string:\n");
+    fgets(string,100,stdin);
     string[strcspn(string,"\n")] = '\0';
     int length = strlen(string);
-    broj(strlwr(string),length);
+    uklanjanje(string,length);
+    puts(string);
     free(string);
 }
 
-void broj(char *string,int length)
+void uklanjanje(char*string,int length)
 {
-    int sam=0,su=0,i;
+    int i,brojac=0;
     for(i=0;i<length;i++)
     {
-        if(string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u')
+        if(string[i] != ' ' && string[i] != '\t')
         {
-            sam++;
-        }else if(string[i] != ' ' && string[i] != ',')
-        {
-            su++;
+            string[brojac] = string[i];
+            brojac++;
         }
     }
-    printf("U stringu imamo %d samoglasnika i %d suglasnika",sam,su);
+    string[brojac] = '\0';
 }
