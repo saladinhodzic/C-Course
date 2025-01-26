@@ -839,56 +839,56 @@ Napiši funkciju koja zamenjuje sve pojave određenog karaktera drugim karaktero
 /*9. Uklanjanje ponovljenih karaktera
 Napiši funkciju koja uklanja sve duplikate karaktera iz stringa. Primer: "programiranje" -> "progaminje".*/
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-void uklanjanje(char*string,int length);
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include <string.h>
+// void uklanjanje(char*string,int length);
 
-int main(void)
-{
-    char *string = malloc(100 * sizeof(char));
-    if(string == NULL)
-    {
-        printf("Allocation failed.");
-        return 1;
-    }
-    printf("Unesite neki string: ");
-    fgets(string,100,stdin);
-    string[strcspn(string,"\n")] = '\0';
-    int length = strlen(string);
-    uklanjanje(string,length);
-    puts(string);
-    free(string);
-}
+// int main(void)
+// {
+//     char *string = malloc(100 * sizeof(char));
+//     if(string == NULL)
+//     {
+//         printf("Allocation failed.");
+//         return 1;
+//     }
+//     printf("Unesite neki string: ");
+//     fgets(string,100,stdin);
+//     string[strcspn(string,"\n")] = '\0';
+//     int length = strlen(string);
+//     uklanjanje(string,length);
+//     puts(string);
+//     free(string);
+// }
 
-void uklanjanje(char*string,int length)
-{
-    int i,j,brojac = 0;
-    char *provera = malloc(100 * sizeof(char));
-    if(provera == NULL)
-    {
-        printf("Allocation failed.");
-        exit(1);
-    }
-    for(i=0;i<length;i++)
-    {
-        int check = 1;
-        for(j=i-1;j>=0;j--)
-        {
-            if(provera[j] == string[i])
-            {
-                check = 0;
-                break;
-            }
-        }
-        if (check)
-        {
-            provera[brojac] = string[i];
-            brojac++;
-        }
+// void uklanjanje(char*string,int length)
+// {
+//     int i,j,brojac = 0;
+//     char *provera = malloc(100 * sizeof(char));
+//     if(provera == NULL)
+//     {
+//         printf("Allocation failed.");
+//         exit(1);
+//     }
+//     for(i=0;i<length;i++)
+//     {
+//         int check = 1;
+//         for(j=i-1;j>=0;j--)
+//         {
+//             if(provera[j] == string[i])
+//             {
+//                 check = 0;
+//                 break;
+//             }
+//         }
+//         if (check)
+//         {
+//             provera[brojac] = string[i];
+//             brojac++;
+//         }
 
-    }
-    provera[brojac] = '\0';
-    strcpy(string,provera);
-    free(provera);
-}
+//     }
+//     provera[brojac] = '\0';
+//     strcpy(string,provera);
+//     free(provera);
+// }
