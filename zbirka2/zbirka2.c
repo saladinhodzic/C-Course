@@ -948,30 +948,85 @@ Broj strana (int),
 Cenu (float).
 Zatim napiši funkciju koja prima pokazivač na knjigu i ispisuje sve informacije o njoj.*/
 
+// #include <stdio.h>
+// #include <string.h>
+// #include <stdlib.h>
+
+// typedef struct
+// {
+//     char naslov[50];
+//     char autor[30];
+//     int br_strana;
+//     float cena;
+// }Knjiga;
+
+// void ispis(Knjiga*prva);
+// int main(void)
+// {
+//     Knjiga prva;
+//     strcpy(prva.naslov,"Zivotinjska farma");
+//     strcpy(prva.autor,"Dzordz Orvel");
+//     prva.br_strana = 200;
+//     prva.cena = 1200.50;
+//     ispis(&prva);
+// }
+
+// void ispis(Knjiga*prva)
+// {
+//     printf("Naslov:%s, Autor:%s, Broj strana:%d, Cena:%.2f",prva->naslov,prva->autor,prva->br_strana,prva->cena);
+// }
+
+/*2. Prosek ocena studenta
+Definiši strukturu Student sa sledećim poljima:
+
+Ime (niz od 30 karaktera),
+Broj godina (int),
+Niz ocena (do 10 ocena, tipa int),
+Broj ocena (int).
+Napiši funkciju koja računa i vraća prosečnu ocenu studenta.*/
+
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 
 typedef struct
 {
-    char naslov[50];
-    char autor[30];
-    int br_strana;
-    float cena;
-}Knjiga;
+    char ime[30];
+    int godine;
+    int ocene[10];
+    int br_ocena;
+}Student;
 
-void ispis(Knjiga*prva);
+void prosecna_ocena(Student *student);
 int main(void)
 {
-    Knjiga prva;
-    strcpy(prva.naslov,"Zivotinjska farma");
-    strcpy(prva.autor,"Dzordz Orvel");
-    prva.br_strana = 200;
-    prva.cena = 1200.50;
-    ispis(&prva);
+    Student student;
+    printf("Unesite ime studenta: ");
+    fgets(student.ime,30,stdin);
+    student.ime[strcspn(student.ime,"\n")] = '\0';
+
+    printf("Unesite godine studenta: ");
+    scanf("%d",&student.godine);
+
+    printf("Unesite broj ocena studenta: ");
+    scanf("%d",&student.br_ocena);
+    int i;
+    printf("Unesite ocene studenta:\n");
+    for(i=0;i<student.br_ocena;i++)
+    {
+        printf("Unesite %d.ocenu studenta: ",i+1);
+        scanf("%d",&student.ocene[i]);
+    }
+
+    prosecna_ocena(&student);
 }
 
-void ispis(Knjiga*prva)
+void prosecna_ocena(Student *student)
 {
-    printf("Naslov:%s, Autor:%s, Broj strana:%d, Cena:%.2f",prva->naslov,prva->autor,prva->br_strana,prva->cena);
+    int i;
+    float suma = 0;
+    for(i=0;i<student->br_ocena;i++)
+    {
+        suma+= student->ocene[i];
+    }
+    printf("Prosecna ocena studenta %s je %.2f.",student->ime,suma/student->br_ocena);
 }
