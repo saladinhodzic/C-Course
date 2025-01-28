@@ -1034,43 +1034,72 @@ Napiši funkciju koja računa i vraća prosečnu ocenu studenta.*/
 /*3. Sortiranje struktura
 Definiši strukturu Osoba (ime i godine). Napiši program koji kreira niz od 5 osoba i sortira ih po godinama rastućim redosledom.*/
 
+// #include <stdio.h>
+// #include <string.h>
+
+// typedef struct
+// {
+//     char ime[30];
+//     int godine;
+// }OSOBA;
+
+// int main(void)
+// {
+//     OSOBA osobe[5];
+//     int length = 5,i,j;
+//     for(i=0;i<length;i++)
+//     {
+//         printf("Unesite ime %d. osobe: ",i+1);
+//         getchar();
+//         fgets(osobe[i].ime,30,stdin);
+//         osobe[i].ime[strcspn(osobe[i].ime,"\n")] = '\0';
+
+//         printf("Unesite godine %d. osobe: ",i+1);
+//         scanf("%d",&osobe[i].godine);
+//     }
+
+//     for(i=0;i<length-1;i++)
+//     {
+//         for(j=0;j<length-1;j++){
+//         if(osobe[j].godine > osobe[j+1].godine)
+//         {
+//             OSOBA temp = osobe[j];
+//             osobe[j] = osobe[j+1];
+//             osobe[j+1] = temp;
+//         }}
+//     }
+
+//     for(i=0;i<length;i++)
+//     {
+//         printf("%s ",osobe[i].ime);
+//     }
+// }
+
+/*4. Stone Piles Distribution
+
+We are making n stone piles! The first pile has n stones. If n is even, then all piles have an even number of stones. If n is odd, all piles have an odd number of stones. Each pile must more stones than the previous pile but as few as possible.*/
+
 #include <stdio.h>
-#include <string.h>
-
-typedef struct
-{
-    char ime[30];
-    int godine;
-}OSOBA;
-
+#include <stdlib.h>
 int main(void)
 {
-    OSOBA osobe[5];
-    int length = 5,i,j;
-    for(i=0;i<length;i++)
+    int stone;
+    printf("Enter first stone: ");
+    scanf("%d",&stone);
+    int *stones = malloc(stone*sizeof(int));
+    if(stones == NULL)
     {
-        printf("Unesite ime %d. osobe: ",i+1);
-        getchar();
-        fgets(osobe[i].ime,30,stdin);
-        osobe[i].ime[strcspn(osobe[i].ime,"\n")] = '\0';
-
-        printf("Unesite godine %d. osobe: ",i+1);
-        scanf("%d",&osobe[i].godine);
+        printf("Allocation failed.");
+        return 1;
     }
-
-    for(i=0;i<length-1;i++)
+    int i;
+    for(i=0;i<stone;i++)
     {
-        for(j=0;j<length-1;j++){
-        if(osobe[j].godine > osobe[j+1].godine)
-        {
-            OSOBA temp = osobe[j];
-            osobe[j] = osobe[j+1];
-            osobe[j+1] = temp;
-        }}
+        stones[i] = stone + i*2;
     }
-
-    for(i=0;i<length;i++)
+    for(i=0;i<stone;i++)
     {
-        printf("%s ",osobe[i].ime);
+        printf("%d ",stones[i]);
     }
+    free(stones);
 }
