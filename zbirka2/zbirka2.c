@@ -892,3 +892,49 @@ Napiši funkciju koja uklanja sve duplikate karaktera iz stringa. Primer: "progr
 //     strcpy(string,provera);
 //     free(provera);
 // }
+
+/*10. Izvlačenje podstringa
+Napiši funkciju koja iz stringa izvlači podstring zadate dužine, počevši od zadatog indeksa. Primer: "zdravo" sa početnim indeksom 2 i dužinom 3 -> "rav".*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* podstring(char*string,int duzina,int indeks);
+int main(void)
+{
+    char*string = malloc(100 * sizeof(char));
+    if(string == NULL)
+    {
+        printf("Allocation failed.");
+        return 1;
+    }
+    printf("Unesite neki string:\n");
+    fgets(string,100,stdin);
+    string[strcspn(string,"\n")] = '\0';
+    int duzina,indeks;
+    printf("Unesite indeks i duzinu podstringa: ");
+    scanf("%d %d",&indeks,&duzina);
+    char * podstr = podstring(string,duzina,indeks);
+    puts(podstr);
+    free(string);
+    free(podstr);
+}
+
+char* podstring(char*string,int duzina,int indeks)
+{
+    char * podstr = malloc(100 * sizeof(char));
+    if(podstr == NULL)
+    {
+        printf("Allocation failed.");
+        exit(1);
+    }
+    int i,brojac = 0;
+    for(i=indeks;i<indeks+duzina;i++)
+    {
+        podstr[brojac] = string[i];
+        brojac++;
+    }
+    podstr[brojac] = '\0';
+    return podstr;
+}
