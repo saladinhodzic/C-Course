@@ -985,6 +985,55 @@ Niz ocena (do 10 ocena, tipa int),
 Broj ocena (int).
 Napiši funkciju koja računa i vraća prosečnu ocenu studenta.*/
 
+// #include <stdio.h>
+// #include <string.h>
+
+// typedef struct
+// {
+//     char ime[30];
+//     int godine;
+//     int ocene[10];
+//     int br_ocena;
+// }Student;
+
+// void prosecna_ocena(Student *student);
+// int main(void)
+// {
+//     Student student;
+//     printf("Unesite ime studenta: ");
+//     fgets(student.ime,30,stdin);
+//     student.ime[strcspn(student.ime,"\n")] = '\0';
+
+//     printf("Unesite godine studenta: ");
+//     scanf("%d",&student.godine);
+
+//     printf("Unesite broj ocena studenta: ");
+//     scanf("%d",&student.br_ocena);
+//     int i;
+//     printf("Unesite ocene studenta:\n");
+//     for(i=0;i<student.br_ocena;i++)
+//     {
+//         printf("Unesite %d.ocenu studenta: ",i+1);
+//         scanf("%d",&student.ocene[i]);
+//     }
+
+//     prosecna_ocena(&student);
+// }
+
+// void prosecna_ocena(Student *student)
+// {
+//     int i;
+//     float suma = 0;
+//     for(i=0;i<student->br_ocena;i++)
+//     {
+//         suma+= student->ocene[i];
+//     }
+//     printf("Prosecna ocena studenta %s je %.2f.",student->ime,suma/student->br_ocena);
+// }
+
+/*3. Sortiranje struktura
+Definiši strukturu Osoba (ime i godine). Napiši program koji kreira niz od 5 osoba i sortira ih po godinama rastućim redosledom.*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -992,41 +1041,36 @@ typedef struct
 {
     char ime[30];
     int godine;
-    int ocene[10];
-    int br_ocena;
-}Student;
+}OSOBA;
 
-void prosecna_ocena(Student *student);
 int main(void)
 {
-    Student student;
-    printf("Unesite ime studenta: ");
-    fgets(student.ime,30,stdin);
-    student.ime[strcspn(student.ime,"\n")] = '\0';
-
-    printf("Unesite godine studenta: ");
-    scanf("%d",&student.godine);
-
-    printf("Unesite broj ocena studenta: ");
-    scanf("%d",&student.br_ocena);
-    int i;
-    printf("Unesite ocene studenta:\n");
-    for(i=0;i<student.br_ocena;i++)
+    OSOBA osobe[5];
+    int length = 5,i,j;
+    for(i=0;i<length;i++)
     {
-        printf("Unesite %d.ocenu studenta: ",i+1);
-        scanf("%d",&student.ocene[i]);
+        printf("Unesite ime %d. osobe: ",i+1);
+        getchar();
+        fgets(osobe[i].ime,30,stdin);
+        osobe[i].ime[strcspn(osobe[i].ime,"\n")] = '\0';
+
+        printf("Unesite godine %d. osobe: ",i+1);
+        scanf("%d",&osobe[i].godine);
     }
 
-    prosecna_ocena(&student);
-}
-
-void prosecna_ocena(Student *student)
-{
-    int i;
-    float suma = 0;
-    for(i=0;i<student->br_ocena;i++)
+    for(i=0;i<length-1;i++)
     {
-        suma+= student->ocene[i];
+        for(j=0;j<length-1;j++){
+        if(osobe[j].godine > osobe[j+1].godine)
+        {
+            OSOBA temp = osobe[j];
+            osobe[j] = osobe[j+1];
+            osobe[j+1] = temp;
+        }}
     }
-    printf("Prosecna ocena studenta %s je %.2f.",student->ime,suma/student->br_ocena);
+
+    for(i=0;i<length;i++)
+    {
+        printf("%s ",osobe[i].ime);
+    }
 }
