@@ -1083,7 +1083,7 @@ We are making n stone piles! The first pile has n stones. If n is even, then all
 #include <stdlib.h>
 int main(void)
 {
-    int stone;
+    int stone,i;
     printf("Enter first stone: ");
     scanf("%d",&stone);
     int *stones = malloc(stone*sizeof(int));
@@ -1092,14 +1092,17 @@ int main(void)
         printf("Allocation failed.");
         return 1;
     }
-    int i;
+    int *curr = stones;
     for(i=0;i<stone;i++)
     {
-        stones[i] = stone + i*2;
+        *curr = stone + i*2;
+        curr++;
     }
+    curr= stones;
     for(i=0;i<stone;i++)
     {
-        printf("%d ",stones[i]);
+        printf("%d ",*curr);
+        curr++;
     }
     free(stones);
 }
